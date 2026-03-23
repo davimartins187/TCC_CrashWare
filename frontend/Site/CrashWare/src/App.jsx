@@ -4,8 +4,8 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import { Cabecalho, Rodape } from './Componentes'
-import { PgInicial } from './Paginas'
-import { Router } from './Router'
+import { PgInicial } from './Paginas';
+import { Router } from './Router';
 
 
 function App() {
