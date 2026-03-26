@@ -5,10 +5,9 @@
   max-width: 1200px;
   width: 100%;
   margin: auto;
+  margin-bottom: 0px;
   padding: 0 20px;
   padding-top: 9vh;
-  border: 3px solid black;
-
 }
 
 /* ===== TOPO ===== */
@@ -17,7 +16,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  
   padding: 30px 20px;
   color: var(--Cinza-Medio);
 }
@@ -27,6 +26,8 @@
   max-width: 500px;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
+  margin-right: 70px;
+  padding: 0px;
 }
 
 .Conteudo span {
@@ -36,6 +37,35 @@
 .Conteudo_img img { 
   width: 100%;
   max-width: 500px;
+}
+
+.btns{
+  margin-right: auto;
+}
+
+.btnCadastro{
+
+    /* botão em sí */
+    background-color: #54CA7B;
+    border: 1px solid rgba(26, 26, 26, 0.788);
+    width: 150px;
+    height: 60px;
+    border-radius: 6px;
+    box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.555);
+    margin-left: 20px;
+
+    /* texto do botão */
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: bolder;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
+}
+
+.btnCadastro:hover{
+    transition: 0.3s;
+    background-color: #2e8f4e;
+    color: rgba(255, 255, 255, 0.829);
+    transform: scale(1.10);
 }
 
 /* ===== TEXTOS ===== */
@@ -107,14 +137,28 @@ main {
     .Textos h4{
     margin: auto;
   }
+
+    .Conteudo h3 {
+    margin-right: 0px;
+    padding: 0px;
+
+  }
+
+  .btns{
+  margin: auto;
+  ;
+  }
+
 }
 
 @media (max-width: 480px) {
   .Conteudo {
-    padding: 20px 10px;
+    padding: 0px 0px;
   }
 
   .Textos h2 {
     padding-top: 20px;
   }
+
+
 }

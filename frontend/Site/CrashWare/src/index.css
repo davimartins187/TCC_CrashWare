@@ -10,6 +10,14 @@
   --Preto: #000000;
 }
 
+[data-theme="light"]
+{
+  --Texto: #0F172A;
+  --Botão: #54CA7B;
+  --Fundo: #F3F2F3;
+  --FundoDestaque: #eef2f770;
+}
+
 body
 {
   border: 0;
