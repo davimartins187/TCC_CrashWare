@@ -20,6 +20,7 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
     position: fixed;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .Cabecalho h5
