@@ -4,15 +4,16 @@
     box-sizing: border-box;
 }
 
-form{
+.corpo{
     width: 100vw;
-    height: 84.3vh;
+    height: 84.3vh; 
     background: linear-gradient(to left, #15172E, #23264dc2, #15172E);
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center; 
     overflow-x: hidden;
+    position: relative;
 }
 
 .container{
@@ -31,10 +32,10 @@ form{
 }
 
 
-    .inputs{
-        justify-items: flex-start;
-        width: 60%;
-    }
+.inputs{
+     justify-items: flex-start;
+    width: 60%;
+}
 
 input {
     background-color: #0F172A;
@@ -106,4 +107,23 @@ button:hover{
     width: 100vw;
     height: 82.5vh;
 }
+}
+
+
+
+.btncadastro
+{
+    position: absolute;
+    right: 3%;
+    top: 13%;
+    /* transform: translate(-50%,-50%); */
+    height: 10vh;
+    background-color: #54CA7B;
+    border: 1px solid rgba(26, 26, 26, 0.788);
+    width: 10%;
+    height: 60px;
+    border-radius: 6px;
+    box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.555);
+    font-size: 25px;  
+    font-weight: bolder;
 }
