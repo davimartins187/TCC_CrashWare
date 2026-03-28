@@ -85,6 +85,10 @@ p span{
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
 }
 
+.btncadastro{
+    color: white;
+}
+
 button:hover{
     transition: 0.3s;
     background-color: #2e8f4e;

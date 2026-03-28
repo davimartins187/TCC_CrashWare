@@ -33,19 +33,19 @@
 }
 
 .hardware {
-  color: #00ff88;
-  text-shadow: 0 0 10px #00ff8880, 0 0 24px #00ff8840;
+  color: var(--verde_text);
+  text-shadow: 0 0 10px var(--verde_escuro_text);
 }
 
 .software{
-  color: #00c8ff;
-  text-shadow: 0 0 10px #00c8ff80, 0 0 24px #00c8ff40;
+  color: var(--azul_text);
+  text-shadow: 0 0 10px var(--azul_escuro_text);
 }
 
 .Conteudo_img img { 
   width: 100%;
   max-width: 700px;
-  filter: drop-shadow(0 8px 32px #00ff8828);
+  filter: drop-shadow(0 8px 32px var(--verde_escuro_text));
 }
 
 .btns {
@@ -56,12 +56,12 @@
 }
 
 .btnCadastro {
-  background: linear-gradient(135deg, #2e8f4e, #00ff88);
+  background: linear-gradient(135deg, var(--verde_text), var(--verde_escuro_text));
   border: none;
   width: 150px;
   height: 60px;
   border-radius: 16px;
-  box-shadow: 0 0 14px #00ff8860;
+  box-shadow: 0 0 14px var(--verde_escuro_text);
   margin-left: 20px;
 
   color: #fff;
@@ -74,8 +74,8 @@
 
 .btnCadastro:hover {
   transition: 0.3s;
-  background: linear-gradient(135deg, #00ff88, #00c8ff);
-  box-shadow:  0 0 22px #00c8ff60;
+  background: var(linear-gradient(135deg, var(--verde_text), var(--azul_text)));
+  box-shadow:  0 0 22px var(--azul_escuro_text);
   transform: scale(1.10);
   color: #000000cb;
   text-shadow: none;
@@ -92,7 +92,7 @@
   margin: auto;
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #00ff8860, transparent);
+  background: linear-gradient(90deg, transparent, var(--verde_escuro_text), transparent);
 }
 
 .Textos h2 {
@@ -102,13 +102,13 @@
 }
 
 .Textos h2:nth-of-type(1) {
-  color: #00ff88;
-  text-shadow: 0 0 14px #00ff8870, 0 0 32px #00ff8830;
+  color: var(--verde_text);
+  text-shadow: 0 0 14px var(--verde_text), 0 0 32px var(--verde_escuro_text);
 }
 
 .Textos h2:nth-of-type(2) {
-  color: #00c8ff;
-  text-shadow: 0 0 14px #00c8ff70, 0 0 32px #00c8ff30;
+  color: var(--azul_text);
+  text-shadow: 0 0 14px var(--azul_escuro_text);
 }
 
 .Textos h4 {
@@ -117,11 +117,11 @@
   margin-left: 10%;
 
  /* antes que voces perguntem sim eu usei cha pra colorir os subtitulos e os titulos*/
-  background: linear-gradient(90deg, #00ff88, #00c8ff);
+  background: linear-gradient(90deg, var(--verde_text), var(--azul_text));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 2px 2px 8px #00ff8860;
+  text-shadow: 2px 2px 8px var(--verde_escuro_text);
 
   padding-left: 14px;
 }
@@ -146,7 +146,7 @@
   padding-top: 10px;
   font-size: 50px;
   color: #fff;
-  text-shadow: 0 0 16px #00ff8860, 0 0 32px #00c8ff40;
+  text-shadow: 0 0 16px var(--verde_escuro_text), 0 0 32px var(--azul_escuro_text);
 }
 
 .TextoFinal p {
