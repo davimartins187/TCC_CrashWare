@@ -6,66 +6,79 @@
   width: 100%;
   margin: auto;
   margin-bottom: 0px;
-  padding: 0 20px;
   padding-top: 9vh;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.263);
 }
 
 /* ===== TOPO ===== */
 .Conteudo {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  
   padding: 30px 20px;
   color: var(--Cinza-Medio);
+  background-color: var(--Primaria-Azul-Escuro);
 }
 
 .Conteudo h3 {
   font-size: clamp(28px, 5vw, 50px);
-  max-width: 500px;
+  max-width: 700px;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  margin-right: 70px;
   padding: 0px;
+  line-height: 1.2;
+  text-align: center;
 }
 
-.Conteudo span {
-  color: greenyellow;
+.hardware {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff8880, 0 0 24px #00ff8840;
+}
+
+.software{
+  color: #00c8ff;
+  text-shadow: 0 0 10px #00c8ff80, 0 0 24px #00c8ff40;
 }
 
 .Conteudo_img img { 
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
+  filter: drop-shadow(0 8px 32px #00ff8828);
 }
 
-.btns{
+.btns {
   margin-right: auto;
+  display: flex;
+  gap: 0.5rem;
+  margin: auto;
 }
 
-.btnCadastro{
+.btnCadastro {
+  background: linear-gradient(135deg, #2e8f4e, #00ff88);
+  border: none;
+  width: 150px;
+  height: 60px;
+  border-radius: 16px;
+  box-shadow: 0 0 14px #00ff8860;
+  margin-left: 20px;
 
-    /* botão em sí */
-    background-color: #54CA7B;
-    border: 1px solid rgba(26, 26, 26, 0.788);
-    width: 150px;
-    height: 60px;
-    border-radius: 16px;
-    box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.555);
-    margin-left: 20px;
-
-    /* texto do botão */
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    font-weight: bolder;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bolder;
+  font-family: "Montserrat", sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
-.btnCadastro:hover{
-    transition: 0.3s;
-    background-color: #2e8f4e;
-    color: rgba(255, 255, 255, 0.829);
-    transform: scale(1.10);
+.btnCadastro:hover {
+  transition: 0.3s;
+  background: linear-gradient(135deg, #00ff88, #00c8ff);
+  box-shadow:  0 0 22px #00c8ff60;
+  transform: scale(1.10);
+  color: #000000cb;
+  text-shadow: none;
 }
 
 /* ===== TEXTOS ===== */
@@ -74,23 +87,43 @@
   font-weight: 700;
 }
 
-.Textos hr{
+.Textos hr {
   width: 85%;
   margin: auto;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff8860, transparent);
 }
 
 .Textos h2 {
-  color: var(--Cinza-Medio);
   font-size: clamp(30px, 5vw, 60px);
   text-align: center;
   padding: 40px 20px 20px;
 }
 
+.Textos h2:nth-of-type(1) {
+  color: #00ff88;
+  text-shadow: 0 0 14px #00ff8870, 0 0 32px #00ff8830;
+}
+
+.Textos h2:nth-of-type(2) {
+  color: #00c8ff;
+  text-shadow: 0 0 14px #00c8ff70, 0 0 32px #00c8ff30;
+}
+
 .Textos h4 {
   font-size: clamp(20px, 3vw, 33px);
-  color: var(--Cinza-Medio);
   padding: 10px 0;
   margin-left: 10%;
+
+ /* antes que voces perguntem sim eu usei cha pra colorir os subtitulos e os titulos*/
+  background: linear-gradient(90deg, #00ff88, #00c8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 8px #00ff8860;
+
+  padding-left: 14px;
 }
 
 .Textos p {
@@ -106,11 +139,14 @@
 .TextoFinal {
   margin-top: 30px;
   text-align: center;
+  padding: 40px 20px;
 }
 
 .TextoFinal h2 {
-  padding-top: 40px;
+  padding-top: 10px;
   font-size: 50px;
+  color: #fff;
+  text-shadow: 0 0 16px #00ff8860, 0 0 32px #00c8ff40;
 }
 
 .TextoFinal p {
@@ -121,6 +157,7 @@
 /* ===== MAIN ===== */
 main {
   width: 100%;
+    background-color: var(--Primaria-Azul-Escuro);
 }
 
 /* ===== RESPONSIVIDADE ===== */
@@ -134,21 +171,18 @@ main {
     text-align: center;
   }
 
-    .Textos h4{
+  .Textos h4 {
     margin: auto;
   }
 
-    .Conteudo h3 {
+  .Conteudo h3 {
     margin-right: 0px;
     padding: 0px;
-
   }
 
-  .btns{
-  margin: auto;
-  ;
+  .btns {
+    margin: auto;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -159,6 +193,4 @@ main {
   .Textos h2 {
     padding-top: 20px;
   }
-
-
 }

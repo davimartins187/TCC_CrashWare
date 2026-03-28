@@ -10,7 +10,7 @@ const ConteudoInicial = () =>
         <>
             <div className={Style.Container}>
                 <div className={Style.Conteudo}> {/*Parte de cima*/}
-                    <h3>Aprenda <span>Hardware</span> e <span>Software</span> de forma prática e envolvente</h3>
+                    <h3>Aprenda <span className = {Style.hardware}>Hardware</span> e <span className = {Style.software}>Software</span> de forma prática e envolvente</h3>
                     <div className={Style.Conteudo_img}>
                         <img src={FMenina} alt="" />
                     </div>
