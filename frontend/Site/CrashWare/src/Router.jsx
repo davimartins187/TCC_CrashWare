@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { PgInicial, PgCadastro, SobreNos, PgLogin } from "./Paginas"
+import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro } from "./Paginas"
 import { LayoutPadrao, LayoutCadLogin } from "./Layouts"
 
 const Router = () =>
@@ -11,6 +11,7 @@ const Router = () =>
                 <Route path="sobre-nos" element={<SobreNos />}/>
                 <Route path="cadastro" element={<PgCadastro />}/>
                 <Route path="login" element={<PgLogin/>} />
+                <Route path="*" element={<PgErro />} />
             </Route>
         </Routes>
     )

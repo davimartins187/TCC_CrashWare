@@ -1,6 +1,6 @@
-import FMenina from '../../fotos/menina_estudando.png';
-import { Botoes } from '../Botoes/Botoes';
-import { Cards } from '../Cards/Cards';
+import FMenina from '../../../fotos/menina_estudando.png';
+import { Botoes } from '../../Botoes';
+import { Cards } from '../../Cards';
 import { Link } from "react-router-dom";
 import Style from './ConteudoInicial.module.css';
 
