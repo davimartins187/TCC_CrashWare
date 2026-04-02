@@ -1,16 +1,15 @@
-# 💻 CrashWare
+#  CrashWare
 
 > Plataforma de aprendizagem interativa de hardware e software
 
 ---
 
-## 📌 Objetivo
+##  Objetivo
 
-O **CrashWare** é uma aplicação web educacional desenvolvida como Trabalho de Conclusão de Curso (TCC), com o objetivo de facilitar o aprendizado de conceitos de hardware, software e programação de forma acessível, organizada e interativa.
-
+O **CrashWare** é uma plataforma educacional desenvolvida como Trabalho de Conclusão de Curso (TCC), que tem como objetivo principal oferecer uma meio que auxilie os usuários a organizar e otimizar seus estudos de forma eficiente. Através de uma interface simples e intuitiva, disponibilizaremos conteúdos variados, ferramentas de monitoramento de progresso, sistemas de revisão e testes personalizados, além de elementos de gamificação para aumentar a motivação e engajamento do alunos. Promovendo um aprendizado prático, eficaz e contínuo, com foco em hardware e software, nosso objetivo é ajudar pessoas que muitas vezes não tem acesso e nem noção básica sobre a área de Tecnologia da Informação (TI), trazendo-os esses conceitos e possibilitando a eles uma chance de aprendizado que ajude em seu crescimento pessoal e profissional.
 ---
 
-## 👥 Integrantes
+##  Integrantes
 
 | Nome |
 |------|
@@ -24,7 +23,7 @@ O **CrashWare** é uma aplicação web educacional desenvolvida como Trabalho de
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 ### Site Web (Frontend)
 - React — biblioteca para construção de interfaces
@@ -32,7 +31,8 @@ O **CrashWare** é uma aplicação web educacional desenvolvida como Trabalho de
 - Figma — prototipação e design das telas
 
 ### Aplicativo Mobile
-- Java + Android Studio — desenvolvimento do aplicativo Android
+- Java + XML + Android Studio — desenvolvimento do aplicativo Android
+- Figma — prototipação e design das telas
 
 ### Backend (Site)
 - Node.js — servidor e API REST do site
@@ -43,7 +43,7 @@ O **CrashWare** é uma aplicação web educacional desenvolvida como Trabalho de
 
 ---
 
-## 🚀 Instruções de Execução
+##  Instruções de Execução e Configuração para acesso ao site
 
 ### Pré-requisitos
 
@@ -53,8 +53,8 @@ Certifique-se de ter instalado:
 
 ### Clonando o repositório
 
-git clone https://github.com/seu-usuario/TCC_NomeDoGrupo.git
-cd TCC_NomeDoGrupo
+git clone https://github.com/davimartins187/TCC_CrashWare.git
+cd TCC_CrasWare
 
 ### Rodando o Frontend
 
@@ -68,7 +68,7 @@ O projeto estará disponível em `http://localhost:5173`
 
 ---
 
-## 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 TCC_Repositorio/
@@ -87,6 +87,6 @@ TCC_Repositorio/
 
 ---
 
-## 📄 Licença
+##  Licença
 
 Este projeto foi desenvolvido para fins acadêmicos.
