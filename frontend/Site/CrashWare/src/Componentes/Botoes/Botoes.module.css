@@ -5,3 +5,9 @@
     margin: auto;
     width: 70%;
 }
+
+@media (max-width: 400px){
+    .Caixa{
+        flex-direction: column;
+    }
+}
