@@ -11,13 +11,13 @@
     align-items: flex-start;
     gap: 15px;
     padding: 10px;
-    background-color: var(--fundo_secundario_escuro);
-    color: var(--font_principal_escuro);
+    background-color: var(--bg-principal);
+    color: var(--texto-secundario);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: bold;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.24);
 }
 
 .Rodape img
@@ -68,5 +68,5 @@
     display: flex;
     text-decoration: none;
     align-items: center;
-    color: var(--Branco);
+    color: var(--font_principal);
 }

@@ -1,33 +1,36 @@
-:root
-{
-  /* tema escuro */
+/* TEMA CLARO */
+.Claro {
+  --bg-principal: #e6e6e6b7;
+  --bg-secundario: #ebecec;
 
-  --fundo_principal_escuro: #101122;
-  --fundo_secundario_escuro: #020C20;
+  --texto-principal: #111827;
+  --texto-secundario: #6B7280;
 
-  --font_secundario_escuro: #E2E8F0;
-  --font_principal_escuro: #B9C7DB;
+  --cor-primaria: #009832; 
+  --cor-primaria-hover: #10b981;
 
-  /* tema claro */
+  --cor-secundaria: #1fb6ce; 
+  --cor-secundaria-hover: #06b6d4;
 
-  --fundo_principal_claro: #FEFDFD;
-  --fundo_secundario_claro: #E8E8E8; 
-
-  --font_principal_claro: #0F172A;
-  --font_secundaria_claro: #343434;
-
-  /* cores de textos e botoes */
-
-  --verde_text: #00ff88;
-  --azul_text: #00c8ff;
-  --azul_escuro_text: #00c8ff60;
-  --verde_escuro_text: #00ff8860;
+  --borda: #2D2D44;
+  --input-bg: #f3f3f3;
 }
 
-/* body.Claro {
 
+/*  TEMA ESCURO */
+.Escuro {
+  --bg-principal: #0F0F1A;
+  --bg-secundario: #1A1A2E;
+
+  --texto-principal: #E5E7EB;
+  --texto-secundario: #9CA3AF;
+
+  --cor-primaria: #10B981;
+  --cor-primaria-hover: #059669;
+
+  --cor-secundaria: #07caec; 
+  --cor-secundaria-hover: #01a1bd;
+
+  --borda: #E5E7EB;
+  --input-bg: #1A1A2E;
 }
-
-body.Escuro {
-  
-} */
