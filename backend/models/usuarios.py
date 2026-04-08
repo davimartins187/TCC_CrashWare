@@ -28,9 +28,12 @@ class Usuarios(Base):
     email = Column(String(200),unique=True,nullable=False)
     telefone = Column(String(13),unique=True,nullable=True)
     senha_hash = Column(Text,nullable=True)
-    email_verificado = Column(Boolean,server_default=text("false"))
-    ativo = Column(Boolean,server_default=text("true"))
-    moedas = Column(Integer,server_default=text("0"))
+    email_verificado = Column(Boolean,default=False,server_default=text("false"))
+    ativo = Column(Boolean,default=True,server_default=text("true"))
+    admin = Column(Boolean,default=False,server_default=text("false"))
+    moedas = Column(Integer,default=0,server_default=text("0"))
+    xp = Column(Integer,default=0,server_default=text("0"))
+    patente_id = Column(Integer,nullable=False)
 
     #Data de criação e Data de Alteração
 
@@ -41,7 +44,7 @@ class Usuarios(Base):
     oauths = relationship("UsuariosOauth",backref="usuarios")
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)
-    def __init__(self,nome,email,telefone,senha_hash,email_verificado,ativo,coin):
+    def __init__(self,nome,email,telefone,senha_hash,email_verificado=False,ativo=True,admin=False,coin=0,xp = 0, patente_id = 1):
         self.nome = nome
         self.email = email
         self.telefone = telefone
@@ -49,6 +52,8 @@ class Usuarios(Base):
         self.email_verificado = email_verificado
         self.ativo = ativo
         self.coin = coin
+        self.xp = xp
+        self.patente_id = patente_id
 
 
 
