@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import FMenina_claro from '../../../fotos/claro/menina_estudando.png';
 import FMenina_escuro from '../../../fotos/escuro/menina_estudando.png';
 import { Botoes } from '../../Botoes';
+=======
+// importando componentes para ser ultilizados no ConteudoInicial.jsx
+import FMenina from '../../../fotos/menina_estudando.png';
+import { BotoesApp, BotoesForm } from '../../Botoes';
+>>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
 import { Cards } from '../../Cards';
 import { Link } from "react-router-dom";
 
@@ -34,10 +40,10 @@ const ConteudoInicial = () => {
 
                         <div className={Style.Apresentacao_btns}>
                             <Link to="login">
-                                <button>Fazer Login</button>
+                                <BotoesForm texto="Entrar" />
                             </Link>
                             <Link to="cadastro">
-                                <button className={Style.btnSecundario}>Se Cadastrar</button>
+                                <BotoesForm texto="Cadastre-se" className={Style.btnSecundario} />
                             </Link>
                         </div>
 
@@ -117,7 +123,7 @@ const ConteudoInicial = () => {
                         <span className={Style.software}>Software</span> onde estiver, {' '}
                          Aprenda pelo celular, continue no computador e acompanhe seu progresso em tempo real.
                     </p>
-                    <Botoes />
+                    <BotoesApp />
                 </div>
 
             </main>

@@ -6,8 +6,13 @@
 
 .corpo{
     width: 100%;
+<<<<<<< HEAD
     height: 91vh; 
     background-color: var(--bg-principal);
+=======
+    height: 84vh; 
+    background-color: var(--fundo_principal);
+>>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -33,9 +38,13 @@
     font-size: 3rem;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 15px;
+<<<<<<< HEAD
     text-shadow:  2px 2px 1px rgba(0, 0, 0, 0.842);
     text-shadow: 1px 1px 20px var(--cor-primaria-hover), 1px 1px 20px var(--texto-secundario);
 
+=======
+    /* text-shadow:  2px 2px 1px rgba(0, 0, 0, 0.842); */
+>>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
 }
 
 
@@ -48,7 +57,7 @@
     border-radius: 6px;
     margin-top: 20px;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
-    color: var(--texto-secundario);
+    color: var(--Branco);
     font-size: 18px;
     opacity: 0.9;
     padding: 20px;
@@ -77,21 +86,30 @@ p span{
     width: 60%;
     height: 55px;
     border-radius: 6px;
-    box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.555);
+    box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.2);
 
 
     /* texto do botão */
     color: var(--texto-secundario);
     font-size: 25px;
     font-weight: bolder;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
+    /* text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685); */
 }
 
-button:hover{
+.btnCriarConta:hover {
     transition: 0.3s;
     background-color: var(--cor-primaria-hover);
+<<<<<<< HEAD
     color: var(--texto-secundario);
+=======
+    color: var(--Branco);
+>>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
     transform: scale(1.05);
+}
+
+button
+{
+    cursor: pointer;
 }
 
 .btncadastro
@@ -125,9 +143,9 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+/* input[type="number"] {
   -moz-appearance: textfield;
-}
+} */
 
 
 .senhaWrapper {
