@@ -6,13 +6,8 @@
 
 .corpo{
     width: 100%;
-<<<<<<< HEAD
     height: 91vh; 
     background-color: var(--bg-principal);
-=======
-    height: 84vh; 
-    background-color: var(--fundo_principal);
->>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -38,13 +33,9 @@
     font-size: 3rem;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 15px;
-<<<<<<< HEAD
     text-shadow:  2px 2px 1px rgba(0, 0, 0, 0.842);
     text-shadow: 1px 1px 20px var(--cor-primaria-hover), 1px 1px 20px var(--texto-secundario);
 
-=======
-    /* text-shadow:  2px 2px 1px rgba(0, 0, 0, 0.842); */
->>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
 }
 
 
@@ -99,11 +90,7 @@ p span{
 .btnCriarConta:hover {
     transition: 0.3s;
     background-color: var(--cor-primaria-hover);
-<<<<<<< HEAD
     color: var(--texto-secundario);
-=======
-    color: var(--Branco);
->>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
     transform: scale(1.05);
 }
 
