@@ -3,11 +3,11 @@
     align-items: center;
     align-self: center;
     padding: 6px;
-    background-color: var(--fundo_secundario_escuro); 
+    background-color: var(--bg-secundario); 
 
     border-radius: 10px;
     text-decoration: none;
-    color: var(--font_principal_escuro);
+    color: var(--font_principal);
     font-weight: 600;
     transition: 0.3s;
     border: 0.1px solid #00ff8838;
@@ -15,7 +15,7 @@
 }
 
 .Botao a:hover {
-    background-color: #151a3f7a;
+    background-color: var(--input-bg);
     transform: scale(1.05);
     transform: translateY(-4px)
 }
@@ -28,7 +28,7 @@
 
 .Botao p
 {
-    color: var(--font_principal_escuro);
+    color: var(--font_principal);
     filter: drop-shadow(0 0 3px #00ff88);
     transform: translateY(18px);
     font-size: 26px !important;

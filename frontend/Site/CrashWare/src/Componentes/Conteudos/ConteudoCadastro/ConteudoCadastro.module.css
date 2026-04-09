@@ -7,7 +7,7 @@
 .corpo{
     width: 100%;
     height: 84vh; 
-    background-color: var(--fundo_principal_escuro);
+    background-color: var(--bg-secundario);
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -24,7 +24,7 @@
 }
 
 .container h1{
-    color: var(--font_principal_escuro);
+    color: var(--texto-principal);
     font-size: 3rem;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 15px;
@@ -33,16 +33,15 @@
 
 
 .inputClasse{
-     justify-items: flex-start;
+    justify-items: flex-start;
     width: 65%;
-    background-color: var(--fundo_principal_escuro);
-    border: 1px solid var(--font_principal_escuro);
-     /* ← era 17vw, agora se adapta */
+    background-color: var(--input-bg);
+    border: 1px solid var(--borda);
     height: 50px;
     border-radius: 6px;
     margin-top: 20px;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
-    color: var(--font_secundario_escuro);
+    color: var(--texto-secundario);
     font-size: 18px;
     opacity: 0.9;
     padding: 20px;
@@ -50,7 +49,7 @@
 }
 
 .TermosUso{
-    color: var(--font_secundario_escuro);
+    color: var(--texto-secundario);
     font-family: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 320px;
@@ -60,14 +59,14 @@
 }
 
 p span{
-    color: var(--verde_text);
+    color: var(--cor-primaria);
 }
 
 .btnCriarConta{
 
     /* botão em sí */
-    background-color: var(--verde_text);
-    border: 1px solid rgba(26, 26, 26, 0.788);
+    background-color: var(--cor-primaria);
+    border: 1px solid var(--borda);
     width: 60%;
     height: 55px;
     border-radius: 6px;
@@ -75,7 +74,7 @@ p span{
 
 
     /* texto do botão */
-    color: var(--font_secundario_escuro);
+    color: var(--texto-principal);
     font-size: 25px;
     font-weight: bolder;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
@@ -83,7 +82,7 @@ p span{
 
 button:hover{
     transition: 0.3s;
-    background-color: var(--verde_escuro_text);
+    background-color: var(--cor-primaria-hover);
     color: var(--font_principal_escuro);
     transform: scale(1.05);
 }
@@ -95,15 +94,15 @@ button:hover{
     top: 13%;
     /* transform: translate(-50%,-50%); */
     height: 10vh;
-    background-color: var(--verde_escuro_text);
-    border: 1px solid rgba(26, 26, 26, 0.788);
+    background-color: var(--cor-primaria);
+    border: 1px solid var(--borda);
     width: 10%;
     height: 60px;
     border-radius: 6px;
     box-shadow:  2px 2px 1px rgba(0, 0, 0, 0.555);
     font-size: 25px;  
     font-weight: bolder;
-    color: var(--font_secundario_escuro);
+    color: var(--texto-principal);
 }
 
 
@@ -161,11 +160,11 @@ input[type="number"] {
 .ou hr{
     width: 25%;
     height: 1px;
-    color: var(--font_principal_escuro);
+    color: var(--texto-secundario);
 }
 
 .ou p{
-    color: var(--font_secundario_escuro);
+    color: var(--texto-principal);
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     margin: 10px 15px;
