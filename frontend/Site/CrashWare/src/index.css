@@ -1,33 +1,100 @@
+/* TEMA CLARO */
+.Claro {
+  --bg-principal: #e6e6e6b7;
+  --bg-secundario: #e9ffff85;
+
+  --texto-principal: #111827;
+  --texto-secundario: #6B7280;
+
+  --cor-primaria: #027a2a; 
+  --cor-primaria-hover: #10b981;
+
+  --cor-secundaria: #1fb6ce; 
+  --cor-secundaria-hover: #06b6d4;
+
+  --borda: #2D2D44;
+  --input-bg: #f3f3f3;
+  
+}
+
+
+/*  TEMA ESCURO */
+.Escuro {
+  --bg-principal: #0F0F1A;
+  --bg-secundario: #1A1A2E;
+
+  --texto-principal: #E5E7EB;
+  --texto-secundario: #9CA3AF;
+
+  --cor-primaria: #10B981;
+  --cor-primaria-hover: #059669;
+
+  --cor-secundaria: #07caec; 
+  --cor-secundaria-hover: #01a1bd;
+
+  --borda: #E5E7EB;
+
+  --input-bg: #1a1a2e49;
+  --input-bg: #1A1A2E;
+
+  --Branco: #f9eded;
+}
+
 :root
 {
-  /* tema escuro */
+  --Azul-Escuro: #0d1422;
+  --Azul-Escuro-ModoBranco: #e1d9d9;
+  --Fundo: #15172E;
+  --Fundo-Claro: #
+  --Cards-Azul-Escuro: #07142b;
+  --Azul-Destaque-Vivo: #169cff;
+  --Cinza-Claro: #656c76;
+  --Cinza-Medio: #a2a0a2;
+  --Branco: #c4c4c4;
+  --Preto: #302c2c;
 
-  --fundo_principal_escuro: #101122;
-  --fundo_secundario_escuro: #020C20;
-
-  --font_secundario_escuro: #E2E8F0;
-  --font_principal_escuro: #B9C7DB;
-
-  /* tema claro */
-
-  --fundo_principal_claro: #FEFDFD;
-  --fundo_secundario_claro: #E8E8E8; 
-
-  --font_principal_claro: #0F172A;
-  --font_secundaria_claro: #343434;
-
-  /* cores de textos e botoes */
-
+  /* cores de textos */
   --verde_text: #00ff88;
   --azul_text: #00c8ff;
   --azul_escuro_text: #00c8ff60;
   --verde_escuro_text: #00ff8860;
+
+  /* h1 e mais */
+  --titulo: #ffffffcc;
+
+
+  /* Gradiente */
+  
 }
 
-/* body.Claro {
+/* [data-theme="light"]
+{
+  --Texto: #0F172A;
+  --Botão: #54CA7B;
+  --Fundo: #F3F2F3;
+  --FundoDestaque: #EEf2f7;
+} */
 
+body
+{
+  border: 0;
+  margin: 0;
+  background-color: var(--Fundo);
+  /* overflow-x: hidden; */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body.Claro {
+  /* background-color:; */
+  --Azul-Escuro: var(--Azul-Escuro-ModoBranco);
+  --Branco: var(--Preto);
+  --titulo: var(--Preto)
 }
 
 body.Escuro {
-
-} */
+  /* background-color: var(); */
+  color: white;
+}

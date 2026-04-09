@@ -15,7 +15,8 @@
     width: 100%;
     height: 9vh;
     color: var(--Branco);
-    background-color: var(--fundo_secundario_escuro);
+    background-color: var(--bg-principal);
+    background-color: var(--Azul-Escuro);
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 10px;
@@ -28,15 +29,15 @@
 
 .Cabecalho h5
 {
-    padding-left: 4px;
+    margin-top: 6px;
+    padding-left: 10px;
     font-size: 40px;
     font-family: "Exo 2", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
-    font-style: ExtraBold;
 
     color: transparent;
-    background: linear-gradient(135deg, #00ff88, #00c8ff);
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -44,9 +45,9 @@
 
 .logo_legal
 {
-    
     width: 60px !important;
     height: 60px !important;
+    justify-content: center;
 }
 
 .Cabecalho img
@@ -54,6 +55,11 @@
     height: 45px;
     width: 45px;
   
+}
+
+.infoCabecalho{
+    display: flex;
+    margin-left: 30px;
 }
 
 .Direita
@@ -70,5 +76,31 @@
     display: flex;
     text-decoration: none;
     align-items: center;
-    color: var(--fundo_principal_escuro);
+    color: var(--texto-secundario);
 }
+
+@media (max-width: 500px) {
+    
+    .Direita{
+        display: none;
+    }
+
+    .infoCabecalho{
+        width: 95vw;
+        height: 100%;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
+    .logo_legal{
+        display: block;
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .Cabecalho h5{
+        justify-content: center;
+        font-size: 30px;
+    }
+}
+

@@ -1,39 +1,65 @@
-// importando componentes para ser ultilizados no ConteudoCadastro.jsx
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+import { useState, useEffect } from 'react';
+import { BotoesCadLogin, TIPO_BOTAO } from '../../Botoes';
+=======
 import { useState } from 'react';
-import { BotoesCadLogin, BotoesForm, TIPO_BOTAO } from '../../Botoes';
+import { BotoesForm, TIPO_BOTAO } from '../../Botoes';
+>>>>>>> b7b36519cfb590f95409ca397d87bdc65577bdac
 import { CampoTexto } from '../../CampoTexto';
+import { Cabecalho } from '../../Cabecalho';
 
-// importando o estilo
+import esconderSenha_claro from '../../../fotos/claro/nao_pode_ver_senha.svg';
+import verSenha_claro from '../../../fotos/claro/pode_ver_senha.svg';
+import esconderSenha_escuro from '../../../fotos/escuro/nao_pode_ver_senha_claro.svg';
+import verSenha_escuro from '../../../fotos/escuro/pode_ver_senha_claro.svg';
+
 import style from './ConteudoCadastro.module.css';
 
-//Função que retorna o conteudo da pagina de cadastro
- 
-const ConteudoCadstro = () =>
-{
+const ConteudoCadstro = () => {
 
-    // guarda o valor de um campo enquanto o usuario digita:
-        const [email, setEmail] = useState("");
-        const [telefone, setTelefone] = useState("");
-        const [senha, setSenha] = useState('');
-        const [confirmarSenha, setConfirmarSenha] = useState('');
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [senha, setSenha] = useState('');
+    const [confirmarSenha, setConfirmarSenha] = useState('');
+    const [mostrar, setMostrar] = useState(false); 
+    const [mostrarConfirmar, setMostrarConfirmar] = useState(false);
+    const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
-    // confirma se o input senha esta vazio ou igual aoconfirmar senha
-        const PodeMostarBotao = senha != "" && senha === confirmarSenha;
+    useEffect(() => {
+        const checarTema = (e) => setTema(e.detail);
+        window.addEventListener('temaAtualizado', checarTema);
+        return () => window.removeEventListener('temaAtualizado', checarTema);
+    }, []);
+
+    const isClaro = tema === 'Claro';
+    const PodeMostarBotao = senha !== "" && senha === confirmarSenha;
+
+    const iconeSenha = mostrar
+        ? (isClaro ? verSenha_claro      : verSenha_escuro)
+        : (isClaro ? esconderSenha_claro : esconderSenha_escuro);
+
+    const iconeConfirmarSenha = mostrarConfirmar
+        ? (isClaro ? verSenha_claro      : verSenha_escuro)
+        : (isClaro ? esconderSenha_claro : esconderSenha_escuro);
 
     return (
+       <> 
+    <Cabecalho />
         <div className={style.corpo}>
-
-            <Link to="/login">
-                <BotoesForm 
-                    texto='Entre' 
-                    tipo={TIPO_BOTAO.LOGIN} 
-                    className={style.btncadastro}
-                />
-            </Link>
-
             <div className={style.container}>
                 <h1>Cadastre-se</h1>
+
+                <CampoTexto 
+                    type="text" 
+                    maxLength={60} 
+                    placeholder="Nome" 
+                    className={style.inputClasse} 
+                    value={nome} 
+                    onChange={(e) => setNome(e.target.value)}
+                    autoComplete="new-password"
+                />
 
                 <CampoTexto 
                     type="email" 
@@ -42,6 +68,7 @@ const ConteudoCadstro = () =>
                     className={style.inputClasse} 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="new-password"
                 />
 
                 <CampoTexto 
@@ -53,36 +80,68 @@ const ConteudoCadstro = () =>
                     maxLength={11}
                 />
 
-                <CampoTexto 
-                    type="password" 
-                    className={style.inputClasse} 
-                    placeholder="Senha" 
-                    value={senha} 
-                    onChange={(e) => setSenha(e.target.value)} 
-                    maxLength={14}
-                />
-                
-                <CampoTexto 
-                    type="password" 
-                    className={style.inputClasse} 
-                    placeholder="Confirme sua Senha" 
-                    value={confirmarSenha} 
-                    onChange={(e) => setConfirmarSenha(e.target.value)} maxLength={14}
-                />
+                <div className={style.senhaWrapper}>
+                    <CampoTexto 
+                        type={mostrar ? "text" : "password"}
+                        className={style.inputClasse} 
+                        placeholder="Senha" 
+                        value={senha} 
+                        onChange={(e) => setSenha(e.target.value)} 
+                        maxLength={14}
+                    />
+                    <img 
+                        src={iconeSenha}
+                        alt="ver senha"
+                        className={style.imgSenha}
+                        onClick={() => setMostrar(!mostrar)}
+                    />
+                </div>
 
-                <p className = {style.TermosUso}>Ao entrar no <span>CrashWare</span>, você concorda com os nossos termos e politicas de privacidade.</p>
+                <div className={style.senhaWrapper}>
+                    <CampoTexto 
+                        type={mostrarConfirmar ? "text" : "password"}
+                        className={style.inputClasse} 
+                        placeholder="Confirme sua Senha" 
+                        value={confirmarSenha} 
+                        onChange={(e) => setConfirmarSenha(e.target.value)} 
+                        maxLength={14}
+                    />
+                    <img 
+                        src={iconeConfirmarSenha}
+                        alt="ver confirmar senha"
+                        className={style.imgSenha}
+                        onClick={() => setMostrarConfirmar(!mostrarConfirmar)}
+                    />
+                </div>
 
-                <BotoesCadLogin 
+                <p className={style.TermosUso}>
+                    Ao entrar no <span>CrashWare</span>, você concorda com os nossos termos e politicas de privacidade.
+                </p>
+
+                <BotoesForm 
                     texto="Cadastrar" 
                     tipo={TIPO_BOTAO.CADASTRO} 
                     className={style.btnCriarConta} 
                     disabled={!PodeMostarBotao}
                 />
                 
+                <div className={style.ou}>
+                    <hr />
+                    <p>OU</p>
+                    <hr />
+                </div>
+
+                <Link to='/Login'>
+                    <BotoesForm 
+                        texto="Entrar" 
+                        tipo={TIPO_BOTAO.CADASTRO} 
+                        className={style.btnCriarConta} 
+                    />
+                </Link>
             </div>
         </div>
+        </>
     );
 };
 
-// exporta a função 
 export { ConteudoCadstro };

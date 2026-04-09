@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: var(--bg-secundario);
+}
+
 main {
     max-width: 1200px;
     width: 100%;
@@ -12,19 +16,20 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 0 20px 60px;
-    background-color: var(--fundo_principal_escuro);
+    background-color: var(--bg-principal);
     font-family: "Montserrat", sans-serif;
+    box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.596);
 }
 
 /* ===== CORES DE DESTAQUE ===== */
 .hardware {
-    color: var(--verde_text);
-    text-shadow: 0 0 10px var(--verde_escuro_text);
+    color: var(--cor-primaria);
+    text-shadow: 0 0 10px var(--cor-primaria-hover);
 }
 
 .software {
-    color: var(--azul_text);
-    text-shadow: 0 0 10px var(--azul_escuro_text);
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 10px var(--cor-secundaria-hover);
 }
 
 /* ===== HERO ===== */
@@ -50,7 +55,7 @@ main {
     font-size: clamp(24px, 3.5vw, 46px);
     font-weight: 700;
     line-height: 1.25;
-    color: var(--font_principal_escuro);
+    color: var(--texto-secundario);
     text-align: center;
 }
 
@@ -61,13 +66,13 @@ main {
 }
 
 .Apresentacao_btns button {
-    background: linear-gradient(135deg, var(--verde_text), var(--verde_escuro_text));
+    background: linear-gradient(135deg, var(--cor-primaria-hover), var(--cor-primaria));
     border: none;
     width: 160px;
     height: 52px;
     border-radius: 12px;
-    box-shadow: 0 0 14px var(--verde_escuro_text);
-    color: #fff;
+    box-shadow: 0 0 14px var(--cor-primaria);
+    color: var(--texto-principal);
     font-size: 16px;
     font-weight: 700;
     font-family: "Montserrat", sans-serif;
@@ -77,19 +82,20 @@ main {
 
 .Apresentacao_btns button:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 24px var(--azul_escuro_text);
+    box-shadow: 0 0 24px var(--cor-secundaria);
+    color: var(--texto-principal);
 }
 
 .btnSecundario {
     background: transparent !important;
-    border: 2px solid var(--verde_text) !important;
-    box-shadow: 0 0 10px var(--verde_escuro_text) !important;
-    color: var(--verde_text) !important;
+    border: 2px solid var(--cor-primaria) !important;
+    box-shadow: 0 0 10px var(--cor-primaria-hover) !important;
+    color: var(--texto-principal) !important;
 }
 
 .btnSecundario:hover{
-      background: linear-gradient(135deg, var(--verde_text), var(--verde_escuro_text)) !important;
-      color: var(--font_secundario_escuro) !important;
+      background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-hover)) !important;
+      color: var(--texto-principal) !important;
       border: none !important;
 }
 
@@ -102,7 +108,7 @@ main {
 .Apresentacao_img img {
     width: 100%;
     max-width: 520px;
-    filter: drop-shadow(0 8px 32px var(--verde_escuro_text));
+    filter: drop-shadow(0 6px 20px var(--cor-primaria));
 }
 
 /* ===== DIFERENCIAIS ===== */
@@ -112,13 +118,14 @@ main {
 }
 
 .Diferenciais h2 {
+    background: linear-gradient(90deg, var(--texto-principal), var(--cor-primaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: clamp(32px, 5vw, 60px);
+
     text-align: center;
-    font-size: 4vw;
-    font-weight: 700;
-    color: var(--font_principal_escuro);
-    margin-top: 18px;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
+    margin: 10px 0px;
 }
 
 /* ===== MATERIAIS ===== */
@@ -131,12 +138,14 @@ main {
 }
 
 .Materiais > h2 {
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: clamp(32px, 5vw, 60px);
+
     text-align: center;
-    font-size: 4vw;
-    font-weight: 700;
-    color: var(--font_principal_escuro);
-    letter-spacing: 1px;
-    margin-bottom: -20px;
+    margin: 10px 0px;
 }
 
 /* ===== HARDWARE ===== */
@@ -163,7 +172,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--verde_text);
+    color: var(--cor-primaria);
     font-size: 20px;
     font-weight: 600;
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.08);
@@ -176,8 +185,8 @@ main {
 .ConteudoHardware_texto h2 {
     font-size: clamp(22px, 3vw, 34px);
     font-weight: 800;
-    color: var(--verde_text);
-    text-shadow: 0 0 14px var(--verde_text), 0 0 32px var(--verde_escuro_text);
+    color: var(--cor-primaria);
+    text-shadow: 0 0 14px var(--cor-primaria), 0 0 32px var(--cor-primaria-hover);
     margin-bottom: 8px;
     text-align: center;
 }
@@ -186,7 +195,7 @@ main {
     font-size: clamp(16px, 2.2vw, 24px);
     font-weight: 700;
     padding: 12px 0 4px;
-    background: linear-gradient(90deg, var(--verde_text), var(--azul_text));
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -194,7 +203,7 @@ main {
 
 .ConteudoHardware_texto p {
     font-size: clamp(13px, 1.6vw, 17px);
-    color: var(--font_secundario_escuro);
+    color: var(--texto-principal);
     line-height: 1.6;
     padding: 6px 0 10px;
     opacity: 0.85;
@@ -203,7 +212,7 @@ main {
 .ConteudoHardware_texto hr {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--verde_escuro_text), transparent);
+    background: linear-gradient(90deg, transparent, var(--cor-primaria-hover), transparent);
     margin: 8px 0;
 }
 
@@ -231,7 +240,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--azul_text);
+    color: var(--cor-secundaria);
     font-size: 20px;
     font-weight: 600;
     box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
@@ -244,8 +253,8 @@ main {
 .ConteudoSoftware_texto h2 {
     font-size: clamp(22px, 3vw, 34px);
     font-weight: 800;
-    color: var(--azul_text);
-    text-shadow: 0 0 14px var(--azul_text), 0 0 32px var(--azul_escuro_text);
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 14px var(--cor-secundaria), 0 0 32px var(--cor-secundaria-hover);
     margin-bottom: 8px;
     text-align: center;
 }
@@ -254,7 +263,7 @@ main {
     font-size: clamp(16px, 2.2vw, 24px);
     font-weight: 700;
     padding: 12px 0 4px;
-    background: linear-gradient(90deg, #1565C0, #00BCD4);
+    background: linear-gradient(90deg, var(--cor-secundaria-hover), var(--cor-secundaria));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -262,7 +271,7 @@ main {
 
 .ConteudoSoftware_texto p {
     font-size: clamp(13px, 1.6vw, 17px);
-    color: var(--font_secundario_escuro);
+    color: var(--texto-principal);
     line-height: 1.6;
     padding: 6px 0 10px;
     opacity: 0.85;
@@ -271,36 +280,49 @@ main {
 .ConteudoSoftware_texto hr {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--azul_escuro_text), transparent);
+    background: linear-gradient(90deg, transparent, var(--cor-secundaria-hover), transparent);
     margin: 8px 0;
 }
 
 /* ===== TEXTO FINAL ===== */
-.TextoFinal {
+.aplicativo {
     margin-top: 60px;
     text-align: center;
     padding: 40px 20px;
     width: 100%;
 }
 
-.TextoFinal h2 {
-    font-size: clamp(28px, 4vw, 50px);
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 0 0 16px var(--verde_escuro_text), 0 0 32px var(--azul_escuro_text);
-    margin-bottom: 16px;
+.aplicativo h2 {
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: clamp(32px, 5vw, 60px);
+
+    text-align: center;
+    margin: 10px 0px;
 }
 
-.TextoFinal p {
-    font-size: clamp(14px, 1.5vw, 18px);
-    color: var(--font_secundario_escuro);
+.aplicativo .textos {
+    font-size: clamp(20px, 1.5vw, 18px);
+    color: var(--texto-principal);
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    width: 60%;
+    margin: auto;
+}
+
+.aplicativo p{
+    font-size: clamp(20px, 1.5vw, 18px);
+    color: var(--texto-principal);
     opacity: 0.85;
     line-height: 1.7;
     margin-bottom: 32px;
 }
 
 /* ===== RESPONSIVIDADE ===== */
-@media (max-width: 900px) {
+@media (max-width: 500px) {
     .Apresentacao {
         flex-direction: column;
         text-align: center;
@@ -324,6 +346,18 @@ main {
         width: 100%;
         max-width: 400px;
     }
+
+    .Diferenciais h2{
+        font-size: 5.5vw;
+    }
+
+    .Materiais h2{
+        font-size: 5.5vw;
+    }
+
+    .aplicativo .textos {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -336,4 +370,5 @@ main {
         height: 46px;
         font-size: 14px;
     }
+
 }
