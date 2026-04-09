@@ -10,7 +10,7 @@ import Style from './Botoes.module.css';
         { id: 2, titulo: "AppleStore", icon: Appleicon },
     ];
 
-const Botoes = () =>
+const BotoesApp = () =>
 {
     return (
         <div className={Style.Caixa}>
@@ -21,4 +21,4 @@ const Botoes = () =>
     );
 };
 
-export { Botoes };
+export { BotoesApp };

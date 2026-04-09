@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CampoTexto } from "../../CampoTexto"
-import { BotoesCadLogin, BotoesForm, TIPO_BOTAO } from "../../Botoes";
+import { BotoesForm, TIPO_BOTAO } from "../../Botoes";
 import esconderSenha_icon from '../../../fotos/esconder_senha_icon.png';
 import verSenha_icon from '../../../fotos/mostrar_senha_icon.png';
 
@@ -57,7 +57,7 @@ const ConteudoLogin = () =>
                         { erro && <p className={style.erro}>{erro}</p> }
                         <p className = {style.TermosUso}>Ao entrar no <span>CrashWare</span>, você concorda com os nossos termos e politicas de privacidade.</p>
                         
-                        <BotoesCadLogin 
+                        <BotoesForm
                             texto="Logar" 
                             tipo={TIPO_BOTAO.CADASTRO} 
                             className={style.btnLogar} 
@@ -71,7 +71,7 @@ const ConteudoLogin = () =>
                         </div>
 
                         <Link to='/cadastro'>
-                            <BotoesCadLogin 
+                            <BotoesForm
                                 texto="Cadastra-se" 
                                 tipo={TIPO_BOTAO.CADASTRO} 
                                 className={style.btnLogar} 

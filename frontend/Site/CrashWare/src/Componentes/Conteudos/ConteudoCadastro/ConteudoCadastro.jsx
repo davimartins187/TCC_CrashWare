@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { BotoesCadLogin, BotoesForm, TIPO_BOTAO } from '../../Botoes';
+import { BotoesForm, TIPO_BOTAO } from '../../Botoes';
 import { CampoTexto } from '../../CampoTexto';
 import esconderSenha_icon from '../../../fotos/esconder_senha_icon.png';
 import verSenha_icon from '../../../fotos/mostrar_senha_icon.png';
@@ -9,6 +9,7 @@ import style from './ConteudoCadastro.module.css';
 
 const ConteudoCadstro = () => {
 
+    const [nome, setNome] = useState("")
     const [email, setEmail] = useState("");
     const [telefone, setTelefone] = useState("");
     const [senha, setSenha] = useState('');
@@ -23,6 +24,16 @@ const ConteudoCadstro = () => {
 
             <div className={style.container}>
                 <h1>Cadastre-se</h1>
+
+                <CampoTexto 
+                    type="text" 
+                    maxLength={60} 
+                    placeholder="Nome" 
+                    className={style.inputClasse} 
+                    value={nome} 
+                    onChange={(e) => setNome(e.target.value)}
+                    autoComplete="new-password"
+                />
 
                 <CampoTexto 
                     type="email" 
@@ -81,7 +92,7 @@ const ConteudoCadstro = () => {
                     Ao entrar no <span>CrashWare</span>, você concorda com os nossos termos e politicas de privacidade.
                 </p>
 
-                <BotoesCadLogin 
+                <BotoesForm 
                     texto="Cadastrar" 
                     tipo={TIPO_BOTAO.CADASTRO} 
                     className={style.btnCriarConta} 
@@ -95,7 +106,7 @@ const ConteudoCadstro = () => {
                 </div>
 
                 <Link to='/Login'>
-                    <BotoesCadLogin 
+                    <BotoesForm 
                         texto="Entrar" 
                         tipo={TIPO_BOTAO.CADASTRO} 
                         className={style.btnCriarConta} 
