@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+#Contando verão mais recente do APP
+app/CrashWare7/** linguist-detectable=false
+app/CrashWare8/** linguist-detectable=false
+app/CrashWareV6/** linguist-detectable=false
+app/TCC3/** linguist-detectable=false
+app/TCC4/** linguist-detectable=false
+app/TCC4ponto5/** linguist-detectable=false
+app/TCC5/** linguist-detectable=false
+app/TCCv2/** linguist-detectable=false
