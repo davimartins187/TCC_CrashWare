@@ -78,7 +78,11 @@ const handleCadastro = () => {
         if (!nome.trim()) {
             novosErros.nome = "Preencha o nome";
             temErro = true;
+        }else if(temNumero(nome) == true){
+            // Retornar erro: "nome inválido"
+            return;
         }
+    
 
         // Email
         if (!email.trim()) {
@@ -90,7 +94,9 @@ const handleCadastro = () => {
         }
 
         // Telefone
+        //Valida o telefoe para o banco de dados:
         const telefoneLimpo = telefone.replace(/\D/g, "");
+
         if (telefoneLimpo.length !== 11) {
             novosErros.telefone = "Telefone inválido";
             temErro = true;
@@ -109,8 +115,24 @@ const handleCadastro = () => {
         }
 
         setErros(novosErros);
+
+        // Se tiver erro, para aqui
+        if (temErro) {
+            return;
+        }else{
+            //Enviar cod para usuario verificando o email
+        }
+
+
+
+
 };
 
+//Função que verifica se tem  número:
+function temNumero(str) {
+  return /\d/.test(str)
+  //Retorna TRUE se tiver número OU FALSE se não tiver;
+}
 
     return (
        <> 
