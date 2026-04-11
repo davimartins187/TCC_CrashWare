@@ -12,7 +12,7 @@ auth = APIRouter(prefix="/autenticação",tags=["autenticação"])
 from dependences import pegar_sessao
 
 #Importando a CRIPTOGRAFIA
-from main import criptografia
+from security import criptografia
 
 
 #ROTAS:

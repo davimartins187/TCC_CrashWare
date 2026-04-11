@@ -1,10 +1,10 @@
-from database.session import SessionLocal
+from database.session import Session
 
 
 #Função de pegar a sessão com segurança.
 def pegar_sessao():
     try:
-        session = SessionLocal()
+        session = Session()
         yield session
     finally:
         session.close()
