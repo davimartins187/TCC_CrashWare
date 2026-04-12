@@ -134,11 +134,11 @@ const handleCadastro = async () => {
 
                 if (response.ok == false){
                     const erro = await response.json()
-                    console.log('ERRO DA API: ', erro.detail)
+                    alert('ERRO DA API: ', erro.detail)
                     return
                 } else{
                     const dados = await response.json();
-                    alert(dados)
+                    alert(dados.mensagem)
                 }
 
             }
