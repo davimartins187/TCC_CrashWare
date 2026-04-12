@@ -10,27 +10,25 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Loja"
-        android:icon="@drawable/html_icon"
-        android:id="@+id/nav_loja"/>
+        android:title="Matérias"
+        android:icon="@drawable/livrosvg"
+        android:id="@+id/nav_materias"/>
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Home"
-        android:icon="@drawable/casa2_icon"
+        android:icon="@drawable/inicio_icon"
         android:id="@+id/nav_home"/>
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Salvos"
-        android:icon="@drawable/marcacao_livro_icon"
-        android:id="@+id/nav_materias"/>
+        android:title="Loja"
+        android:icon="@drawable/loja_icon"
+        android:id="@+id/nav_loja"/>
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Perfil"
         android:icon="@drawable/login_icon"
-        android:id="@+id/nav_perfil"
-        android:iconTint="@color/preto"
-        />
+        android:id="@+id/nav_perfil"/>
 </menu>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrashWare">
         <activity
+            android:name=".carregamento"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

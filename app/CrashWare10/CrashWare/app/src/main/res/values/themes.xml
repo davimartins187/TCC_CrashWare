@@ -12,6 +12,7 @@
         <item name="colorSurface">@color/branco</item>
         <item name="colorOnSurface">@color/texto_modoclaro</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorSecondaryContainer">#303F4552</item>
     </style>
 
     <style name="Theme.CrashWare" parent="Base.Theme.CrashWare" />
