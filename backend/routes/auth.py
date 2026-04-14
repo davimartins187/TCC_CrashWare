@@ -20,12 +20,12 @@ from schemas.UsuarioSchema import UsuarioSchema
 from random import randint
 
 #Biblioteca de tempo
-from datetime import datetime ,timedelta
+from datetime import datetime ,timedelta , timezone
 
 #Funções
 def gerar_codigo():
     codigo = str(randint(100000,999999))
-    expira_em = datetime.now() + timedelta(minutes=10)
+    expira_em = datetime.now(timezone.utc) + timedelta(minutes=10)
 
 
     return codigo , expira_em
