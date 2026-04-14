@@ -20,8 +20,8 @@ class Patente(Base):
 
     #Campos da tabela
 
-    id = Column(Integer,primary_key=True,autoincrement=True)
-    nome = Column(String(30),nullable=False)
+    id_patente = Column(Integer,primary_key=True,autoincrement=True)
+    nome_patente = Column(String(30),nullable=False)
     xp_minimo = Column(Float,nullable=False)
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)

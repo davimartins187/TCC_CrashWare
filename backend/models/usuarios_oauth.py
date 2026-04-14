@@ -20,10 +20,10 @@ class UsuariosOauth(Base):
     __tablename__ = "usuario_oauth"
 
     # Campos da tabela
-    id = Column(Integer,primary_key=True,autoincrement=True)
+    id_oauth = Column(Integer,primary_key=True,autoincrement=True)
     provider = Column(String(50),nullable=False) #Google ou GitHub
     provider_user_id = Column(String(255),nullable=False) #Id que o google ou github oferece.
-    usuario_id = Column(Integer,ForeignKey("usuario.id"),nullable=False)
+    usuario_id = Column(Integer,ForeignKey("usuario.id_usuario"),nullable=False)
 
     # Data de criação
     created_at = Column(DateTime,server_default=func.now())
