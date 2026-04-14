@@ -37,7 +37,7 @@ class Usuarios(Base):
     patente_id = Column(Integer,ForeignKey("patente.id"),nullable=False,default=1,server_default=text("1"))
     codigo = Column(String(6),nullable=True)
     codigo_expirado_em = Column(DateTime,nullable=True)
-    
+
 
     #Data de criação e Data de Alteração
 
@@ -49,7 +49,7 @@ class Usuarios(Base):
     patentes = relationship("Patente",backref="usuarios")
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)
-    def __init__(self,nome,email,senha_hash,telefone = None,foto = 'default.png',email_verificado=False,ativo=True,admin=False,coin=0,xp = 0, patente_id = 1):
+    def __init__(self,nome,email,senha_hash,telefone = None,foto = 'default.png',email_verificado=False,ativo=True,admin=False,coin=0,xp = 0, patente_id = 1,codigo = codigo, codigo_expirado_em = codigo_expirado_em):
         self.nome = nome
         self.email = email
         self.telefone = telefone
@@ -61,6 +61,8 @@ class Usuarios(Base):
         self.coin = coin
         self.xp = xp
         self.patente_id = patente_id
+        self.codigo = codigo
+        self.codigo_expirado_em = codigo_expirado_em
 
 
 

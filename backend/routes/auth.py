@@ -39,7 +39,7 @@ async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
         codigo , expira = gerar_codigo()
         try:
             senha_criptografada = criptografia.hash(dados.senha)
-            usuario_novo = Usuarios(nome=dados.nome.title(), email= dados.email , senha_hash= senha_criptografada,codigo = codigo, expira_em = expira)
+            usuario_novo = Usuarios(nome=dados.nome.title(), email= dados.email , senha_hash= senha_criptografada,codigo = codigo, codigo_expirado_em = expira)
             session.add(usuario_novo)
             session.commit()
             return{
