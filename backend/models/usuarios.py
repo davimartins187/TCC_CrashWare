@@ -35,7 +35,9 @@ class Usuarios(Base):
     moedas = Column(Integer,default=0,server_default=text("0"))
     xp = Column(Integer,default=0,server_default=text("0"))
     patente_id = Column(Integer,ForeignKey("patente.id"),nullable=False,default=1,server_default=text("1"))
-
+    codigo = Column(String(6),nullable=True)
+    codigo_expirado_em = Column(DateTime,nullable=True)
+    
 
     #Data de criação e Data de Alteração
 

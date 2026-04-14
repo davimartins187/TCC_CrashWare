@@ -1,5 +1,6 @@
 from pydantic import BaseModel #Responsável para criar Schema
 from typing import Optional #Adiciona tipos primitivos para o Schema
+from datetime import datetime
 
 #SCHEMA USUARIO:
 class UsuarioSchema(BaseModel):
