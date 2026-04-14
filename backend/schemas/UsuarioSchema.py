@@ -4,7 +4,7 @@ from datetime import datetime
 
 #SCHEMA USUARIO:
 class UsuarioSchema(BaseModel):
-    nome : str
+    nome_usuario : str
     email: str
     senha : str
 
