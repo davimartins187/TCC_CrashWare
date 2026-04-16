@@ -18,3 +18,11 @@ class VerificarEmailSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+#SCHEMA Reenviar Email
+class ReenviarEmailSchema (BaseModel):
+    email: str
+
+    class Config:
+        from_attributes = True
+

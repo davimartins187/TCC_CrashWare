@@ -32,6 +32,9 @@ const CVerificacaoEmail = () => {
     const email = location.state?.email;
     const nome = location.state?.nome;
 
+    //Nome maiusculo
+    const nomeM = nome.toUpperCase();
+
     //Proteção da url
     useEffect(() => {
         if (!mensagem && !email) {
@@ -131,7 +134,7 @@ const CVerificacaoEmail = () => {
         <>
             <div className={style.corpo}>
                 <div className={style.container}>
-                    <h1>Bem-Vindo {nome}!!!</h1>
+                    <h1>Bem-Vindo {nomeM}!!!</h1>
                     <p className={style.texto}>Verifique o Código enviado para o email: {email} </p>
 
                     <CampoTexto type="number" placeholder="Código"

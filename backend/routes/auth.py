@@ -15,7 +15,7 @@ from dependences import pegar_sessao
 from security import criptografia
 
 #Importando SHCEMAS:
-from schemas.UsuarioSchema import UsuarioSchema, VerificarEmailSchema
+from schemas.UsuarioSchema import UsuarioSchema, VerificarEmailSchema , ReenviarEmailSchema
 
 
 
@@ -120,20 +120,22 @@ async def verificar_email(dados : VerificarEmailSchema , session = Depends(pegar
     return {"mensagem": "Email verificado com sucesso!"}
 
 @auth.post("/reenviar_codigo")
-async def reenviar_email(email : str, session = Depends(pegar_sessao)):
+async def reenviar_codigo( email : str, session = Depends(pegar_sessao)):
     usuario = session.query(Usuarios).filter(Usuarios.email == email).first()
     if usuario is None:
         raise HTTPException(status_code=404,detail="Email não encontrado!! Faça o cadastro antes!")
-
     #Gero novo código
     codigo , expira = gerar_codigo()
 
     #Atualizo o banco
     usuario.codigo = codigo
     usuario.codigo_expirado_em = expira
+    session.commit()
 
     #Envio email
     enviar_email(codigo, email)
+
+    return {"mensagem": "Código Reenviado!"}
 
 
 
