@@ -183,7 +183,7 @@ const ConteudoCadstro = () => {
                         className={style.inputClasse}
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
-                        autoComplete="new-password"
+                        autoComplete="name"
                     />
 
                     {erros.nome && <p className={style.erro}>{erros.nome}</p>}
@@ -195,7 +195,7 @@ const ConteudoCadstro = () => {
                         className={style.inputClasse}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        autoComplete="new-password"
+                        autoComplete="email"
                     />
 
                     {erros.email && <p className={style.erro}>{erros.email}</p>}
