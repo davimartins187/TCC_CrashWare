@@ -86,13 +86,16 @@ async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
     else:
         codigo , expira = gerar_codigo()
         try:
+            #Salvo no Banco
+            senha_criptografada = criptografia.hash(dados.senha)
+            usuario_novo = Usuarios(nome_usuario=dados.nome_usuario.title(), email=dados.email,senha_hash=senha_criptografada, codigo=codigo, codigo_expirado_em=expira)
+            session.add(usuario_novo)
+            session.commit()
+
             # Enviando codigo para o email
             enviar_email(codigo, dados.email)
 
-            senha_criptografada = criptografia.hash(dados.senha)
-            usuario_novo = Usuarios(nome_usuario =dados.nome_usuario.title(), email= dados.email , senha_hash= senha_criptografada,codigo = codigo, codigo_expirado_em = expira)
-            session.add(usuario_novo)
-            session.commit()
+
             #Resposta da API
             return{
                 "mensagem" : "Usuário cadastrado com sucesso!"
@@ -115,6 +118,26 @@ async def verificar_email(dados : VerificarEmailSchema , session = Depends(pegar
     usuario.email_verificado = True
     session.commit()
     return {"mensagem": "Email verificado com sucesso!"}
+
+@auth.post("/reenviar_email")
+async def reenviar_email(dados : VerificarEmailSchema, session = Depends(pegar_sessao)):
+    usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
+    if usuario is None:
+        raise HTTPException(status_code=404,detail="Email não encontrado!! Faça o cadastro antes!")
+
+    #Gero novo código
+    codigo , expira = gerar_codigo()
+
+    #Atualizo o banco
+    usuario.codigo = codigo
+    usuario.codigo_expirado_em = expira
+
+    #Envio email
+    enviar_email(codigo, dados.email)
+
+
+
+
 
 
 
