@@ -15,7 +15,9 @@ from dependences import pegar_sessao
 from security import criptografia
 
 #Importando SHCEMAS:
-from schemas.UsuarioSchema import UsuarioSchema
+from schemas.UsuarioSchema import UsuarioSchema, VerificarEmailSchema
+
+
 
 #Biblioteca que gera números aletórios:
 from random import randint
@@ -84,7 +86,6 @@ async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
     else:
         codigo , expira = gerar_codigo()
         try:
-
             # Enviando codigo para o email
             enviar_email(codigo, dados.email)
 
@@ -92,17 +93,30 @@ async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
             usuario_novo = Usuarios(nome_usuario =dados.nome_usuario.title(), email= dados.email , senha_hash= senha_criptografada,codigo = codigo, codigo_expirado_em = expira)
             session.add(usuario_novo)
             session.commit()
-
-
-
             #Resposta da API
             return{
                 "mensagem" : "Usuário cadastrado com sucesso!"
             }
-
         except Exception as exception:
             session.rollback()
             raise  exception
+
+
+@auth.post("/verificar_email")
+async def verificar_email(dados : VerificarEmailSchema , session = Depends(pegar_sessao)):
+    usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
+    if usuario is  None:
+        raise HTTPException(status_code=404,detail="Email não encontrado!! Faça o cadastro antes!")
+    if usuario.codigo != dados.codigo:
+        raise HTTPException(status_code=400, detail="Código invalido!")
+    if usuario.codigo_expirado_em < datetime.now(timezone.utc):
+        raise HTTPException(status_code=410, detail="Código expirado!")
+
+    usuario.email_verificado = True
+    session.commit()
+    return {"mensagem": "Email verificado com sucesso!"}
+
+
 
 
         

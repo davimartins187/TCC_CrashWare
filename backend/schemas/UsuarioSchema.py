@@ -10,3 +10,11 @@ class UsuarioSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+#SCHEMA Vericar Email
+class VerificarEmailSchema(BaseModel):
+    email : str
+    codigo : str
+
+    class Config:
+        from_attributes = True

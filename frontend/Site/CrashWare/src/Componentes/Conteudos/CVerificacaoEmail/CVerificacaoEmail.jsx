@@ -27,7 +27,7 @@ const CVerificacaoEmail = () =>
         }
     }, []);
 
-    //Verifica´ra se pode liberar o botao
+    //Verificara se pode liberar o botao
     // const PodeMostarBotao = email != " ";
 
     return(
@@ -37,7 +37,7 @@ const CVerificacaoEmail = () =>
                     <h1>Bem-Vindo {nome}!!!</h1>
                     <p className={style.texto}>Verifique o Código enviado para o email: {email} </p>
 
-                    <CampoTexto type="text" maxLength={10} placeholder="Código" 
+                    <CampoTexto type="text" maxLength={6} placeholder="Código" 
                         className={style.inputClasse} 
                         value={codigo} 
                         onChange={(e) => setCodigo(e.target.value)}
