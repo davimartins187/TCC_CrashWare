@@ -42,7 +42,7 @@ load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 PASSWORD_EMAIL = os.getenv("PASSWORD_EMAIL")
-ALGORITIMO = os.gentv("ALGORITIMO")
+ALGORITIMO = os.getenv("ALGORITIMO")
 
 #Funções
 def gerar_codigo():
