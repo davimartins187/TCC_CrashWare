@@ -86,7 +86,7 @@ def enviar_email(codigo, destinario):
 
 def gerar_token(id_usuario, validade = timedelta(minutes = 30)):
     data_expiracao = datetime.now(timezone.utc) + validade
-    informacoes = {"sub" : str(id_usuario) , "expiration" : validade}
+    informacoes = {"sub" : str(id_usuario) , "expiration" : data_expiracao}
     token = jwt.encode(informacoes, SECRET_KEY, ALGORITIMO)
     return  token
 
@@ -166,9 +166,6 @@ async def login(dados : UsuarioLoginSchema , session = Depends(pegar_sessao)):
         raise HTTPException(status_code=401,detail="Senha incorreta")
     else:
         if usuario.email_verificado ==  False:
-
-
-
             raise HTTPException(status_code=403,detail={
                 "erro" : "Email não verificado!!",
                 "nome" : usuario.nome_usuario
