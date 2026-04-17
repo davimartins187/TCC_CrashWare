@@ -96,7 +96,27 @@ const handleLogin = async () => {
             const nome = erro.detail.nome
 
 
-            alert("Email não autenticado")
+            try {
+            const response = await fetch(
+                "https://api-crashware.onrender.com/auth/reenviar_codigo",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email : email
+                    })
+                }
+            );} catch (error) 
+            {
+                //Precisa colocar esse erro no lugar certo davison.
+                console.log(error);
+                alert("Erro ao reenviar código");
+                return;
+            }
+
+
             Navegacao("/verificacao-email",{
                 state: {
                     email: email.toLowerCase(),

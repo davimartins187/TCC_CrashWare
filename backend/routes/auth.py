@@ -166,6 +166,9 @@ async def login(dados : UsuarioLoginSchema , session = Depends(pegar_sessao)):
         raise HTTPException(status_code=401,detail="Senha incorreta")
     else:
         if usuario.email_verificado ==  False:
+
+
+
             raise HTTPException(status_code=403,detail={
                 "erro" : "Email não verificado!!",
                 "nome" : usuario.nome_usuario
