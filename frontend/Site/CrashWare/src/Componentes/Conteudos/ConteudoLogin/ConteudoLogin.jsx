@@ -63,79 +63,84 @@ const ConteudoLogin = () =>
         return null;
     };
 
-    const handleLogin = async () => {
+const handleLogin = async () => {
 
-        const erro = validarCampos();
+    const erro = validarCampos();
 
-        if (erro) {
-            setPopup({
-                tipo: 'aviso',
-                titulo: 'Erro no login',
-                mensagem: erro
+    if (erro) {
+        setPopup({
+            tipo: 'aviso',
+            titulo: 'Erro no login',
+            mensagem: erro
+        });
+        return;
+    }
+
+    try{
+        response = await fetch("https://api-crashware.onrender.com/auth/login",{
+            method : "POST",
+            headers : {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email : email.replace(/\s/g, "").toLowerCase(),
+                senha : senha
+            })
+        });//Parâmetros
+
+        // Erro causado por ação do usuário (dados inválidos, não autorizado, etc)
+
+        if (response.status === 403){
+
+            const erroAPI = await response.json()
+            nome = erroAPI.detail.nome
+
+
+            alert("Email não autenticado")
+            Navegacao("/verificacao-email",{
+                state: {
+                    email: email.toLowerCase(),
+                    nome: nome.toUpperCase()
+                }
             });
-            return;
-        }
-
-        try{
-            response = await fetch("https://api-crashware.onrender.com/auth/login",{
-                method : "POST",
-                headers : {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email : email.replace(/\s/g, "").toLowerCase(),
-                    senha : senha
-                })
-            });//Parâmetros
-
-            // Erro causado por ação do usuário (dados inválidos, não autorizado, etc)
-
-            if (reponse.status === 403){
-
-                alert("Email não autenticado")
-                Navegacao("/verificacao-email",{
-                    state: {
-                        email: email.toLowerCase(),
-                        nome: response.detail.nome.toUpperCase()
-                    }
-                });
-                //response.detail.nome
-                //response.detail.erro
-                
-                
-                
-            }else if(!reponse.status){
-                const erro = await reponse.json()
-                setPopup({
-                    tipo: 'erro',
-                    titulo: 'Erro no Login',
-                    mensagem: erro.detail
-                });
-
-                return;
-
-            }
+            //response.detail.nome
+            //response.detail.erro
             
-            else{
-                alert("Email Autenticado")
-
-                const dados = await response.json()
-                const token = dados.token
-                const refresh_token = dados.refresh_token
-
-                //A estrutura de guardar o token no storage e header eu faço na etec.
-            }
-
-        } catch (error) {
-            console.log("Erro:", error);
-
+            
+            
+        }else if(!response.ok){
+            const erroAPI = await reponse.json()
             setPopup({
                 tipo: 'erro',
-                titulo: 'Sem conexão',
-                mensagem: 'Não foi possível conectar ao servidor.'
+                titulo: 'Erro no Login',
+                mensagem: erroAPI.detail
             });
+
+            return;
+
         }
-    };
+        
+        else{
+            alert("Email Autenticado")
+
+            const dados = await response.json()
+            const token = dados.token
+            const refresh_token = dados.refresh_token
+
+            //A estrutura de guardar o token no storage e header eu faço na etec.
+        }
+
+    } catch (error) {
+        console.log("Erro:", error);
+        alert(error)
+
+        setPopup({
+            tipo: 'erro',
+            titulo: 'Sem conexão',
+            mensagem: 'Não foi possível conectar ao servidor.'
+        });
+    }
+};
 
     return (
         <>
