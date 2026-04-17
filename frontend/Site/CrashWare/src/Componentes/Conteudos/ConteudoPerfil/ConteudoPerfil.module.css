@@ -101,19 +101,22 @@
     justify-content: center;
     gap: 60px;
     color: var(--Branco);
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 20px;
 }
 
 .Ranking{
     display: flex;
+    width: 13vw;
     flex-direction: row;
-    /* width: 10vw; */
     background: linear-gradient(to right, #C78813, #FFA600, #C88914);
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    border-radius: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 7px;
     border: solid var(--Branco);
 }
 
@@ -131,4 +134,68 @@
     flex-direction: column;
     line-height: 1.2;
     margin-left: 20px;
+    align-items: center;
+}
+
+.Ofensiva{
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    border: solid var(--Branco);
+    border-radius: 7px;
+    background-color: var(--bg-principal);
+}
+
+.Ofensiva img{
+    width: 35px;
+    height: 35px;   
+}
+
+.Ofensiva h6{
+    font-size: 20px;
+}
+
+.Ofensiva_Coluna{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.xp{
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    border: solid var(--Branco);
+    border-radius: 7px;
+    background-color: var(--bg-principal);
+}
+
+.xp p{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.xp_Coluna{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    align-items: center;
+}
+
+.xp img{
+    width: 35px;
+    height: 35px;       
 }
