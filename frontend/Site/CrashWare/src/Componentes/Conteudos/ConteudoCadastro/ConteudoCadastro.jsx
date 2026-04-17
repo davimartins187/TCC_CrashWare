@@ -22,6 +22,7 @@ const ConteudoCadstro = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
     const [popup, setPopup] = useState(null);
 
+    //Levará para a verificacao de email
     const Navegacao = useNavigate();
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CampoTexto } from "../../CampoTexto";
 import { BotoesForm, TIPO_BOTAO } from "../../Botoes";
 import { PopUp } from "../../pop-up";
@@ -25,13 +25,15 @@ const ConteudoLogin = () =>
         return () => window.removeEventListener('temaAtualizado', checarTema);
     }, []);
 
-
+    //Para o cursor piscar
     const inputRef = useRef(null);
 
     useEffect(() => {
         inputRef.current.focus();
     }, []);
 
+    //Levará para verificar email caso nao for verificado
+    const Navegacao = useNavigate();
 
     const isClaro = tema === 'Claro';
 
@@ -99,9 +101,15 @@ const ConteudoLogin = () =>
 
                 return;
             }else if(reponse.status == 403){
-                // Vai para a tela de cadastro
+                // Vai para a tela de verificar email
                 //Você precisa enviar esses dados:
-
+                
+                Navegacao("/verificacao-email",{
+                    state: {
+                        email: email.toLowerCase(),
+                        nome: response.detail.nomet.toUpperCase()
+                    }
+                });
                 //response.detail.nome
                 //response.detail.erro
                 
