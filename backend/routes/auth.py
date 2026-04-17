@@ -1,4 +1,6 @@
 from fastapi import APIRouter, Depends,HTTPException
+from passlib.utils.compat import error_from
+
 from main import SECRET_KEY,  ALGORITIMO
 #Importando tabelas:
 from models.usuarios import Usuarios
@@ -158,13 +160,20 @@ async def login(dados : UsuarioLoginSchema , session = Depends(session)):
     elif criptografia.verify(dados.senha , usuario.senha) == False:
         raise HTTPException(status_code=401,detail="Senha incorreta")
     else:
-        acess_token = gerar_token(usuario.id_usuario)
-        refresh_token = gerar_token(usuario.id_usuario, validade=timedelta(days=7))
-        return {
-            "token" : acess_token,
-            "refresh_token" : refresh_token,
-            "token_type": "bearer"
-        }
+        if usuario.email_verificado ==  False:
+            raise HTTPException(status_code=403,detail={
+                "erro" : "Email não verificado!!",
+                "nome" : usuario.nome_usuario
+            })
+        else:
+            acess_token = gerar_token(usuario.id_usuario)
+            refresh_token = gerar_token(usuario.id_usuario, validade=timedelta(days=7))
+            return {
+                "token" : acess_token,
+                "refresh_token" : refresh_token,
+                "token_type": "bearer"
+            }
+
 
 
 

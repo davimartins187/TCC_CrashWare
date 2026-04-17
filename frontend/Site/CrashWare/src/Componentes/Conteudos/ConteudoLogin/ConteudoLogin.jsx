@@ -89,12 +89,28 @@ const ConteudoLogin = () =>
             // Erro causado por ação do usuário (dados inválidos, não autorizado, etc)
 
             if (!response.ok){
-                let erro = await reponse.json()
-                // //Mostrar  "erro.detail"
-            }else{
-                let dados = await response.json()
-                let token = dados.token
-                let refresh_token = dados.refresh_token
+                const erro = await reponse.json()
+                
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Erro no Login',
+                    mensagem: erro.detail
+                });
+
+                return;
+            }else if(reponse.status == 403){
+                // Vai para a tela de cadastro
+                //Você precisa enviar esses dados:
+
+                //response.detail.nome
+                //response.detail.erro
+                
+
+            }
+            else{
+                const dados = await response.json()
+                const token = dados.token
+                const refresh_token = dados.refresh_token
 
                 //A estrutura de guardar o token no storage e header eu faço na etec.
             }
