@@ -1,5 +1,8 @@
 import { useRef, useState } from 'react'
 import FotoPadrao from '../../../fotos/FotoPerfilPadrao.jpeg'
+import BackFundo from "../../../fotos/Banner.jpeg"
+import iconRanking from '../../../fotos/ranking.svg'
+import iconOfensiva from '../../../fotos/ofensiva.svg'
 import style from './ConteudoPerfil.module.css'
 
 const ConteudoPerfil = () => {
@@ -9,6 +12,9 @@ const ConteudoPerfil = () => {
 
     //referencia o input
     const inputRef = useRef();
+
+    const [ofensiva, setOfensiva] = useState(0);
+    const [xp, setXp] = useState(0);
 
     //Carrega a foto salva q pus
     // useEffect(() => {
@@ -21,40 +27,72 @@ const ConteudoPerfil = () => {
     return (
         <div className={style.corpo}>
             <div className={style.container}>
-                {/* Foto */}
-                <img className={style.foto}
-                    src={foto} alt="Foto" 
-                    onClick={() => inputRef.current.click()}
-                />
 
-                {/* Input escondido pra trocar foto */}
-                <input type="file" className={style.escondido}
-                    ref={inputRef}
-                    accept='image/*'
-                    onChange={(e) => {
-                        const arquivo = e.target.files[0];
+                <div className={style.Logofundo}>
+                    <img src={BackFundo} alt="Background" />
+                </div>
 
-                        if(arquivo){
-                            const url = URL.createObjectURL(arquivo)
-                            setFoto(url);
-                        }
-                    }}
-                />
+                <div className={style.info}>
+                    {/* Foto */}
+                    <img className={style.foto}
+                        src={foto} alt="Foto"
+                        onClick={() => inputRef.current.click()}
+                    />
 
-                {/* Nome */}
-                <h3>. . . . . </h3>
+                    {/* Input escondido pra trocar foto */}
+                    <input type="file" className={style.escondido}
+                        ref={inputRef}
+                        accept='image/*'
+                        onChange={(e) => {
+                            const arquivo = e.target.files[0];
 
-                {/* Status */}
-                <p>Online</p>
+                            if (arquivo) {
+                                const url = URL.createObjectURL(arquivo)
+                                setFoto(url);
+                            }
+                        }}
+                    />
+                    <div className={style.texto}>
+
+                        {/* Nome */}
+                        <h3> Usuário </h3>
+
+                        {/* Status */}
+                        <p className={style.status}>
+                            <span className={style.bolinha}></span>
+                            Online </p>
+                    </div> {/*Tetxos */}
+                </div> {/*info*/}
+
 
                 {/* Informações de Ofenciva e afins */}
-                <div className={style.infos}>
+                <div className={style.blocos}>
+                    {/* Ranking */}
+                    <div className={style.Ranking}>
+                        <img src={iconRanking} alt="" />
+                        <div className={style.Ranking_Coluna}>
+                            <h6>Beta</h6>
+                        <   p>Ranking</p>
+                        </div>
+                    </div> {/*Ranking*/}
 
-                </div>
+                    {/* Ofensiva */}
+                    <div>
+                        <img src={iconOfensiva} alt="" />
+                        {ofensiva}
+                        <p>Ofensiva</p>
+                    </div>{/*Ofensiva*/}
+
+                    {/* XP */}
+                    <div>
+                        {xp}
+                        <p>Xp</p>
+                    </div> {/* XP */}
+                </div> {/*Blocos*/}
 
                 {/* Conquistas */}
                 <div className={style.conquista}>
-                    
+
                 </div>
             </div>
         </div>
