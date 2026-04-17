@@ -77,7 +77,7 @@ const ConteudoLogin = () =>
         }
 
         try{
-            response = await fetch("https://api-crashware.onrender.com/auth/login"),{
+            response = await fetch("https://api-crashware.onrender.com/auth/login",{
                 method : "POST",
                 headers : {
                     "Content-Type": "application/json"
@@ -86,22 +86,12 @@ const ConteudoLogin = () =>
                     email : email.replace(/\s/g, "").toLowerCase(),
                     senha : senha
                 })
-            }//Parâmetros
+            });//Parâmetros
 
             // Erro causado por ação do usuário (dados inválidos, não autorizado, etc)
 
-            if (!response.ok){
-                const erro = await reponse.json()
-                
-                setPopup({
-                    tipo: 'erro',
-                    titulo: 'Erro no Login',
-                    mensagem: erro.detail
-                });
+            if (reponse.status === 403){
 
-                return;
-            }else if(reponse.status == 403){
-            
                 alert("Email não autenticado")
                 Navegacao("/verificacao-email",{
                     state: {
@@ -112,12 +102,23 @@ const ConteudoLogin = () =>
                 //response.detail.nome
                 //response.detail.erro
                 
+                
+                
+            }else if(!reponse.status){
+                const erro = await reponse.json()
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Erro no Login',
+                    mensagem: erro.detail
+                });
+
+                return;
 
             }
             
             else{
                 alert("Email Autenticado")
-                
+
                 const dados = await response.json()
                 const token = dados.token
                 const refresh_token = dados.refresh_token
@@ -160,6 +161,7 @@ const ConteudoLogin = () =>
                         className={style.inputClasse} 
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)}
+                        autoComplete = 'email'
                     />
 
                     <div className={style.senhaWrapper}>
