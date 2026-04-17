@@ -3,6 +3,7 @@ import FotoPadrao from '../../../fotos/FotoPerfilPadrao.jpeg'
 import BackFundo from "../../../fotos/Banner.jpeg"
 import iconRanking from '../../../fotos/ranking.svg'
 import iconOfensiva from '../../../fotos/ofensiva.svg'
+import iconXp from '../../../fotos/xp.svg'
 import style from './ConteudoPerfil.module.css'
 
 const ConteudoPerfil = () => {
@@ -72,21 +73,27 @@ const ConteudoPerfil = () => {
                         <img src={iconRanking} alt="" />
                         <div className={style.Ranking_Coluna}>
                             <h6>Beta</h6>
-                        <   p>Ranking</p>
+                            <   p>Ranking</p>
                         </div>
                     </div> {/*Ranking*/}
 
                     {/* Ofensiva */}
-                    <div>
+                    <div className={style.Ofensiva}>
                         <img src={iconOfensiva} alt="" />
-                        {ofensiva}
-                        <p>Ofensiva</p>
+                        <div className={style.Ofensiva_Coluna}>
+                            {ofensiva}
+                            <p>Ofensiva</p>
+                        </div>
                     </div>{/*Ofensiva*/}
 
                     {/* XP */}
-                    <div>
-                        {xp}
-                        <p>Xp</p>
+                    <div className={style.xp}>
+                        <img src={iconXp} alt="" />
+                        <div className={style.xp_Coluna}>
+                            {xp}
+                            <p>Total de XP</p>
+                        </div>
+
                     </div> {/* XP */}
                 </div> {/*Blocos*/}
 
