@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends,HTTPException
 
-from main import ALGORITIMO
 #Importando tabelas:
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth, session
