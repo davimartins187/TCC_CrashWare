@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useBlocker, useLocation, useNavigate } from "react-router-dom";
 import { CampoTexto } from "../../CampoTexto";
 import { BotoesForm } from "../../Botoes";
 import style from './CVerificacaoEmail.module.css'
@@ -13,7 +13,7 @@ const CVerificacaoEmail = () => {
     const [loading, setLoading] = useState(false);
 
     //Verificador Automatico7
-    const [verificando, setVerificando] = useState(false);
+    // const [verificando, setVerificando] = useState(false);
 
     //useState que guardará a o codigo
     const [codigo, setCodigo] = useState("");
@@ -23,9 +23,50 @@ const CVerificacaoEmail = () => {
 
     //Receberá as informações da página anterior
     const location = useLocation();
-
-    //Navegcao de páginas
     const Navegacao = useNavigate();
+
+    //Modal de confirmação
+    // const [mostrarModal, setMostrarModal] = useState(false);
+
+    //Bloquear atualizer página
+    // const Bloqueador = useBlocker(!podeNavegar);
+
+    // Bloqueia botão voltar do navegador
+    // useEffect(() => {
+    //     // Empurra um estado extra no histórico para capturar o "voltar"
+    //     window.history.pushState(null, '', window.location.href);
+
+    //     const handlePopState = () => {
+    //         // Quando usuário tenta voltar, empurra de volta e mostra modal
+    //         window.history.pushState(null, '', window.location.href);
+    //         setMostrarModal(true);
+    //     };
+
+    //     window.addEventListener('popstate', handlePopState);
+    //     return () => window.removeEventListener('popstate', handlePopState);
+    // }, []);
+
+    // Bloqueia F5, Ctrl+R e botão de recarregar do navegador
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+        };
+
+        const bloquearAtalhos = (e) => {
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                e.preventDefault();
+            }
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        window.addEventListener('keydown', bloquearAtalhos);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+            window.removeEventListener('keydown', bloquearAtalhos);
+        };
+    }, []);
 
     //Pega os dados
     const mensagem = location.state?.mensagem;
@@ -37,7 +78,7 @@ const CVerificacaoEmail = () => {
 
     //Proteção da url
     useEffect(() => {
-        if (!mensagem && !email) {
+        if (!mensagem && !email && !nome) {
             Navegacao('/cadastro');
         }
     }, []);
@@ -74,7 +115,7 @@ const CVerificacaoEmail = () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email : email
+                        email: email
                     })
                 }
             );
@@ -119,7 +160,9 @@ const CVerificacaoEmail = () => {
                 setErro(erroCodigo.detail)
             } else {
                 setErro("");
+                setPodeNavegar(true)
                 Navegacao("/login")
+                // , { replace: true }
             }
 
         } catch (error) {
@@ -127,13 +170,25 @@ const CVerificacaoEmail = () => {
         }
     };
 
-
-
-    //Verificara se pode liberar o botao
-    // const PodeMostarBotao = email != " ";
-
     return (
         <>
+        {/* modal */}
+            {/* {mostrarModal && (
+                <div className={style.modalOverlay}>
+                    <div className={style.modal}>
+                        <p>Tem certeza que deseja sair? O código será perdido.</p>
+                        <button onClick={() => {
+                            setMostrarModal(false);
+                            Navegacao('/cadastro', { replace: true });
+                        }}>
+                            Sair
+                        </button>
+                        <button onClick={() => setMostrarModal(false)}>
+                            Ficar
+                        </button>
+                    </div>
+                </div>
+            )} */}
             <div className={style.corpo}>
                 <div className={style.container}>
                     <h1>Bem-Vindo {nomeM}!!!</h1>
@@ -141,17 +196,16 @@ const CVerificacaoEmail = () => {
 
                     <CampoTexto type="text" placeholder="Código"
                         className={style.inputClasse}
-                        inputmode="numeric"  // Só permite telado numérico
                         value={codigo}
                         maxLength={6}
                         onChange={(e) => {
-                        const valor = e.target.value.replace(/\D/g, '').slice(0, 6);
-                        setCodigo(valor); //Só aceita números.
+                            const valor = e.target.value.replace(/\D/g, '').slice(0, 6);
+                            setCodigo(valor); //Só aceita números.
                         }}
                     />
 
                     {erro && <p className={style.erro}>{erro}</p>}
-                    
+
 
                     {/* <Link  to=""> */}
                     <BotoesForm texto="Verificar" className={style.btnEnviar}
