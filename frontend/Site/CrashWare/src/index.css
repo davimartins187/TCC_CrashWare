@@ -30,6 +30,14 @@
   --popup-aviso-texto: #78350f;
   --popup-aviso-icone-bg: #d97706;
   --popup-aviso-icone-cor: #ffffff;
+
+  /*POPUP SUCESSO (VAI FAZER O TCC QUE DIA DAVISON?)*/
+  --popup-aviso-bg: #eae9e2;
+  --popup-aviso-borda: #0d4c00;
+  --popup-aviso-titulo: #4e9c39;
+  --popup-aviso-texto: #2b6e18;
+  --popup-aviso-icone-bg: #1fad51;
+  --popup-aviso-icone-cor: #ffffff;
 }
 
 
@@ -68,6 +76,15 @@
   --popup-aviso-texto: #fbbf24;
   --popup-aviso-icone-bg: #fbbf24;
   --popup-aviso-icone-cor: #1a0f00;
+
+  /*Popup quando der certo*/
+  --popup-sucesso-bg: #1f1708;
+  --popup-sucesso-borda: #147700;
+  --popup-sucesso-titulo: #6eda50;
+  --popup-sucesso-texto: #3da121;
+  --popup-sucesso-icone-bg: #28e269;
+  --popup-sucesso-icone-cor: #1c1101;
+
 
 
   /* Atualização pro perfil */

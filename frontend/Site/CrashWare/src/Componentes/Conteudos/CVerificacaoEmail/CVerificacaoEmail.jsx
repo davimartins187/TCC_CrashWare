@@ -3,6 +3,7 @@ import { Link, useBlocker, useLocation, useNavigate } from "react-router-dom";
 import { CampoTexto } from "../../CampoTexto";
 import { BotoesForm } from "../../Botoes";
 import style from './CVerificacaoEmail.module.css'
+import { PopUp } from '../../pop-up';
 
 const CVerificacaoEmail = () => {
 
@@ -101,7 +102,12 @@ const CVerificacaoEmail = () => {
 
             if (!response.ok) {
                 const erro = await response.json();
-                //Mostrar  "erro.detail"
+                
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Email não encontrado',
+                    mensagem: erro.detail
+                });
             } else {
                 setTimer(60);
 
@@ -136,7 +142,12 @@ const CVerificacaoEmail = () => {
             if (response.ok === false) {
 
                 const erroCodigo = await response.json()
-                setErro(erroCodigo.detail)
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'ERRO',
+                    mensagem: erroCodigo.detail
+                });
+
             } else {
                 setErro("");
                 setPodeNavegar(true)
@@ -151,6 +162,16 @@ const CVerificacaoEmail = () => {
 
     return (
         <>
+
+            {popup && (
+                <PopUp
+                    tipo={popup.tipo}
+                    titulo={popup.titulo}
+                    mensagem={popup.mensagem}
+                    onFechar={() => setPopup(null)}
+                />
+            )};
+
             {mostrarModal && (
                 <div className={style.modalOverlay}>
                     <div className={style.modal}>

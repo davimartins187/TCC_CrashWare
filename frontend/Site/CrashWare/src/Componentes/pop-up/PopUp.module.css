@@ -33,6 +33,11 @@
 
 /* TIPOS (usa variáveis do tema) */
 
+.popup-sucesso{
+  background: var(--popup-sucesso-bg);
+  border-color: var(--popup-sucesso-borda);
+}
+
 .popup-erro {
   background: var(--popup-erro-bg);
   border-color: var(--popup-erro-borda);
@@ -67,6 +72,11 @@
   color: var(--popup-aviso-icone-cor);
 }
 
+.popup-sucesso .popup-icone {
+  background: var(--popup-sucesso-icone-bg);
+  color: var(--popup-sucesso-icone-cor);
+}
+
 /* texto */
 
 .popup-body {
@@ -93,13 +103,22 @@
 .popup-erro .popup-mensagem {
   color: var(--popup-erro-texto);
 }
-
+/* VAI COMEÇAR A COMENTAR QUE DIA DAVISON???? */
 .popup-aviso .popup-titulo {
   color: var(--popup-aviso-titulo);
 }
 
 .popup-aviso .popup-mensagem {
   color: var(--popup-aviso-texto);
+}
+
+/*POPUP SUCESSO*/
+.popup-sucesso .popup-titulo {
+  color: var(--popup-sucesso-titulo);
+}
+
+.popup-sucesso .popup-mensagem {
+  color: var(--popup-sucesso-texto);
 }
 
 /* botão */

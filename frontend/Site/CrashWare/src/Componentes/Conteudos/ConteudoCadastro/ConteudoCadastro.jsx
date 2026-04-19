@@ -90,6 +90,7 @@ const ConteudoCadstro = () => {
 
     const handleCadastro = async () => {
 
+        
         const erro = validarCampos();
 
         if (erro) {
@@ -100,6 +101,16 @@ const ConteudoCadstro = () => {
             });
             return;
         }
+
+        
+
+        
+        setPopup({
+            tipo: 'sucesso',
+            titulo: 'Verificando informações...',
+            mensagem: 'Estamos verificando seus dados'
+        });
+
 
         try {
             const response = await fetch("https://api-crashware.onrender.com/auth/cadastro", {
@@ -127,8 +138,6 @@ const ConteudoCadstro = () => {
             }
 
             const dados = await response.json();
-
-            alert(dados.mensagem)
 
             Navegacao("/verificacao-email", {
                 state: {

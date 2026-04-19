@@ -76,6 +76,12 @@ const handleLogin = async () => {
         return;
     }
 
+    
+    setPopup({
+        tipo: 'sucesso',
+        titulo: 'Verificação',
+        mensagem: 'Verificando dados...'
+    });
     //Envio os dados para a API(na rota de login)
     try{
         const response = await fetch("https://api-crashware.onrender.com/auth/login",{
