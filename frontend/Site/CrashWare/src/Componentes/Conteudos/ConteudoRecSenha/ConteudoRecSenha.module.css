@@ -21,6 +21,7 @@
     width: 100%;
     height: auto;
     text-align: center;
+    /* margin-top: 10px; duvidoso */
 }
 
 .container h1{
@@ -29,6 +30,13 @@
     font-family: "Montserrat", sans-serif;
     margin-bottom: 15px;
     /* text-shadow:  2px 2px 1px rgba(0, 0, 0, 0.842); */
+}
+
+.container h2{
+    color: var(--texto-secundario);
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 15px;
 }
 
 
@@ -72,10 +80,10 @@
     /* text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685); */
 }
 
-button:hover{
+.btnEnviar:hover{
     transition: 0.3s;
     background-color: var(--cor-primaria-hover);
-    color: var(--font_principal_escuro);
+    color: var(--texto-principal);
     transform: scale(1.05);
 }
 

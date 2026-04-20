@@ -22,8 +22,6 @@ const ConteudoCadstro = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
     const [popup, setPopup] = useState(null);
 
-
-
     //Levará para a verificacao de email
     const Navegacao = useNavigate();
 
@@ -41,7 +39,7 @@ const ConteudoCadstro = () => {
         }, 0);
     }, []);
 
-
+    //Mudar tema
     const isClaro = tema === 'Claro';
 
     const iconeSenha = mostrar
@@ -90,6 +88,7 @@ const ConteudoCadstro = () => {
         return null;
     };
 
+    //Função de Cadastro
     const handleCadastro = async () => {
 
         
@@ -104,9 +103,6 @@ const ConteudoCadstro = () => {
             return;
         }
 
-        
-
-        
         setPopup({
             tipo: 'sucesso',
             titulo: 'Verificando informações...',
@@ -145,7 +141,8 @@ const ConteudoCadstro = () => {
                 state: {
                     mensagem: dados.mensagem,
                     nome: nome.toUpperCase(),
-                    email: email.replace(/\s/g, "").toLowerCase()
+                    email: email.replace(/\s/g, "").toLowerCase(),
+                    origem: "/cadastro"
                 }
             });
 

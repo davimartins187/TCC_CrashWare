@@ -27,19 +27,12 @@ const CVerificacaoEmail = () => {
     const mensagem = location.state?.mensagem;
     const email = location.state?.email;
     const nome = location.state?.nome;
+    const origem = location.state?.origem;
 
-    //Ponteiro Piscando
-    // const inputRef = useRef(null);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         inputRef.current?.focus();
-    //     }, 0);
-    // }, []);   ME IRRITEI NAO TA FUNCIONANDP
-
+    
     //Nome maiusculo
     const nomeM = nome?.toUpperCase() || "";
-
+    
     //Block de navegação
     useEffect(() => {
         const handleBeforeUnload = (e) => {
@@ -48,11 +41,11 @@ const CVerificacaoEmail = () => {
                 e.returnValue = "";
             }
         };
-
+        
         window.addEventListener("beforeunload", handleBeforeUnload);
         return () => window.removeEventListener("beforeunload", handleBeforeUnload);
     }, [podeNavegar]);
-
+    
     useEffect(() => {
         const handlePopState = () => {
             if (!podeNavegar) {
@@ -60,20 +53,36 @@ const CVerificacaoEmail = () => {
                 setMostrarModal(true);
             }
         };
-
+        
         window.history.pushState(null, "", window.location.href);
         window.addEventListener("popstate", handlePopState);
-
+        
         return () => window.removeEventListener("popstate", handlePopState);
     }, [podeNavegar]);
-
-
-    //Proteção da url
+    
+    
+    //Proteção da URL Reenviar para cadastro
     useEffect(() => {
-        if (!mensagem && !email) {
-            Navegacao('/cadastro');
+        //Origens
+        const origemCadastro = origem == "/cadastro";
+        const origemRecSenha = origem == "/recuperar-senha"
+
+        if (origemCadastro) {
+            if(!email && !mensagem){
+                Navegacao('/cadastro');
+            }
         }
-    }, []);
+        else if (origemRecSenha){
+            if(!email){
+                Navegacao("/login");
+            }
+        }
+        else{
+            Navegacao("/login")
+        }
+
+
+    }, [origem, email, Navegacao]);
 
     //Automação
     useEffect(() => {

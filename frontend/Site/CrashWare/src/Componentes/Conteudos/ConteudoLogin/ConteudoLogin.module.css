@@ -149,6 +149,23 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.Esqueceu{
+  font-size: 1.1rem;
+  text-align: start;
+  text-indent: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.Esqueceu p{
+  color: var(--cor-primaria);
+}
+
+.Esqueceu a{
+  text-decoration: none;
+} 
+
 /* ===== RESPONSIVIDADE ===== */
 
 @media (max-width: 480px) {
