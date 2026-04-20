@@ -34,7 +34,7 @@ const CVerificacaoEmail = () => {
     const nomeM = nome?.toUpperCase() || "";
 
     ////Controle de navegação
-    const rec_senha = localStorage.getItemItem("rec_senha")
+    const rec_senha = localStorage.getItem("rec_senha")
     
     //Block de navegação
     useEffect(() => {
