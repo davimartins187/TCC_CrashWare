@@ -33,7 +33,6 @@
 
 
 .inputClasse{
-    justify-items: flex-start;
     width: 65%;
     background-color: var(--input-bg);
     border: 1px solid var(--borda);
@@ -47,6 +46,12 @@
     opacity: 0.9;
     padding: 20px;
     padding-left: 30px;
+}
+
+.inputClasse:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 .btnEnviar{

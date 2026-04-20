@@ -24,7 +24,9 @@ const ConteudoRecSenha = () =>
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <BotoesForm texto="Enviar" className={style.btnEnviar} disabled={!PodeMostarBotao}/>
+                <BotoesForm texto="Enviar" className={style.btnEnviar}
+                 //disabled={!PodeMostarBotao}
+                />
             </div>
         </div>
     )

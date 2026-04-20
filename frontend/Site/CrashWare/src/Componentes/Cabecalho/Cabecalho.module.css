@@ -56,7 +56,6 @@
 {
     height: 45px;
     width: 45px;
-  
 }
 
 .infoCabecalho{
@@ -81,7 +80,7 @@
         font-size: 26px;
         cursor: pointer;
 
-        padding-right: 20px;
+        margin-right: 20px;
     }
 
     .hamburger:hover{
