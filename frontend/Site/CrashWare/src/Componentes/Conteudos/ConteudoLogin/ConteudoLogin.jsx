@@ -113,7 +113,7 @@ const ConteudoLogin = () => {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
-                                email: email
+                                email: email.replace(/\s/g, "").toLowerCase()
                             })
                         }
                     );

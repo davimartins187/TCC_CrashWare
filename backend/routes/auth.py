@@ -196,7 +196,8 @@ async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessa
     if usuario is None:
         raise HTTPException(status_code=404, detail="Email não autenticado")
     else:
-        usuario.senha_hash = dados.senha
+        senha_criptografada = criptografia.hash(dados.senha)
+        usuario.senha_hash = senha_criptografada
         session.commit()
         return {"mensagem": "Senha alterada com sucesso!"}
 
