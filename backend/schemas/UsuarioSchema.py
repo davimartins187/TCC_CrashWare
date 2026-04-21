@@ -11,7 +11,7 @@ class UsuarioSchema(BaseModel):
     class Config:
         from_attributes = True
 
-#SCHEMA Vericar Email
+#SCHEMA Vericar Codigo
 class VerificarEmailSchema(BaseModel):
     email : str
     codigo : str
@@ -23,6 +23,7 @@ class VerificarEmailSchema(BaseModel):
 class EmailSchema (BaseModel):
     email: str
 
+
     class Config:
         from_attributes = True
 
@@ -30,6 +31,7 @@ class EmailSchema (BaseModel):
 class UsuarioLoginSchema (BaseModel):
     email : str
     senha : str
+
 
     class Config:
         from_attributes = True

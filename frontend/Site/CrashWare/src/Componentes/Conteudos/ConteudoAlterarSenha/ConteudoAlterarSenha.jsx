@@ -175,7 +175,7 @@ const ConteudoAlterarSenha = () => {
                 <BotoesForm
                     className={style.btnEnviar}
                     texto="Confirmar" 
-                    Onclick = {MudarSenha}  
+                    onclick = {MudarSenha}  
                 />
             </div>
         </div>
