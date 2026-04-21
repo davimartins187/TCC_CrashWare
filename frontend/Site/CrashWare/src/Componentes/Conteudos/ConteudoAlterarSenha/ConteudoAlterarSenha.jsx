@@ -20,13 +20,20 @@ const ConteudoAlterarSenha = () => {
 
     //Navegação
     const Navegacao = useNavigate();
-    const Location = useLocation();
+    const location = useLocation();
+
+    //Recebendo os dados da navegação
+    const email = location.state?.email;
 
     //Troca de Tema
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
         return () => window.removeEventListener('temaAtualizado', checarTema);
+
+        //Quando a pag for acessada
+        localStorage.setItem("rec_senha", false)
+
     }, []);
 
     //Mudar tema
@@ -41,12 +48,88 @@ const ConteudoAlterarSenha = () => {
         : (isClaro ? esconderSenha_claro : esconderSenha_escuro);
 
 
-        const MudarSenha = async =>{
-            //API do felipe
 
-            //Se caso td der certo:
-            Navegacao("/login");
+    const validarCampos = () => 
+        {
+            if (senha.length < 8) {
+                return "Senha deve ter pelo menos 8 caracteres";
+            }
+
+            if (senha.includes(" ")) {
+                return "Senha não pode conter espaços";
+            }
+
+            if (senha !== confirmaSenha) {
+                return "As senhas não coincidem";
+            }
+
+            return null;
         }
+
+    const MudarSenha = async () =>{
+
+        const erro = validarCampos();
+
+        if (erro) {
+                setPopup({
+                    tipo: 'aviso',
+                    titulo: 'Erro no formulário',
+                    mensagem: erro
+                });
+                return;
+            }
+
+        setPopup({
+                tipo: 'sucesso',
+                titulo: 'Atualizando Senha...'
+        });
+
+        try 
+        {
+            const response = await fetch("https://api-crashware.onrender.com/auth/alterar_senha",
+            {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+            })//Parâmetros
+
+            if (!response.ok)
+            {
+                const erro = await response.body()
+
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Email não autenticado',
+                });
+
+            }else
+            {
+                setPopup({
+                    tipo: 'sucesso',
+                    titulo: 'Senha atualizada com sucesso',
+                });
+
+                Navegacao("/login");
+
+            }
+
+        }catch (error) 
+        {   //Erro na requisição
+            setPopup({
+                tipo: 'erro',
+                titulo: error
+            });
+
+            console.log(error)
+        }
+
+        
+    }
 
     return (
         <div className={`${style.corpo} ${tema}`}>
@@ -91,8 +174,8 @@ const ConteudoAlterarSenha = () => {
 
                 <BotoesForm
                     className={style.btnEnviar}
-
-                    texto="Confirmar"
+                    texto="Confirmar" 
+                    Onclick = {MudarSenha}  
                 />
             </div>
         </div>

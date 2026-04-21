@@ -95,7 +95,6 @@ const ConteudoRecSenha = () => {
                     //Levo para a tela de verificar codigo
                     Navegacao("/verificacao-email", {
                     state: {
-                        
                         email: email.replace(/\s/g, "").toLowerCase(),
                         origem: "/recuperar-senha" //origem da rota
                     } //State
