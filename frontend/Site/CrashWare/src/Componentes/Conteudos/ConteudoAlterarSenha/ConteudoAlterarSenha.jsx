@@ -25,6 +25,9 @@ const ConteudoAlterarSenha = () => {
     //Recebendo os dados da navegação
     const email = location.state?.email;
 
+    console.log("location.state:", location.state);
+    console.log("email:", email);
+
     //Troca de Tema
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);

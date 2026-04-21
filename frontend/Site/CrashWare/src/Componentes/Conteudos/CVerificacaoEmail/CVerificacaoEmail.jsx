@@ -189,12 +189,12 @@ const CVerificacaoEmail = () => {
                 {
                     //Leva para a pag de rec_senha
                     setPodeNavegar(true)
-                    Navegacao("/alterar-senha"),
+                    Navegacao("/alterar-senha",
                     {
                     state:{
                         email: email.replace(/\s/g, "").toLowerCase()
                     }//state
-                    }
+                    })
                 }
 
             }
