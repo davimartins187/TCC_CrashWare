@@ -73,7 +73,7 @@ const ConteudoRecSenha = () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email: email.replace(/\s/g, "").toLowerCase(),
+                        email: email.replace(/\s/g, "").toLowerCase()
                     })
             });//Parâmetros
 
