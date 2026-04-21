@@ -164,8 +164,8 @@ const CVerificacaoEmail = () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        codigo: codigo.toString(),
-                        email: email
+                        email: email,
+                        codigo: codigo.toString()
                     })
                 }
             );
@@ -181,7 +181,7 @@ const CVerificacaoEmail = () => {
 
             } else {
 
-                if(rec_senha == false){
+                if(rec_senha == "false"){
                     setPodeNavegar(true)
                     Navegacao("/login")
                     // , { replace: true }

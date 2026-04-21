@@ -32,11 +32,12 @@ const ConteudoAlterarSenha = () => {
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
-        return () => window.removeEventListener('temaAtualizado', checarTema);
 
         //Quando a pag for acessada
         localStorage.setItem("rec_senha", false)
 
+
+        return () => window.removeEventListener('temaAtualizado', checarTema);
     }, []);
 
     //Mudar tema
