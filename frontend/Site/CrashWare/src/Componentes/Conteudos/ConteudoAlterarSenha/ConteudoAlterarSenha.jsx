@@ -25,8 +25,7 @@ const ConteudoAlterarSenha = () => {
     //Recebendo os dados da navegação
     const email = location.state?.email;
 
-    console.log("location.state:", location.state);
-    console.log("email:", email);
+
 
     //Troca de Tema
     useEffect(() => {
@@ -73,6 +72,7 @@ const ConteudoAlterarSenha = () => {
     const MudarSenha = async () =>{
 
         const erro = validarCampos();
+
 
         if (erro) {
                 setPopup({
@@ -179,7 +179,7 @@ const ConteudoAlterarSenha = () => {
                 <BotoesForm
                     className={style.btnEnviar}
                     texto="Confirmar" 
-                    onclick = {MudarSenha}  
+                    onClick = {MudarSenha}  
                 />
             </div>
         </div>
