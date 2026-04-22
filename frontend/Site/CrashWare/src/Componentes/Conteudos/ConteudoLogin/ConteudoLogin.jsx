@@ -103,32 +103,19 @@ const ConteudoLogin = () => {
                 const erro = await response.json()
                 const nome = erro.detail.nome
 
-                //Envio novamente o codigo para o email , reutilizando  requisição:
-                try {
-                    const response = await fetch(
-                        "https://api-crashware.onrender.com/auth/reenviar_codigo",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                email: email.replace(/\s/g, "").toLowerCase()
-                            })
-                        }
-                    );
-                } catch (error) {
-                    //Precisa colocar esse erro no lugar certo davison.
-                    console.log(error);
-                    return;
-                }
-
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Erro no Login',
+                    mensagem: erro.detail.erro
+                });
 
                 //Envio o usuario na pagina de verificar EMAIL
                 Navegacao("/verificacao-email", {
                     state: {
                         email: email.toLowerCase(),
-                        nome: nome.toUpperCase()
+                        nome: nome.toUpperCase(),
+                        origem: "/login"
+
                     }
                 });
 
