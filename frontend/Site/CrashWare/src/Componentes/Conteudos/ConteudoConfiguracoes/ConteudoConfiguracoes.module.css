@@ -1,0 +1,23 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.main{
+    background-color: var(--bg-principal);
+    width: 22vw;
+    height: 84vh;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    margin-top: 36px;
+}
+
+.barraLateral{
+    display: flex;
+    flex-direction: column;
+
+}

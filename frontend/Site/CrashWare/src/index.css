@@ -1,20 +1,18 @@
 /* TEMA CLARO */
 .Claro {
-  --bg-principal: #f0f4f8;
-  --bg-secundario: #ccffeb98;
+  --bg-principal: #f4f7f5;
+  --bg-secundario: #ffffff;
 
   --texto-principal: #111827;
-  --texto-secundario: #4B5563;
+  --texto-secundario: #4b5563;
 
-  --cor-primaria: #059669;
-  --cor-primaria-hover: #10b981;
+  --cor-primaria: #22c55e;
+  --cor-primaria-hover: #16a34a;
 
-  --cor-secundaria: #0891b2;
-  --cor-secundaria-hover: #06b6d4;
+  --cor-secundaria: #4a7ce9;
+  --cor-secundaria-hover: #1d4ed8;
 
-  --borda: #CBD5E1;
-  --input-bg: #ffffff;
-  --Vermelho: #dc2626;
+  --borda: #d1d5db;
 
   /* Pop-Up claro */
   --popup-erro-bg: #fff0f0;
@@ -45,10 +43,10 @@
 
 /* TEMA ESCURO */
 .Escuro {
-  --bg-principal: #0d1117;
-  --bg-secundario: #161b27;
+  --bg-principal: #0f0f0f;
+  --bg-secundario: #1a1a1a;
 
-  --texto-principal: #F1F5F9;
+  --texto-principal: #f5f5f5;
   --texto-secundario: #94A3B8;
 
   --cor-primaria: #10B981;

@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import Style from './Sidebar.module.css';
 import { Tema } from '../../Tema';
-import { sobreNos } from '../../Conteudos/'
 
 const Sidebar = ({ aberto, onFechar }) => {
   const location = useLocation();
@@ -12,6 +11,7 @@ const Sidebar = ({ aberto, onFechar }) => {
     { label: 'Contato', to: '/contato' },
     { label: 'Sobre o TCC', to: '/tcc' },
     { label: 'Termos de serviço', to: '/termos' },
+    { label: 'Configurações', to: '/configuracoes'},
   ];
 
   return (

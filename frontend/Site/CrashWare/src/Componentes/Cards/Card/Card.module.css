@@ -3,7 +3,7 @@
 .Card {
     padding: 28px 16px;
     border-radius: 15px;
-    background-color: var(--bg-secundario);
+    background-color: var(--bg-principal);
     color: var(--texto-principal);
     display: flex;
     flex-direction: column;
@@ -24,9 +24,9 @@
 
     /* animação */
     transform: translateY(-6px);
+    transform: scale(1.06);
 
     border-color: var(--bg-principal);
-    box-shadow: 0 0 20px var(--cor-secundaria), 0 8px 20px var(--cor-primaria-hover), inset 0 0 20px var(--cor-primaria);
 }
 
 .Card img {
@@ -35,13 +35,6 @@
     margin-bottom: 14px;
     object-fit: contain;
 
-    /* ícone com brilho verde */
-    filter: drop-shadow(0 0 8px var(--cor-primaria-hover));
-    transition: filter 0.25s ease;
-}
-
-.Card:hover img {
-    filter: drop-shadow(0 0 14px var(--cor-primaria));
 }
 
 .Card p {
