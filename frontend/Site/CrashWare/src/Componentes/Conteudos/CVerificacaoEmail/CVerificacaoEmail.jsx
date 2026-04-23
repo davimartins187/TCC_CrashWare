@@ -80,9 +80,9 @@ const CVerificacaoEmail = () => {
                 Navegacao("/login");
             }
         }
-        else{
-            Navegacao("/login")
-        }
+        //else{
+            //Navegacao("/login")
+        //}
 
 
     }, [origem, email, Navegacao]);

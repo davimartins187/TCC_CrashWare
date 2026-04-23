@@ -108,11 +108,6 @@ async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
             usuario_novo = Usuarios(nome_usuario=dados.nome_usuario.title(), email=dados.email,senha_hash=senha_criptografada, codigo=codigo, codigo_expirado_em=expira)
             session.add(usuario_novo)
             session.commit()
-
-            # Enviando codigo para o email
-            enviar_email(codigo, dados.email)
-
-
             #Resposta da API
             return{
                 "mensagem" : "Cadastro realizado com sucesso!"
