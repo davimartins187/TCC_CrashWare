@@ -1,6 +1,6 @@
-*{
-  padding: 0px;
-  margin: 0px;
+* {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -11,63 +11,79 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 150;
 }
+
 .overlayOpen {
-  display: block;
+  display: flex;
 }
 
 .sidebar {
-  position: fixed;
-  top: 0;
+  position: fixed; /* ← FALTAVA ISSO */
+  top: 90px;
+  left: 0;
   right: 0;
-  width: 240px;
-  height: 100%;
+  width: 100vw;
   background-color: var(--bg-principal);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  transform: translateX(100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(-120%);
   transition: transform 0.3s ease;
   z-index: 200;
-  padding: 20px;
+  padding: 12px 16px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: center;
 }
 
-.sidebar:hover{
-  background-color: none;
-  margin-right: 0px;
+.sidebar nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 .sidebarOpen {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .closeBtn {
-  background: none;
-  border: none;
-  color: var(--texto-secundario);
-  font-size: 20px;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 16px;
+  display: none;
 }
 
 .link {
-  display: block;
-  padding: 10px 12px;
+  padding: 8px 12px;
   color: var(--texto-secundario);
   text-decoration: none;
   border-radius: 6px;
   font-family: "Exo 2", sans-serif;
-  font-size: 15px;
   font-weight: 800;
+  white-space: nowrap;
+  font-size: clamp(11px, 1.5vw, 15px);
 }
 
 .link:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: scale(1.05);
-  margin-right: 0px;
 }
 
 .active {
   color: var(--cor-primaria);
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    padding: 10px 8px;
+  }
+
+  .sidebar nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .link {
+    font-size: clamp(10px, 3vw, 13px);
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
 }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Style from "./ConteudoConfiguracoes.module.css";
 
+// ... imports das imagens
+
 import casinhaModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/casinha.svg";
 import casinhaModoClaro from "../../../fotos/img_configuracoes/modoClaro/casinha.svg";
 import escudoModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/escudo.svg";
@@ -16,7 +18,10 @@ import setaSairClaro from "../../../fotos/img_configuracoes/modoClaro/sair_outro
 // Componente para cada item da barra lateral
 const ItemBarraLateral = ({ descricao, img }) => {
     return (
-        <div className={Style.itemBarraLateral}>
+        <div
+            className={`${Style.itemBarraLateral} ${ativo ? Style.ativo : ''}`}
+            onClick={onClick}
+        >
             <img src={img} alt={descricao} />
             <span>{descricao}</span>
         </div>
@@ -25,6 +30,7 @@ const ItemBarraLateral = ({ descricao, img }) => {
 
 const ConteudoConfiguracoes = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
+    const [telaSelecionada, setTelaSelecionada] = useState("ConteudoInicial");
 
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
@@ -75,3 +81,4 @@ const ConteudoConfiguracoes = () => {
 };
 
 export { ConteudoConfiguracoes };
+
