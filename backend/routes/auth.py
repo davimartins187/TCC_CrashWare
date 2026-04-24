@@ -188,10 +188,12 @@ async def verificar_email(dados: EmailSchema , session = Depends(pegar_sessao)):
 @auth.post("/alterar_senha")
 async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessao)):
     usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
+    senha_criptografada = criptografia.hash(dados.senha)
     if usuario is None:
         raise HTTPException(status_code=404, detail="Email não autenticado")
+    if criptografia.verify(senha_criptografada, usuario.senha_hash  == True):
+        raise HTTPException(status_code=400,detail="Você não pode usar a mesma senha")
     else:
-        senha_criptografada = criptografia.hash(dados.senha)
         usuario.senha_hash = senha_criptografada
         session.commit()
         return {"mensagem": "Senha alterada com sucesso!"}
