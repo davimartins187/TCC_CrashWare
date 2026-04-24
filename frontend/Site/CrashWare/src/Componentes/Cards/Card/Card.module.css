@@ -38,7 +38,7 @@
 }
 
 .Card p {
-    font-size: 0.95rem;
+    font-size: 0.90rem;
     padding: 6px 8px 0;
     text-align: center;
     font-family: "Montserrat", sans-serif;
@@ -46,4 +46,12 @@
     color: var(--font_secundaria);
     line-height: 1.4;
     filter: drop-shadow( 2px 1px 10px #00ff8838);
+}
+
+@media (max-width: 600px){
+
+    .Card{
+        width: 95%;
+        margin: 10px 10px;
+    }
 }

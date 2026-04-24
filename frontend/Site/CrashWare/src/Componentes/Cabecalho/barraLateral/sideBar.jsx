@@ -22,7 +22,6 @@ const Sidebar = ({ aberto, onFechar }) => {
       />
 
       <aside className={`${Style.sidebar} ${aberto ? Style.sidebarOpen : ''}`}>
-        <button className={Style.closeBtn} onClick={onFechar}>✕</button>
 
         <nav>
           {links.map(({ label, to }) => (
