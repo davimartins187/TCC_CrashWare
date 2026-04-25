@@ -5,6 +5,9 @@ import { BotoesForm } from "../../Botoes";
 import style from './CVerificacaoEmail.module.css'
 import { PopUp } from '../../pop-up';
 
+//Importando sleep
+import { sleep } from "../../../../funcoes/functions"
+
 const CVerificacaoEmail = () => {
 
     //useState/variaveis
@@ -138,7 +141,7 @@ const CVerificacaoEmail = () => {
                 //Exibi um popup de sucesso
                  setPopup({
                     tipo: 'sucesso',
-                    titulo: 'Código reenviado',
+                    titulo: 'Código Enviado',
                     mensagem: 'Enviamos para seu email um código novo..'
                 });
 
@@ -181,6 +184,14 @@ const CVerificacaoEmail = () => {
 
             } else {
 
+                setPopup({
+                    tipo: 'sucesso',
+                    titulo: 'Emal Verificado',
+                    mensagem: 'Estamos te redirecionando...'
+                });
+
+                 await sleep(3000)  /*-> Faz que espere 3 segundos*/
+
                 if(rec_senha == "false"){
                     setPodeNavegar(true)
                     Navegacao("/login")
@@ -219,7 +230,7 @@ const CVerificacaoEmail = () => {
             {mostrarModal && (
                 <div className={style.modalOverlay}>
                     <div className={style.modal}>
-                        <h4>Tem certeza que deseja sair? O código será perdido e poderá surgir erros no cadastro.</h4>
+                        <h4>Tem certeza que deseja sair? O processo pode ser perdido.</h4>
                         <BotoesForm onClick={() => {
                             setMostrarModal(false);
                             setPodeNavegar(true);

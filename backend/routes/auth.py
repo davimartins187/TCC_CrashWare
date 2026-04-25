@@ -71,7 +71,7 @@ def enviar_email(codigo, destinario):
 
     msg = email.message.Message()
     msg['Subject'] = "Verificação de e-mail - CrashWare"  # Assunto/Titulo do email
-    msg['From'] = 'plataformacrashware@gmail.com'  #que vai enviar a mensagem
+    msg['From'] = 'plataformacrashware@gmail.com'  #email que vai enviar a mensagem
     msg['To'] = f'{destinario}'  # Email que vai receber a mensagem
     password = f'{PASSWORD_EMAIL}'  # Senha do remetente.
     msg.add_header('Content-Type', 'text/html')

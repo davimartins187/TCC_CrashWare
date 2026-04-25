@@ -217,7 +217,7 @@ const ConteudoLogin = () => {
                         <Link to="/recuperar-senha"
                             state={{ origem: "/login" }}
                         >
-                            <p>Esqueceu?</p>
+                            <p>Esqueci a senha</p>
                         </Link>
                     </div>
 
