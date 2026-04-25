@@ -62,7 +62,7 @@ const ConteudoCadstro = () => {
         }
 
         if (/\d/.test(nome)) {
-            return "Nome inválido";
+            return "Nome não pode conter números";
         }
 
         if (nome.length < 5) {

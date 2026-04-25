@@ -6,6 +6,9 @@ import iconOfensiva from '../../../fotos/ofensiva.svg'
 import iconXp from '../../../fotos/xp.svg'
 import style from './ConteudoPerfil.module.css'
 
+
+
+
 const ConteudoPerfil = () => {
 
     // muda a foto

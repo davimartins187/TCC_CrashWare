@@ -10,14 +10,71 @@ import qrcode from '../../../fotos/qrcode.jpeg';
 
 import Style from './ConteudoInicial.module.css';
 
-const ConteudoInicial = () => {
+
+//Pego o token:
+const token = localStorage.getItemItem("token")
+
+
+
+
+const ConteudoInicial = async () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
+    //Navegação --> Permite eu levar o usuario para outras telas
+    const Navegacao = useNavigate();
+
+
     useEffect(() => {
+        //Quando a pag for acessada:
+
+        //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta)
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
         return () => window.removeEventListener('temaAtualizado', checarTema);
+
+        //Verifico se o usuario tem token
+        if (token == null)
+        {
+            //Ignora
+        }else
+        {
+            //Validação de token
+            
+            try
+            {
+                const response = await fetch("https://api-crashware.onrender.com/auth/validar_token",
+                    {
+                        method: "POST",
+                        headers: 
+                        {
+                            "Authorization": `Bearer ${token}` 
+                        }
+                    })//
+
+                if(!response.ok)
+                {
+                    const erro = await erro.json();
+                    console.log(erro.detail)
+
+                    //Ignora , Token se expirou!
+                }
+                else
+                {
+                    //Leva para a tela HOME automaticamente
+                    Navegacao("/perfil");
+                }
+                
+            }catch (error)
+            {
+                console.log(error)
+            }
+
+            //Leva para a tela HOME automaticamente
+            Navegacao("/perfil");
+        }
+
+
     }, []);
 
 

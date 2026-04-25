@@ -98,6 +98,9 @@ const ConteudoAlterarSenha = () => {
                 mensagem: 'Verificando senhas....'
         });
 
+
+        await sleep(2000)/*Faz com que espere 2 segundos*/
+
         try 
         {
             const response = await fetch("https://api-crashware.onrender.com/auth/alterar_senha",

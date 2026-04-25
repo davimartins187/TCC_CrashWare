@@ -1,4 +1,3 @@
-from os.path import defpath
 
 from fastapi import APIRouter, Depends,HTTPException
 
@@ -11,8 +10,8 @@ from models.patentes import Patente
 #Instânciando roteador
 auth = APIRouter(prefix="/auth",tags=["autenticação"])
 
-#Importando session
-from dependences import pegar_sessao
+#Importando dependencias
+from dependences import pegar_sessao , verificar_token
 
 #Importando a CRIPTOGRAFIA
 from security import criptografia
@@ -188,7 +187,6 @@ async def verificar_email(dados: EmailSchema , session = Depends(pegar_sessao)):
 @auth.post("/alterar_senha")
 async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessao)):
     usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
-
     if usuario is None:
         raise HTTPException(status_code=404, detail="Email não autenticado")
     if criptografia.verify(dados.senha, usuario.senha_hash) == True:
@@ -198,6 +196,12 @@ async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessa
         usuario.senha_hash = senha_criptografada
         session.commit()
         return {"mensagem": "Senha alterada com sucesso!"}
+
+
+@auth.post("/validar_token")
+async def validar_token(usuario = Depends(verificar_token)):
+    print(usuario)
+    return
 
 
 ##################
