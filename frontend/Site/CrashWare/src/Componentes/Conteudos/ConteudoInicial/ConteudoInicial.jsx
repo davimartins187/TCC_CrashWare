@@ -12,7 +12,7 @@ import Style from './ConteudoInicial.module.css';
 
 
 //Pego o token:
-const token = localStorage.getItemItem("token")
+const token = localStorage.getItem("token")
 
 
 
