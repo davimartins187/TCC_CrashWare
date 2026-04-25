@@ -156,8 +156,8 @@ const ConteudoLogin = () => {
                 localStorage.setItem("refresh_token", refresh_token)
 
                 //Caso eu queira pegar o token
-                //const token = localStorage.getItemItem("token")
-                //const refresh_token = localStorage.getItemItem("refresh_token")
+                //const token = localStorage.getItem("token")
+                //const refresh_token = localStorage.getItem("refresh_token")
 
                 //Aqui envia para a tela de HOME:
                 Navegacao("/perfil");

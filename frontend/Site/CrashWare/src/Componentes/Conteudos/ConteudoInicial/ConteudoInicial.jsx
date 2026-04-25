@@ -5,7 +5,7 @@ import FMenina_escuro from '../../../fotos/escuro/menina_estudando.png';
 import FMenina from '../../../fotos/claro/menina_estudando.png';
 import { BotoesApp, BotoesForm } from '../../Botoes';
 import { Cards } from '../../Cards';
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import qrcode from '../../../fotos/qrcode.jpeg';
 
 import Style from './ConteudoInicial.module.css';
