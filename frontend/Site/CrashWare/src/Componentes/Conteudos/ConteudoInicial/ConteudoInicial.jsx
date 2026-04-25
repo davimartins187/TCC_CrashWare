@@ -17,7 +17,7 @@ const token = localStorage.getItemItem("token")
 
 
 
-const ConteudoInicial = async () => {
+const ConteudoInicial = () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
@@ -34,46 +34,50 @@ const ConteudoInicial = async () => {
         return () => window.removeEventListener('temaAtualizado', checarTema);
 
         //Verifico se o usuario tem token
-        if (token == null)
+        const VerificarToken = async () =>
         {
-            //Ignora
-        }else
-        {
-            //Validação de token
-            
-            try
+            if (token == null)
+            {   
+                //Ignora
+            }else
             {
-                const response = await fetch("https://api-crashware.onrender.com/auth/validar_token",
-                    {
-                        method: "POST",
-                        headers: 
-                        {
-                            "Authorization": `Bearer ${token}` 
-                        }
-                    })//
-
-                if(!response.ok)
-                {
-                    const erro = await erro.json();
-                    console.log(erro.detail)
-
-                    //Ignora , Token se expirou!
-                }
-                else
-                {
-                    //Leva para a tela HOME automaticamente
-                    Navegacao("/perfil");
-                }
+                //Validação de token
                 
-            }catch (error)
-            {
-                console.log(error)
+                try
+                {
+                    const response = await fetch("https://api-crashware.onrender.com/auth/validar_token",
+                        {
+                            method: "POST",
+                            headers: 
+                            {
+                                "Authorization": `Bearer ${token}` 
+                            }
+                        })//
+
+                    if(!response.ok)
+                    {
+                        const erro = await erro.json();
+                        console.log(erro.detail)
+
+                        //Ignora , Token se expirou!
+                    }
+                    else
+                    {
+                        //Leva para a tela HOME automaticamente
+                        Navegacao("/perfil");
+                    }
+                    
+                }catch (error)
+                {
+                    console.log(error)
+                }
+
+                //Leva para a tela HOME automaticamente
+                Navegacao("/perfil");
             }
-
-            //Leva para a tela HOME automaticamente
-            Navegacao("/perfil");
-        }
-
+            }
+        
+        VerificarToken()
 
     }, []);
 
