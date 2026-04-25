@@ -1,0 +1,118 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-secundario);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.main h1 {
+    text-align: center;
+    color: var(--texto-principal);
+    font-size: 26px;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+.secao {
+    margin-bottom: 30px;
+}
+
+.secao h2 {
+    color: var(--texto-principal);
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-bottom: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 14px 0px;
+    background-color: var(--bg-principal);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.527);
+    cursor: pointer;
+}
+
+.item:hover {
+    transform: scale(1.03);
+}
+
+.itemTexto p {
+    color: var(--texto-principal);
+    font-size: 14px;
+}
+
+.itemTexto span {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.ativo {
+    border-left: 3px solid var(--cor-primaria);
+}
+
+.check {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Toggle switch */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: var(--bg-secundario);
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle input:checked + .slider {
+    background-color: var(--cor-primaria);
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(22px);
+}

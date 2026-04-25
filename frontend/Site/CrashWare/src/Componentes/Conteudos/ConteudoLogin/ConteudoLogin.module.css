@@ -30,7 +30,7 @@
 .container h1 {
   color: var(--cor-primaria);
   font-size: clamp(2rem, 5vw, 3rem);
-  font-family: "Montserrat", sans-serif;
+
   margin-bottom: 20px;
   text-shadow: 1px 1px 20px var(--cor-primaria-hover);
 }

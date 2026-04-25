@@ -1,11 +1,12 @@
 import Style from "./ConteudoAcessibilidade.module.css";
+import { useState } from 'react';
 
 const ConteudoAcessibilidade = () => {
     return(
         <>
-            <h1 className={Style.h1}>dsadsa</h1>
+        
         </>
     );
 };
 
-export { ConteudoAcessibilidade }
+export { ConteudoAcessibilidade };

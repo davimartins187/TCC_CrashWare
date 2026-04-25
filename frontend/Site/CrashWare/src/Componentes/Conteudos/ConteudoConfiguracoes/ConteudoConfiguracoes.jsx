@@ -54,24 +54,28 @@ const ConteudoConfiguracoes = () => {
     ];
 
     return (
-        <main className={Style.main}>
-            <div className={Style.barraLateral}>
-                <div className={Style.itensBarraLateral}>
-                    {conteudosBarraLateral.map((item) => (
-                        <ItemBarraLateral
-                            key={item.id}
-                            descricao={item.descricao}
-                            img={item.img}
-                            onClick={() => setTelaSelecionada(item.carregar)}
-                        />
-                    ))}
-                </div>
+        <>
+            <div className={Style.separarConteudos}>
+                <main className={Style.main}>
+                    <div className={Style.barraLateral}>
+                        <div className={Style.itensBarraLateral}>
+                            {conteudosBarraLateral.map((item) => (
+                                <ItemBarraLateral
+                                    key={item.id}
+                                    descricao={item.descricao}
+                                    img={item.img}
+                                    onClick={() => setTelaSelecionada(item.carregar)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </main>
+                    <div className={Style.Conteudos}>
+                        {renderizarConteudo(telaSelecionada)}
+                    </div>
             </div>
 
-            <div className={Style.Conteudos}>
-                {renderizarConteudo(telaSelecionada)}
-            </div>
-        </main>
+        </>
     );
 };
 

@@ -4,13 +4,15 @@
     box-sizing: border-box;
 }
 
+.separarConteudos{
+    display: flex;
+}
+
 .main {
     background-color: var(--bg-principal);
     width: 22vw;
     height: 92vh;
-    display: flex;
-    flex-direction: row;
-    margin: 0px;
+    margin: 0;
 }
 
 .barraLateral {
@@ -30,24 +32,28 @@
 .itemBarraLateral {
     display: flex;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
+
+    width: 100%;
 }
 
 .itemBarraLateral:hover {
-    transform: rotate(2deg) scale(1.04) translateY(-2px);
+    transform: rotate(1.2deg) scale(1.04) translateY(-2px);
 }
 
 .itemBarraLateral img {
-    width: 20px;
+    width: 16px;
     text-align: center;
     margin-bottom: 10px;
 }
 
 .itemBarraLateral span {
     color: var(--texto-principal);
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 700;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .ativo {
@@ -59,6 +65,12 @@
 }
 
 .Conteudos {
-    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-self: center;
+    margin: auto;
+
+    width: 60%;
     height: 100%;
+    overflow-y: auto;
 }
