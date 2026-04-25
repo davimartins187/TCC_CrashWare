@@ -72,8 +72,7 @@ const ConteudoInicial = () => {
                     console.log(error)
                 }
 
-                //Leva para a tela HOME automaticamente
-                Navegacao("/perfil");
+                alert("porque nao funciona???")
             }
             }
         
