@@ -18,8 +18,6 @@ const token = localStorage.getItem("token")
 const refresh_token = localStorage.getItem("refresh_token")
 
 
-
-
 const ConteudoInicial = () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
@@ -30,6 +28,8 @@ const ConteudoInicial = () => {
 
     useEffect(() => {
         //Quando a pag for carregada:
+
+        alert(token)
 
         //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta)
         const checarTema = (e) => setTema(e.detail);
@@ -74,15 +74,14 @@ const ConteudoInicial = () => {
                                     "Authorization": `Bearer ${refresh_token}` 
                                 }
                             })//
-                        
 
                             if(!response.ok)
                             {
                                 //Ignora , refresh_token se expirou!
                             }  
                             else
-                            {
-                                const dados = await response.json();
+                            {   
+                                const dados = await response_refresh.json();
 
                                 const id = dados.id
 

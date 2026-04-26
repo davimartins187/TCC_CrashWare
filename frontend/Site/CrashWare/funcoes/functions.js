@@ -13,6 +13,10 @@ export function SairDaConta(Navegacao){
      //Deleto o token do LocalStorage
     localStorage.removeItem("token");
 
+    //Deleto o refresh_token do LocalStorage
+    localStorage.removeItem("refresh_token");
+
+
     //Deleto o ID do LocalStorage
     localStorage.removeItem("id");
 
