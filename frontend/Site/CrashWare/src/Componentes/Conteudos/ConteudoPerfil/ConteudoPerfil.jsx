@@ -35,7 +35,7 @@ const ConteudoPerfil = () => {
 
     const SairDaConta = () =>
     {
-        localStorage.setItem("token", null)
+        localStorage.setItem("token", "null")
         Navegacao("/")
     }
 
