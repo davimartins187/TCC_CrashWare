@@ -78,6 +78,7 @@ const ConteudoInicial = () => {
         
         VerificarToken()
 
+        //
         return () => window.removeEventListener('temaAtualizado', checarTema);
     }, []);
 

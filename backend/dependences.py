@@ -41,7 +41,7 @@ async def pegar_token(authorization: str = Header(None)):
 #Função que verifica se o token é valido
 async def verificar_token (token = Depends(pegar_token), session = Depends(pegar_sessao)):
     try:
-        info = jwt.encode(token , SECRET_KEY, algorithm=ALGORITIMO)
+        info = jwt.decode(token , SECRET_KEY, algorithm=ALGORITIMO)
         id_usuario = int(info["sub"])
         validade = datetime.fromtimestamp(info["exp"], tz=timezone.utc)
     except JWTError as ERRO:
