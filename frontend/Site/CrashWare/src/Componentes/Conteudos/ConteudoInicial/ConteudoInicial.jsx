@@ -5,18 +5,80 @@ import FMenina_escuro from '../../../fotos/escuro/menina_estudando.png';
 import FMenina from '../../../fotos/claro/menina_estudando.png';
 import { BotoesApp, BotoesForm } from '../../Botoes';
 import { Cards } from '../../Cards';
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import qrcode from '../../../fotos/qrcode.jpeg';
 
 import Style from './ConteudoInicial.module.css';
+
+
+//Pego o token:
+const token = localStorage.getItem("token")
+
+
+
 
 const ConteudoInicial = () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
+    //Navegação --> Permite eu levar o usuario para outras telas
+    const Navegacao = useNavigate();
+
+
     useEffect(() => {
+        //Quando a pag for acessada:
+
+        //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta)
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
+        
+
+        //Verifico se o usuario tem token
+        const VerificarToken = async () =>
+        {
+            if (token == null)
+            {   
+                //Ignora
+            }else
+            {
+                //Validação de token
+                
+                try
+                {
+                    const response = await fetch("https://api-crashware.onrender.com/auth/verificar_token",
+                        {
+                            method: "POST",
+                            headers: 
+                            {
+                                "Authorization": `Bearer ${token}` 
+                            }
+                        })//
+
+                    if(!response.ok)
+                    {
+                        const erro = await response.json();
+                        console.log(erro.detail)
+
+                        //Ignora , Token se expirou!
+                    }
+                    else
+                    {
+                        //Leva para a tela HOME automaticamente
+                        Navegacao("/perfil");
+                    }
+                    
+                }catch (error)
+                {
+                    console.log(error)
+                }
+
+                
+            }
+        }
+        
+        VerificarToken()
+
+        //
         return () => window.removeEventListener('temaAtualizado', checarTema);
     }, []);
 

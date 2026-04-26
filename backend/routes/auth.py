@@ -1,4 +1,3 @@
-from os.path import defpath
 
 from fastapi import APIRouter, Depends,HTTPException
 
@@ -11,8 +10,8 @@ from models.patentes import Patente
 #Instânciando roteador
 auth = APIRouter(prefix="/auth",tags=["autenticação"])
 
-#Importando session
-from dependences import pegar_sessao
+#Importando dependencias
+from dependences import pegar_sessao , pegar_token
 
 #Importando a CRIPTOGRAFIA
 from security import criptografia
@@ -71,7 +70,7 @@ def enviar_email(codigo, destinario):
 
     msg = email.message.Message()
     msg['Subject'] = "Verificação de e-mail - CrashWare"  # Assunto/Titulo do email
-    msg['From'] = 'plataformacrashware@gmail.com'  #que vai enviar a mensagem
+    msg['From'] = 'plataformacrashware@gmail.com'  #email que vai enviar a mensagem
     msg['To'] = f'{destinario}'  # Email que vai receber a mensagem
     password = f'{PASSWORD_EMAIL}'  # Senha do remetente.
     msg.add_header('Content-Type', 'text/html')
@@ -188,7 +187,6 @@ async def verificar_email(dados: EmailSchema , session = Depends(pegar_sessao)):
 @auth.post("/alterar_senha")
 async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessao)):
     usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
-
     if usuario is None:
         raise HTTPException(status_code=404, detail="Email não autenticado")
     if criptografia.verify(dados.senha, usuario.senha_hash) == True:
@@ -198,6 +196,23 @@ async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessa
         usuario.senha_hash = senha_criptografada
         session.commit()
         return {"mensagem": "Senha alterada com sucesso!"}
+
+
+##Rota de verificaçãod e token
+@auth.post("/verificar_token")
+async def verificar_token (token = Depends(pegar_token), session = Depends(pegar_sessao)):
+    try:
+        info = jwt.decode(token , SECRET_KEY,algorithms = ALGORITIMO)
+        id_usuario = int(info["sub"])
+        validade = datetime.fromtimestamp(info["exp"], tz=timezone.utc)
+    except JWTError as ERRO:
+        print(ERRO)
+        raise HTTPException(status_code=401, detail="Acesso Negado, Token expirado!")
+    ####
+    usuario = session.query(Usuarios).filter(Usuarios.id_usuario == id_usuario).first()
+    if not usuario:
+        raise HTTPException(status_code=401, detail="Acesso inválido")
+    return usuario
 
 
 ##################

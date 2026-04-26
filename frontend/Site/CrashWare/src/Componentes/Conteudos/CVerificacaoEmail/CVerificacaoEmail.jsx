@@ -5,6 +5,9 @@ import { BotoesForm } from "../../Botoes";
 import style from './CVerificacaoEmail.module.css'
 import { PopUp } from '../../pop-up';
 
+//Importando sleep
+import { sleep } from "../../../../funcoes/functions"
+
 const CVerificacaoEmail = () => {
 
     //useState/variaveis
@@ -129,8 +132,8 @@ const CVerificacaoEmail = () => {
                 
                 //  exibi um popup de erro
                 setPopup({
-                    tipo: 'erro',
-                    titulo: 'Email não encontrado',
+                    tipo: 'aviso',
+                    titulo: '404',
                     mensagem: erro.detail
                 });
             } else {
@@ -138,15 +141,20 @@ const CVerificacaoEmail = () => {
                 //Exibi um popup de sucesso
                  setPopup({
                     tipo: 'sucesso',
-                    titulo: 'Código reenviado',
-                    mensagem: 'Enviamos para seu email um código novo..'
+                    titulo: 'Código Enviado',
+                    mensagem: 'Enviamos para seu email um código novo...'
                 });
 
             }
 
         } catch (error) {
-            console.log(error);
-            alert("Erro ao reenviar código");
+            console.log(error)
+            setPopup({
+                tipo: 'erro',
+                titulo: 'Sem conexão',
+                mensagem: 'Não foi possível conectar ao servidor.'
+            });
+            
         } finally {
             setLoading(false);
         }
@@ -155,6 +163,17 @@ const CVerificacaoEmail = () => {
     }
 
     const handleVericarEmail = async () => {
+
+        //  exibi um popup de aviso
+                setPopup({
+                    tipo: 'aviso',
+                    titulo: 'Verificação de código',
+                    mensagem: 'Estamos verificando o código...'
+        });
+
+        await sleep(3000)  /*-> Faz com que espere 3 segundos*/
+
+
         try {
             const response = await fetch(
                 "https://api-crashware.onrender.com/auth/verificar_codigo",
@@ -174,12 +193,20 @@ const CVerificacaoEmail = () => {
 
                 const erroCodigo = await response.json()
                 setPopup({
-                    tipo: 'erro',
-                    titulo: 'ERRO',
+                    tipo: 'aviso',
+                    titulo: '⚠️',
                     mensagem: erroCodigo.detail
                 });
 
             } else {
+
+                setPopup({
+                    tipo: 'sucesso',
+                    titulo: 'Emal Verificado!',
+                    mensagem: 'Estamos te redirecionando...'
+                });
+
+                await sleep(3000)  /*-> Faz que espere 3 segundos*/
 
                 if(rec_senha == "false"){
                     setPodeNavegar(true)
@@ -201,6 +228,12 @@ const CVerificacaoEmail = () => {
 
         } catch (error) {
             console.log("Erro de conexão:", error);
+
+            setPopup({
+                tipo: 'erro',
+                titulo: 'Sem conexão',
+                mensagem: 'Não foi possível conectar ao servidor.'
+            });
         }
     };
 
@@ -219,7 +252,7 @@ const CVerificacaoEmail = () => {
             {mostrarModal && (
                 <div className={style.modalOverlay}>
                     <div className={style.modal}>
-                        <h4>Tem certeza que deseja sair? O código será perdido e poderá surgir erros no cadastro.</h4>
+                        <h4>Tem certeza que deseja sair? O processo pode ser perdido.</h4>
                         <BotoesForm onClick={() => {
                             setMostrarModal(false);
                             setPodeNavegar(true);
