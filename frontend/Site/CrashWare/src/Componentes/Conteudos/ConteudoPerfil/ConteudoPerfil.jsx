@@ -7,6 +7,9 @@ import iconXp from '../../../fotos/xp.svg'
 import style from './ConteudoPerfil.module.css'
 import { Link , useNavigate } from "react-router-dom";
 
+//Funcão de Sair da Conta
+import { SairDaConta } from '../../../../funcoes/functions'
+
 
 
 
@@ -33,12 +36,7 @@ const ConteudoPerfil = () => {
     // }, [])
 
 
-    const SairDaConta = () =>
-    {
-        //Deleto o token do LocalStorage
-        localStorage.removeItem("token");
-        Navegacao("/")
-    }
+
 
     return (
         <div className={style.corpo}>
@@ -116,7 +114,7 @@ const ConteudoPerfil = () => {
                     {/* Sair da conta , depois vc troca isso gabriel ou davison */}
                     <button
                         type="button"
-                        onClick={SairDaConta}
+                        onClick={() => SairDaConta(Navegacao)}
                     >
                         Sair da conta 🚪
                     </button>

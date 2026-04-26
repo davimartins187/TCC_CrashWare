@@ -56,13 +56,19 @@ const ConteudoInicial = () => {
 
                     if(!response.ok)
                     {
-                        const erro = await response.json();
-                        console.log(erro.detail)
+                        //const erro = await response.json();
+                        //console.log(erro.detail)
 
                         //Ignora , Token se expirou!
                     }
                     else
                     {
+                        
+                        const id = await response.json();
+
+                        //Guardo o ID do user
+                        localStorage.setItem("id",id)
+
                         //Leva para a tela HOME automaticamente
                         Navegacao("/perfil");
                     }
