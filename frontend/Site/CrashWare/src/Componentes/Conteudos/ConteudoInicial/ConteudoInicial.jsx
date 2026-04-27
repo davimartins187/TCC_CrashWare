@@ -29,7 +29,7 @@ const ConteudoInicial = () => {
     useEffect(() => {
         //Quando a pag for carregada:
 
-        alert(token)
+        //alert(token)
 
         //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta)
         const checarTema = (e) => setTema(e.detail);
