@@ -14,6 +14,9 @@ import style from './ConteudoCadastro.module.css';
 //Importando sleep
 import { sleep } from "../../../../funcoes/functions"
 
+//Importando classe api
+import { Api } from "../../../../funcoes/functions"
+
 const ConteudoCadstro = () => {
 
     const [nome, setNome] = useState("");
@@ -54,112 +57,14 @@ const ConteudoCadstro = () => {
         ? (isClaro ? verSenha_claro : verSenha_escuro)
         : (isClaro ? esconderSenha_claro : esconderSenha_escuro);
 
-    //  VALIDAÇÃO DIRETA (retorna só 1 erro)
-    const validarCampos = () => {
+    
 
-        if (!nome.trim()) {
-            return "Preencha o nome";
-        }
-
-        if (/\d/.test(nome)) {
-            return "Nome não pode conter números";
-        }
-
-        if (nome.length < 5) {
-            return "Nome deve ter pelo menos 5 caracteres";
-        }
-
-        if (!email.trim()) {
-            return "Preencha o e-mail";
-        }
-
-        if (!email.includes("@") || !email.includes(".")) {
-            return "E-mail inválido";
-        }
-
-        if (senha.length < 8) {
-            return "Senha deve ter pelo menos 8 caracteres";
-        }
-
-        if (senha.includes(" ")) {
-            return "Senha não pode conter espaços";
-        }
-
-        if (senha !== confirmarSenha) {
-            return "As senhas não coincidem";
-        }
-
-        return null;
-    };
-
-    //Função de Cadastro
-    const handleCadastro = async () => {
-
-        
-        const erro = validarCampos();
-
-        if (erro) {
-            setPopup({
-                tipo: 'aviso',
-                titulo: 'Erro no formulário',
-                mensagem: erro
-            });
-            return;
-        }
-
-        setPopup({
-            tipo: 'sucesso',
-            titulo: 'Verificando informações...',
-            mensagem: 'Estamos verificando seus dados'
-        });
-
-
-        await sleep(2000) /*-> Faz que espere 2 segundos*/
-
-        try {
-            const response = await fetch("https://api-crashware.onrender.com/auth/cadastro", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    nome_usuario: nome.trim(),
-                    email: email.replace(/\s/g, "").toLowerCase(),
-                    senha: senha
-                })
-            });
-
-            if (!response.ok) {
-                const erro = await response.json();
-
-                setPopup({
-                    tipo: 'aviso',
-                    titulo: 'Email',
-                    mensagem: erro.detail 
-                });
-
-                return;
-            }
-
-            const dados = await response.json();
-
-            Navegacao("/verificacao-email", {
-                state: {
-                    mensagem: dados.mensagem,
-                    nome: nome.toUpperCase(),
-                    email: email.replace(/\s/g, "").toLowerCase(),
-                    origem: "/cadastro"
-                }
-            });
-
-        } catch (error) {
-            console.log("Erro:", error);
-
-            setPopup({
-                tipo: 'erro',
-                titulo: 'Sem conexão',
-                mensagem: 'Não foi possível conectar ao servidor.'
-            });
-        }
-    };
+    const handleCadastro = async () => 
+    {
+        const cadastro = new Api(nome,email,senha,popup,Navegacao);
+        cadastro.cadastro()
+    }
+   
 
     return (
         <>
