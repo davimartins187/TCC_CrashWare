@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CampoTexto } from "../../CampoTexto";
 import { BotoesForm, TIPO_BOTAO } from "../../Botoes";
+
+//popup
 import { PopUp } from "../../pop-up";
 
 import esconderSenha_claro from '../../../fotos/claro/nao_pode_ver_senha.svg';
@@ -167,7 +169,7 @@ const ConteudoLogin = () => {
             console.log("Erro:", error);
             
             setPopup({
-                tipo: 'erro',
+                tipo: 'e rro',
                 titulo: 'Sem conexão',
                 mensagem: 'Não foi possível conectar ao servidor.'
             });
