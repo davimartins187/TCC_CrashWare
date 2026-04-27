@@ -7,6 +7,7 @@ import { PopUp } from "../../pop-up";
 
 
 import style from './ConteudoRecSenha.module.css'
+import { Api } from "../../../../funcoes/functions";
 const ConteudoRecSenha = () => {
 
     //Variavel do email
@@ -31,86 +32,16 @@ const ConteudoRecSenha = () => {
         }
     }, []);
 
-    // ✅ VALIDAÇÃO DIRETA
-    const validarCampos = () => {
-
-        if (!email.trim()) {
-            return "Preencha o e-mail";
-        }
-
-        if (!email.includes("@") || !email.includes(".")) {
-            return "E-mail inválido";
-        }
-
-
-        return null;
-    };
 
     //Enviar para verificação de Email
-    const EnviarVerific = async () => {
+    const VerificarEmail = async () => {
+        //Instâncio o objeto 
+        const usuario = new Api(email,setPopup,Navegacao);
 
-        const erro = validarCampos()
+        //Chamo o método
+        usuario.Verificar_Email(email,setPopup,Navegacao)
 
-        if (erro)
-        {
-            setPopup({
-                tipo: 'aviso',
-                titulo: 'Erro no login',
-                mensagem: erro
-            });
-            return;
-        }else
-        {
-            setPopup({
-                tipo: 'sucesso',
-                titulo: 'Verificação',
-                mensagem: 'Verificando Email..'
-            });
-
-            //Envio os dados para a API(na rota de login)
-            try {
-                const response = await fetch("https://api-crashware.onrender.com/auth/verificar_email", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: email.replace(/\s/g, "").toLowerCase()
-                    })
-            });//Parâmetros
-
-                // Caso email não tiver autenticado
-                if (!response.ok)
-                {
-                    const erro = await response.json()
-
-                    setPopup({
-                    tipo: 'erro',
-                    titulo: erro.detail
-                    });
-
-                }
-                else{
-                    // Sobrescreve valor no localStorage para controle de navegação
-                    localStorage.setItem("rec_senha", true)
-
-                    //Levo para a tela de verificar codigo
-                    Navegacao("/verificacao-email", {
-                    state: {
-                        email: email.replace(/\s/g, "").toLowerCase(),
-                        origem: "/recuperar-senha" //origem da rota
-                    } //State
-                    } // 
-                    )  //Navegação
-                }
-        } catch (error) 
-            {
-                //Precisa colocar esse erro no lugar certo davison.
-                console.log(error);
-                return;
-            }
-        }
-}//Função
+    }//Função
 
 
     return (
@@ -135,7 +66,7 @@ const ConteudoRecSenha = () => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <BotoesForm texto="Enviar" className={style.btnEnviar}
-                onClick={EnviarVerific} //Ativa a função
+                onClick={VerificarEmail} //Ativa a função
                 />
             </div>
         </div>

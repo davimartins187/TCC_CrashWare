@@ -159,100 +159,88 @@ export class Api
             }//catch
 
     }//método cadastro
-}//classe
-
-//Métodos:
-
-//Cadastro(navegacao,popup,nome,email,senha)
-
-//  VALIDAÇÃO DIRETA (retorna só 1 erro)
 
 
 
-
+    async Verificar_Email(email,setPopup,Navegacao)
+    {
        
+        //✅ VALIDAÇÃO DIRETA
+        const validarCampos = () => {
 
-//
+        if (!email.trim()) {
+            return "Preencha o e-mail";
+        }
 
+        if (!email.includes("@") || !email.includes(".")) {
+            return "E-mail inválido";
+        }
 
+        return null;
+        };
+        const erro = validarCampos()
 
-// //Verificar-Email(email,popup,navegacao)
-// // ✅ VALIDAÇÃO DIRETA
-// const validarCampos = () => {
+        if (erro)
+        {
+            setPopup({
+                tipo: 'aviso',
+                titulo: 'Erro no login',
+                mensagem: erro
+            });
+            return;
+        }else
+        {
+            setPopup({
+                tipo: 'sucesso',
+                titulo: 'Verificação',
+                mensagem: 'Verificando Email..'
+            });
 
-// if (!email.trim()) {
-//     return "Preencha o e-mail";
-// }
+            //Envio os dados para a API(na rota de verificar email)
+            try {
+                const response = await fetch("https://api-crashware.onrender.com/auth/verificar_email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email.replace(/\s/g, "").toLowerCase()
+                    })
+            });//Parâmetros
 
-// if (!email.includes("@") || !email.includes(".")) {
-//     return "E-mail inválido";
-// }
+                // Caso email não tiver autenticado
+                if (!response.ok)
+                {
+                    const erro = await response.json()
 
+                    setPopup({
+                    tipo: 'erro',
+                    titulo: erro.detail
+                    });
 
-// return null;
-// };
-// const erro = validarCampos()
+                }
+                else{
+                    // Sobrescreve valor no localStorage para controle de navegação
+                    localStorage.setItem("rec_senha", true)
 
-// if (erro)
-// {
-//     setPopup({
-//         tipo: 'aviso',
-//         titulo: 'Erro no login',
-//         mensagem: erro
-//     });
-//     return;
-// }else
-// {
-//     setPopup({
-//         tipo: 'sucesso',
-//         titulo: 'Verificação',
-//         mensagem: 'Verificando Email..'
-//     });
-
-//     //Envio os dados para a API(na rota de login)
-//     try {
-//         const response = await fetch("https://api-crashware.onrender.com/auth/verificar_email", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify({
-//                 email: email.replace(/\s/g, "").toLowerCase()
-//             })
-//     });//Parâmetros
-
-//         // Caso email não tiver autenticado
-//         if (!response.ok)
-//         {
-//             const erro = await response.json()
-
-//             setPopup({
-//             tipo: 'erro',
-//             titulo: erro.detail
-//             });
-
-//         }
-//         else{
-//             // Sobrescreve valor no localStorage para controle de navegação
-//             localStorage.setItem("rec_senha", true)
-
-//             //Levo para a tela de verificar codigo
-//             Navegacao("/verificacao-email", {
-//             state: {
-//                 email: email.replace(/\s/g, "").toLowerCase(),
-//                 origem: "/recuperar-senha" //origem da rota
-//             } //State
-//             } // 
-//             )  //Navegação
-//         }
-// } catch (error) 
-//     {
-//         //Precisa colocar esse erro no lugar certo davison.
-//         console.log(error);
-//         return;
-//     }
-// }
-
+                    //Levo para a tela de verificar codigo
+                    Navegacao("/verificacao-email", {
+                    state: {
+                        email: email.replace(/\s/g, "").toLowerCase(),
+                        origem: "/recuperar-senha" //origem da rota
+                    } //State
+                    } // 
+                    )  //Navegação
+                }
+        } catch (error) 
+            {
+                //Precisa colocar esse erro no lugar certo davison.
+                console.log(error);
+                return;
+            }
+        }
+    }
+}//classe
 
 // //Verificar-codigo(popup,email,codigo,navegacao):
 

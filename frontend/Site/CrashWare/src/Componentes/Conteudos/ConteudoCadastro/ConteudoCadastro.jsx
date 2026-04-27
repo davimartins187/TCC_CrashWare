@@ -61,7 +61,10 @@ const ConteudoCadstro = () => {
 
     const handleCadastro = async () => 
     {
+        //Instâncio o objeto 
         const usuario = new Api(nome,email,senha,setPopup,Navegacao);
+
+        //Chamo o método
         usuario.cadastrar(nome,email,senha,confirmarSenha,setPopup,Navegacao);
     }
    
