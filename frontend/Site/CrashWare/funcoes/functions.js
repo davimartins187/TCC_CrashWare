@@ -247,7 +247,7 @@ export class Api
     }
 
 
-    async Verificar_Codigo(email,codigo,setPopup,Navegacao)
+    async Verificar_Codigo(email,codigo,setPopup,setPodeNavegar,Navegacao)
     {
         //  exibi um popup de aviso
         setPopup({
