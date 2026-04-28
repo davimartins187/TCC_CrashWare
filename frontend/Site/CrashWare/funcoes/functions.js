@@ -1,6 +1,10 @@
-//Pego o token:
+//Pego o Variáveis do localStorage:
+//Tokens
 const token = localStorage.getItem("token")
 const token_boolean = localStorage.getItem("token_boolean")
+
+//Controle de navegação
+const rec_senha = localStorage.getItem("rec_senha")
 
 /*Sleep*/
 export function sleep(ms) {
@@ -215,7 +219,8 @@ export class Api
 
                     setPopup({
                     tipo: 'erro',
-                    titulo: erro.detail
+                    titulo: 'Email',
+                    mensagem: erro.detail
                     });
 
                 }
@@ -240,82 +245,84 @@ export class Api
             }
         }
     }
+
+
+    async Verificar_Codigo(email,codigo,setPopup,Navegacao)
+    {
+        //  exibi um popup de aviso
+        setPopup({
+            tipo: 'aviso',
+            titulo: 'Verificação de código',
+            mensagem: 'Estamos verificando o código...'
+        });
+
+        await sleep(3000)  /*-> Faz com que espere 3 segundos*/
+
+        //Requsição
+            try {
+                const response = await fetch(
+                    "https://api-crashware.onrender.com/auth/verificar_codigo",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            codigo: codigo.toString()
+                        })
+                    }
+                );
+
+                if (response.ok === false) {
+
+                    const erroCodigo = await response.json()
+                    setPopup({
+                        tipo: 'aviso',
+                        titulo: '⚠️',
+                        mensagem: erroCodigo.detail
+                    });
+
+                } else {
+
+                    setPopup({
+                        tipo: 'sucesso',
+                        titulo: 'Emal Verificado!',
+                        mensagem: 'Estamos te redirecionando...'
+                    });
+
+                    await sleep(3000)  /*-> Faz que espere 3 segundos*/
+
+                    if(rec_senha == "false"){
+                        setPodeNavegar(true)
+                        Navegacao("/login")
+                        // , { replace: true }
+                    }else
+                    {
+                        //Leva para a pag de rec_senha
+                        setPodeNavegar(true)
+                        Navegacao("/alterar-senha",
+                        {
+                        state:{
+                            email: email.replace(/\s/g, "").toLowerCase()
+                        }//state
+                        })
+                    }
+
+                }
+
+            } catch (error) {
+                console.log("Erro de conexão:", error);
+
+                setPopup({
+                    tipo: 'erro',
+                    titulo: 'Sem conexão',
+                    mensagem: 'Não foi possível conectar ao servidor.'
+                });
+        }
+    }
+
 }//classe
-
-// //Verificar-codigo(popup,email,codigo,navegacao):
-
-// //  exibi um popup de aviso
-// setPopup({
-//     tipo: 'aviso',
-//     titulo: 'Verificação de código',
-//     mensagem: 'Estamos verificando o código...'
-// });
-
-// await sleep(3000)  /*-> Faz com que espere 3 segundos*/
-
-// //Requsição
-//     try {
-//         const response = await fetch(
-//             "https://api-crashware.onrender.com/auth/verificar_codigo",
-//             {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 },
-//                 body: JSON.stringify({
-//                     email: email,
-//                     codigo: codigo.toString()
-//                 })
-//             }
-//         );
-
-//         if (response.ok === false) {
-
-//             const erroCodigo = await response.json()
-//             setPopup({
-//                 tipo: 'aviso',
-//                 titulo: '⚠️',
-//                 mensagem: erroCodigo.detail
-//             });
-
-//         } else {
-
-//             setPopup({
-//                 tipo: 'sucesso',
-//                 titulo: 'Emal Verificado!',
-//                 mensagem: 'Estamos te redirecionando...'
-//             });
-
-//             await sleep(3000)  /*-> Faz que espere 3 segundos*/
-
-//             if(rec_senha == "false"){
-//                 setPodeNavegar(true)
-//                 Navegacao("/login")
-//                 // , { replace: true }
-//             }else
-//             {
-//                 //Leva para a pag de rec_senha
-//                 setPodeNavegar(true)
-//                 Navegacao("/alterar-senha",
-//                 {
-//                 state:{
-//                     email: email.replace(/\s/g, "").toLowerCase()
-//                 }//state
-//                 })
-//             }
-
-//         }
-
-//     } catch (error) {
-//         console.log("Erro de conexão:", error);
-
-//         setPopup({
-//             tipo: 'erro',
-//             titulo: 'Sem conexão',
-//             mensagem: 'Não foi possível conectar ao servidor.'
-//         });
-// }
-
 
 // //ENVIAR_CODIGO(loading,timer,email,popup)
 // if (loading || timer > 0) return;

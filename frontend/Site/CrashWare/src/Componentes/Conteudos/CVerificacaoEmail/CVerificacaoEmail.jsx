@@ -6,7 +6,7 @@ import style from './CVerificacaoEmail.module.css'
 import { PopUp } from '../../pop-up';
 
 //Importando sleep
-import { sleep } from "../../../../funcoes/functions"
+import { Api, sleep } from "../../../../funcoes/functions"
 
 const CVerificacaoEmail = () => {
 
@@ -36,8 +36,7 @@ const CVerificacaoEmail = () => {
     //Nome maiusculo
     const nomeM = nome?.toUpperCase() || "";
 
-    ////Controle de navegação
-    const rec_senha = localStorage.getItem("rec_senha")
+  
     
     //Block de navegação
     useEffect(() => {
@@ -162,80 +161,12 @@ const CVerificacaoEmail = () => {
 
     }
 
-    const handleVericarEmail = async () => {
-
-        //  exibi um popup de aviso
-                setPopup({
-                    tipo: 'aviso',
-                    titulo: 'Verificação de código',
-                    mensagem: 'Estamos verificando o código...'
-        });
-
-        await sleep(3000)  /*-> Faz com que espere 3 segundos*/
-
-
-        try {
-            const response = await fetch(
-                "https://api-crashware.onrender.com/auth/verificar_codigo",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        codigo: codigo.toString()
-                    })
-                }
-            );
-
-            if (response.ok === false) {
-
-                const erroCodigo = await response.json()
-                setPopup({
-                    tipo: 'aviso',
-                    titulo: '⚠️',
-                    mensagem: erroCodigo.detail
-                });
-
-            } else {
-
-                setPopup({
-                    tipo: 'sucesso',
-                    titulo: 'Emal Verificado!',
-                    mensagem: 'Estamos te redirecionando...'
-                });
-
-                await sleep(3000)  /*-> Faz que espere 3 segundos*/
-
-                if(rec_senha == "false"){
-                    setPodeNavegar(true)
-                    Navegacao("/login")
-                    // , { replace: true }
-                }else
-                {
-                    //Leva para a pag de rec_senha
-                    setPodeNavegar(true)
-                    Navegacao("/alterar-senha",
-                    {
-                    state:{
-                        email: email.replace(/\s/g, "").toLowerCase()
-                    }//state
-                    })
-                }
-
-            }
-
-        } catch (error) {
-            console.log("Erro de conexão:", error);
-
-            setPopup({
-                tipo: 'erro',
-                titulo: 'Sem conexão',
-                mensagem: 'Não foi possível conectar ao servidor.'
-            });
-        }
-    };
+    const handleVericarEmail = async () => 
+    {
+        const usuario = new Api();
+        usuario.Verificar_Codigo(email,codigo,setPopup,Navegacao)
+    }
+    
 
     return (
         <>
