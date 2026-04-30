@@ -14,6 +14,8 @@ import verSenha_escuro from '../../../fotos/escuro/pode_ver_senha_claro.svg';
 import style from './ConteudoLogin.module.css';
 import { Api, sleep } from "../../../../funcoes/functions";
 
+
+
 const ConteudoLogin = () => {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -51,6 +53,7 @@ const ConteudoLogin = () => {
 
         //Chamo o método
         usuario.Logar(email,senha,setPopup,Navegacao);
+
        
     };
 

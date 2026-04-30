@@ -29,10 +29,17 @@ const ConteudoPerfil = () => {
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
 
+    //Uso useState para o react renderizar as informações
+    const [id, setId] = useState(() => localStorage.getItem("id"));
+    const [token_state, setToken] = useState(() => localStorage.getItem("token"));
+    const [refresh_tokem_state, setRefresh] = useState(() => localStorage.getItem("refresh_tokem"));
+
 
     
     useEffect(() => {
         //Quando a pag for carregada:
+
+
         //Verifico se o usuario tem token
             const VerificarToken = async () => 
             {
@@ -43,13 +50,13 @@ const ConteudoPerfil = () => {
     
                 //Vaerifico o token
                 const usuario = new Api();
-                const token_vencido = usuario.Verificar_Token(token)
+                const token_vencido = usuario.Verificar_Token(token,Navegacao,null,setToken,setRefresh,true)
     
     
                 //Verifico o Refresh Token
                 if (token_vencido == true)
                 {
-                    usuario.Verificar_Token(refresh_token)
+                    usuario.Verificar_Token(refresh_token,Navegacao,null,setRefresh,true)
                 }
             }
             VerificarToken()
@@ -142,7 +149,7 @@ const ConteudoPerfil = () => {
 
                     {/* Sair da conta , depois vc troca isso gabriel ou davison */}
                     <BotoesForm
-                        onClick={() => SairDaConta(Navegacao)}
+                        onClick={() => SairDaConta(Navegacao,setId,setToken,setRefresh)}
                         texto="Sair da conta"
                     />
 

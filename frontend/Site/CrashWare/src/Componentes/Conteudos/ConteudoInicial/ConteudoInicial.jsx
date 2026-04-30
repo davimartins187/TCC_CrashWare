@@ -12,14 +12,17 @@ import Style from './ConteudoInicial.module.css';
 import { Api } from '../../../../funcoes/functions';
 
 
-
-
 const ConteudoInicial = () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
+
+    //Uso useState para o react renderizar as informações
+    const [id_state, setId] = useState(() => localStorage.getItem("id"));
+    const [token_state, setToken] = useState(() => localStorage.getItem("token"));
+    const [refresh_tokem_state, setRefresh] = useState(() => localStorage.getItem("refresh_tokem"));
 
 
     useEffect(() => {
@@ -42,13 +45,13 @@ const ConteudoInicial = () => {
 
             //Vaerifico o token
             const usuario = new Api();
-            const token_vencido = usuario.Verificar_Token(token)
+            const token_vencido = usuario.Verificar_Token(token,Navegacao)
 
 
             //Verifico o Refresh Token
             if (token_vencido == true)
             {
-                usuario.Verificar_Token(refresh_token)
+                usuario.Verificar_Token(refresh_token,Navegacao)
             }
         }
         VerificarToken()

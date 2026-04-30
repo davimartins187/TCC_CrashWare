@@ -4,23 +4,31 @@ export function sleep(ms) {
 }
 
 //Sair da conta
-export function SairDaConta(Navegacao){
+export async function SairDaConta(Navegacao,setId,setToken,setRefresh){
 
      //Deleto o token do LocalStorage
-    localStorage.removeItem("token");
+    await localStorage.removeItem("token");
 
     //Deleto o refresh_token do LocalStorage
-    localStorage.removeItem("refresh_token");
+    await localStorage.removeItem("refresh_token");
 
 
     //Deleto o ID do LocalStorage
-    localStorage.removeItem("id");
+    await localStorage.removeItem("id");
+
+    //Faço com que o react renderize as informações
+    setToken(null);
+    setRefresh(null);
+    setId(null);
+
 
 
     //Levo para a tela inicial
-    Navegacao("/")
+    window.location.href = '/'
 
 }
+
+
        
 
 
@@ -601,13 +609,22 @@ export class Api
         }
     }//Alterar_Senha
 
-    async Verificar_Token(token)
+    async Verificar_Token(token,Navegacao,setId = null,home = null)
     {
 
         if (!token) 
+        {
+            //Verifica em qual tela esta
+            if (home != null)
+            {
+                Navegacao('/');
+                home = null
+            }else
             {
                 //Ignora
-            } else 
+            }
+        } 
+        else 
             {
                 //Validação de token
                 try {
@@ -634,10 +651,17 @@ export class Api
                         const id = dados.id
 
                         //Guardo o ID do user
-                        localStorage.setItem("id", id)
+                        await localStorage.setItem("id", id)
 
-                        //Leva para a tela HOME automaticamente
-                        Navegacao("/perfil");
+                        // setId(id); // atualiza React na hora
+
+
+                        if (home == null)
+                        {
+                            //Leva para a tela HOME automaticamente
+                            Navegacao('/perfil');
+                        }
+                     
                     }
 
                 } catch (error) {
