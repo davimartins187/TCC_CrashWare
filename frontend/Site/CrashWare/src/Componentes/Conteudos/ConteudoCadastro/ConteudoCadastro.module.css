@@ -37,17 +37,17 @@
 }
 
 .container h1 {
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 20px;
 }
 
 .container p{
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   text-align: start !important;
   left: 0;
   margin-top: 10px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 
@@ -77,7 +77,7 @@
 }
 
 .Logar {
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   font-family: "Montserrat", sans-serif !important;
   font: bold;
   font-size: 20px;

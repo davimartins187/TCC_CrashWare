@@ -7,9 +7,10 @@
   --bg-secundario: #ffffff;
   --bg-terceiro: #FFFFFF80;
 
-  --Cabecalho:rgba(255, 255, 255, 0.788);
+  --Cabecalho:#ffffffc9;
   --input-bg:#F8FAFC; 
-
+  --Carrossel: #FFFFFF4d;
+  
   --texto-principal: #FFFFFF;
   --texto-secundario: #4b5563;
 
@@ -58,8 +59,9 @@
 
 /* TEMA ESCURO */
 .Escuro {
-  --bg-principal: #0f0f0f;
+  --bg-principal: #040110;
   --bg-secundario: #1a1a1a;
+  --bg-terceiro: #ffffff4d;
 
   --texto-principal: #f5f5f5;
   --texto-secundario: #94A3B8;
@@ -77,7 +79,11 @@
 
   --borda: #334155;
 
-  --input-bg: #1e2535;
+  --Carrossel: #FFFFFF4d;
+
+  --Cabecalho:#ffffffc9;
+
+  --input-bg: #F8FAFC;
 
   --Branco: #f8fafc;
   --Vermelho: #f87171;
@@ -129,9 +135,11 @@
   --cor-contraste-bg: #23264D;
 
   --botao-editar: #18B54C;
+  --Botao-gradiente1:#7A5AD8;
+  --Botao-gradiente2:#47138B;
+  --Botao-gradiente3:#7A5AD8;
 
   --Rodape: #020c20;
-  --Cabecalho: #00001B;
 }
 
 /* Body{
@@ -139,7 +147,6 @@
 } */
 
 body{
-    background: 
-    url('/fundo_site.jpeg') no-repeat center/cover,
-    red !important;
+    background-color: 
+    var(--bg-principal);
 }

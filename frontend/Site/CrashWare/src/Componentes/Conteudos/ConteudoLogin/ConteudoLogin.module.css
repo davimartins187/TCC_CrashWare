@@ -41,17 +41,19 @@
 }
 
 .container p{
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   text-align: start !important;
   left: 0;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: none;
+  font-size: 20px;
+  bottom: none;
 }
 
 /* ===== TÍTULO ===== */
 
 .container h1 {
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   font-size: clamp(2rem, 5vw, 3rem);
   font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
@@ -115,7 +117,7 @@
 /* ===== TEXTO ===== */
 
 .Cadastrar {
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
   font-family: "Montserrat", sans-serif !important;
   font: bold;
   font-size: 20px;
@@ -138,7 +140,7 @@
   border-radius: 6px;
   margin-bottom: 30px;
 
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: var(--Branco);
 
@@ -171,7 +173,7 @@
 }
 
 .Esqueceu p{
-  color: var(--bg-secundario);
+  color: var(--texto-principal);
 }
 
 .Esqueceu a{

@@ -67,7 +67,7 @@ const ConteudoRecSenha = () => {
                         <label>
                             <CampoTexto name="opcao" value="Email" type="radio" className={style.radio}
                                 checked={opcao === "Email"}
-                                onChange={(e) => setOpcao(e.target.value)} onFocus
+                                onChange={(e) => setOpcao(e.target.value)}
                             />
                             Receber o código por email
                         </label>

@@ -15,7 +15,7 @@
     justify-self: center;
     /* padding: 0 20px 60px; */
     padding-top: 100px;
-    background-color: var(--bg-secundario);
+    background-color: var(--bg-principal);
     font-family: "Montserrat", sans-serif;
 
     /* background: linear-gradient(360deg, rgba(98, 189, 243, 0.5) 0%, rgba(102, 102, 102, 0) 100%), #3B77BE;
@@ -75,8 +75,8 @@ box-shadow: 0px 15px 0px #62BDF3; */
     width: 160px;
     height: 52px;
     border-radius: 12px;
-    box-shadow: 0px 4px 14px var(--cor-primaria);
-    color: var(--bg-principal);
+    /* box-shadow: 0px 4px 14px var(--cor-primaria); */
+    color: var(--texto-principal);
     font-size: 16px;
     font-weight: 700;
     font-family: "Montserrat", sans-serif;
@@ -88,22 +88,17 @@ box-shadow: 0px 15px 0px #62BDF3; */
     transform: scale(1.04);
     transform: translateY(-2px);
     background: var(--cor-primaria-hover);
-    box-shadow: 0px 6px 18px rgb(34,197, 94);
-    color: var(--bg-secundario);
+    color: var(--texto-principal);
 }
 
 .btnSecundario {
-    /* background: linear-gradient(9deg, var(--botao-gradiente1), var(--botao-gradiente2), var(--botao-gradiente3)) !important; */
+    background-color: var(--Carrossel) !important;
     border: 1.5px solid var(--borda) !important;
-    box-shadow: 0 0 10px var(--cor-primaria-hover) !important;
     color: var(--texto-secundario) !important;
 }
 
 .btnSecundario:hover{
-      /* background: rgba(37, 99, 235, 0.05) !important; */
-      color: var(--cor-secundaria) !important;
-      /* border: var(--cor-secundaria) !important; */
-      box-shadow: 0  0 10px var(--cor-secundaria-hover) !important;
+    color: var(--texto-principal) !important;
 }
 
 .Apresentacao_img {
