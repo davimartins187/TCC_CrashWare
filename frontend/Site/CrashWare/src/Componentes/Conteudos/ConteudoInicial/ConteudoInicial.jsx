@@ -9,7 +9,15 @@ import { Link, useNavigate } from "react-router-dom";
 import qrcode from '../../../fotos/qrcode.jpeg';
 
 import Style from './ConteudoInicial.module.css';
+import { Carrossel } from './Carrossel/Carrossel';
 import { Api } from '../../../../funcoes/functions';
+
+
+//Pego o token:
+const token = localStorage.getItem("token")
+
+//Pego o refresh_token
+const refresh_token = localStorage.getItem("refresh_token")
 
 
 const ConteudoInicial = () => {
@@ -33,7 +41,7 @@ const ConteudoInicial = () => {
 
         //alert(token)
 
-        //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta)
+        //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta) isso muda o tema, ué
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
 
@@ -74,10 +82,12 @@ const ConteudoInicial = () => {
                 <section className={Style.Apresentacao}>
 
                     <div className={Style.Apresentacao_texto}>
-                        <h3>
+                        {/* <h3>
                             Aprenda <span className={Style.hardware}>Hardware</span> e{' '}
                             <span className={Style.software}>Software</span> de forma prática e envolvente
-                        </h3>
+                        </h3> */}
+
+                        <Carrossel/> 
 
                         <div className={Style.Apresentacao_btns}>
                             <Link to="login">
@@ -96,11 +106,24 @@ const ConteudoInicial = () => {
 
                 </section>
 
+                <section className={Style.Chamada}>
+                    {/* Chamada para ação */}
+
+                        <h3>A tecnologia não é mágica, é lógica</h3>
+
+                        <div>
+                            {/* divisoria */}
+                        </div>
+
+                        <h5>Nosso guia introdutório desmistifica o que acontece por trás da tela, ensinando você a enxergar hardware e software como ferramentas de criação, não apenas consumo.</h5>
+
+                </section>
+
                 {/* ===== DIFERENCIAIS ===== */}
                 <section className={Style.Diferenciais}>
                     <div className={Style.Caixa}>
                         <h2>Nossos Diferenciais</h2>
-                        <Cards />
+                        {/* <Cards /> */}
                     </div>
                 </section>
 

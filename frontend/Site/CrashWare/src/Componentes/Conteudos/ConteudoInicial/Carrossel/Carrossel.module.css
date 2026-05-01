@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.viewport {
+    width: 21vw; /* largura visível */
+    overflow: hidden;
+}
+
+.lista {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.card {
+    min-width: 244px;
+    height: 40vh;
+    margin: 10px;
+
+    background: #6b6b6b; /* cinza */
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 20px;
+
+    color: white;
+
+    /* sombra suave */
+    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); */
+
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 13px;
+    opacity: 0.9;
+}

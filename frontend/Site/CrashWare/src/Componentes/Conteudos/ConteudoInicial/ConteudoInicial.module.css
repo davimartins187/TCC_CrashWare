@@ -7,7 +7,7 @@
 
 .MainEstilo {
     /* max-width: 1000px; */
-    width: 50%;
+    width: 100%;
     /* margin: auto; */
     display: flex;
     flex-direction: column;
@@ -16,8 +16,6 @@
     /* padding: 0 20px 60px; */
     background-color: var(--bg-secundario);
     font-family: "Montserrat", sans-serif;
-
-
 }
 
 /* ===== CORES DE DESTAQUE ===== */
@@ -38,7 +36,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    width: 80%;
+    width: 100%;
     padding: 60px 0 40px;
     /* margin-top: 130px; */
     box-shadow: 0 100px 10px -5px rgba(0, 0, 0, 0.596);  
@@ -90,16 +88,16 @@
 }
 
 .btnSecundario {
-    background: transparent !important;
+    /* background: linear-gradient(9deg, var(--botao-gradiente1), var(--botao-gradiente2), var(--botao-gradiente3)) !important; */
     border: 1.5px solid var(--borda) !important;
     box-shadow: 0 0 10px var(--cor-primaria-hover) !important;
     color: var(--texto-secundario) !important;
 }
 
 .btnSecundario:hover{
-      background: rgba(37, 99, 235, 0.05) !important;
+      /* background: rgba(37, 99, 235, 0.05) !important; */
       color: var(--cor-secundaria) !important;
-      border: var(--cor-secundaria) !important;
+      /* border: var(--cor-secundaria) !important; */
       box-shadow: 0  0 10px var(--cor-secundaria-hover) !important;
 }
 

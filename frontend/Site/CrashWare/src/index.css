@@ -3,8 +3,12 @@
 
 /* TEMA CLARO */
 .Claro {
-  --bg-principal: #f4f7f5;
+  --bg-principal: #2E73C3;
   --bg-secundario: #ffffff;
+  --bg-terceiro: #FFFFFF80;
+
+  --Cabecalho:rgba(255, 255, 255, 0.788);
+  --input-bg:#F8FAFC; 
 
   --texto-principal: #111827;
   --texto-secundario: #4b5563;
@@ -41,6 +45,14 @@
   --popup-aviso-texto: #2b6e18;
   --popup-aviso-icone-bg: #1fad51;
   --popup-aviso-icone-cor: #ffffff;
+
+  --Botao-gradiente1:#67AAF9;
+  --Botao-gradiente2:#338CE0;
+  --Botao-gradiente3:#67AAF9;
+
+  --Borda-gradiente1:#FFFFFF;
+  --Borda-gradiente2:#33333300;
+  --Borda-gradiente3:#EFEFEF;
 }
 
 
@@ -126,6 +138,6 @@
   background: linear-gradient(to right, var(--gradiente1), var(--gradiente2), var(--gradiente3));
 } */
 
-body{
+/* body{
   background-color: var(--bg-secundario);
-}
+} */

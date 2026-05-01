@@ -9,31 +9,53 @@
 /* ===== LAYOUT ===== */
 
 .corpo {
-  min-height: 88.9vh;
-  width: 80%;
+  min-height: 100vh;
+  width: 100%;
   margin: auto;
-  /* background: var(--bg-principal); */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+  background-image: url('/src/fotos/fundo_site.svg') !important;
+  background-color: var(--bg-principal);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
   width: 100%;
-  max-width: 500px;
+  height: 80%;
+  max-width: 520px;
   text-align: center;
+  border: solid 4px;
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(45deg, var(--Borda-gradiente1), var(--Borda-gradiente2), var(--Borda-gradiente3)) 1;
+  background-color: var(--bg-terceiro);
+  padding-right: 30px;
+  padding-left: 30px;
+  border-radius: 30px;
+}
+
+.container p{
+  color: var(--bg-secundario);
+  text-align: start !important;
+  left: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 /* ===== TÍTULO ===== */
 
 .container h1 {
-  color: var(--cor-primaria);
+  color: var(--bg-secundario);
   font-size: clamp(2rem, 5vw, 3rem);
 
   margin-bottom: 20px;
-  text-shadow: 1px 1px 20px var(--cor-primaria-hover);
+  /* text-shadow: 1px 1px 20px var(--cor-primaria-hover); */
 }
 
 /* ===== INPUT ===== */
@@ -57,8 +79,8 @@
 
 .inputClasse:focus {
   outline: none;
-  border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  border-color: var(--Botao-gradiente1);
+  box-shadow: 0 0 0 2px var(--Botao-gradiente3);
 }
 
 /* ===== SENHA ===== */
@@ -66,6 +88,7 @@
 .senhaWrapper {
   position: relative;
   margin-top: 15px;
+  width: 100%;
 }
 
 .senhaWrapper input {
@@ -90,25 +113,30 @@
 /* ===== TEXTO ===== */
 
 .TermosUso {
-  color: var(--texto-secundario);
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.85rem;
+  color: var(--bg-secundario);
+  font-family: "Montserrat", sans-serif !important;
+  font: bold;
+  font-size: 20px;
   margin: 20px 0;
+  justify-self: center;
 }
 
-.TermosUso span {
-  color: var(--cor-primaria);
+.TermosUso a{
+  color: white;
 }
+
+
 
 /* ===== BOTÃO ===== */
 
 .btnLogar {
   width: 100%;
-  height: 55px;
+  height: 10vh;
 
-  background: var(--cor-primaria);
+  background: linear-gradient(to right, var(--Botao-gradiente1), var(--Botao-gradiente2), var(--Botao-gradiente3)) !important;
   border: none;
   border-radius: 6px;
+  margin-bottom: 30px;
 
   font-size: 20px;
   font-weight: bold;
@@ -130,37 +158,20 @@
 
 /* ===== DIVISOR ===== */
 
-.ou {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.ou hr {
-  flex: 1;
-  border: none;
-  height: 1px;
-  background: var(--borda);
-}
-
-.ou p {
-  margin: 0 10px;
-  color: var(--texto-secundario);
-  font-weight: bold;
-  font-family: "Montserrat", sans-serif;
-}
 
 .Esqueceu{
   font-size: 1.1rem;
-  text-align: start;
+  justify-self: end;
   text-indent: 5px;
   margin-top: 5px;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
+  /* padding-bottom: 80px; */
+  margin-bottom: 80px;
 }
 
 .Esqueceu p{
-  color: var(--cor-primaria);
+  color: var(--bg-secundario);
 }
 
 .Esqueceu a{

@@ -45,16 +45,14 @@ const ConteudoLogin = () => {
         ? (isClaro ? verSenha_claro : verSenha_escuro)
         : (isClaro ? esconderSenha_claro : esconderSenha_escuro);
 
-    
-    const handleLogin = async () => 
-    {
+
+    const handleLogin = async () => {
         //Instâncio o objeto 
         const usuario = new Api();
 
         //Chamo o método
-        usuario.Logar(email,senha,setPopup,Navegacao);
+        usuario.Logar(email, senha, setPopup, Navegacao);
 
-       
     };
 
     return (
@@ -73,6 +71,7 @@ const ConteudoLogin = () => {
 
                     <h1>Login</h1>
 
+                    <p>E-mail</p>
                     <CampoTexto
                         type="email"
                         ref={inputRef}
@@ -84,6 +83,7 @@ const ConteudoLogin = () => {
                         autoComplete='email'
                     />
 
+                    <p>Senha</p>
                     <div className={style.senhaWrapper}>
                         <CampoTexto
                             type={mostrar ? "text" : "password"}
@@ -108,13 +108,9 @@ const ConteudoLogin = () => {
                         <Link to="/recuperar-senha"
                             state={{ origem: "/login" }}
                         >
-                            <p>Esqueci a senha</p>
+                            <p>Esqueceu a senha?</p>
                         </Link>
                     </div>
-
-                    <p className={style.TermosUso}>
-                        Ao entrar no <span>CrashWare</span>, você concorda com os termos e políticas.
-                    </p>
 
                     <BotoesForm
                         texto="Logar"
@@ -123,21 +119,23 @@ const ConteudoLogin = () => {
                         onClick={handleLogin}
                     />
 
-                    <div className={style.ou}>
+                    {/* <div className={style.ou}>
                         <hr />
                         <p>OU</p>
                         <hr />
-                    </div>
+                    </div> */}
 
-                    <Link to='/cadastro'>
+                    {/* <Link to='/cadastro'>
                         <BotoesForm
                             texto="Cadastrar-se"
                             tipo={TIPO_BOTAO.CADASTRO}
                             className={style.btnLogar}
                         />
-                    </Link>
-
+                    </Link> */}
                 </div>
+                    <p className={style.TermosUso}>
+                        Não tem uma Conta? <Link to="/cadastro">Cadastre-se</Link>
+                    </p>
             </div>
         </>
     );
