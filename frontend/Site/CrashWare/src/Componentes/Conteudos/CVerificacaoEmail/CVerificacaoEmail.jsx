@@ -164,9 +164,9 @@ const CVerificacaoEmail = () => {
             <div className={style.corpo}>
                 <div className={style.container}>
                     <h1>Bem-Vindo {nomeM}!!!</h1>
-                    <p className={style.texto}>Verifique o Código enviado para o email: {email} </p>
+                    <p className={style.texto}>Verifique o Código enviado para o email: <span>{email}</span></p>
 
-                    <CampoTexto type="text" placeholder="Código"
+                    <CampoTexto type="text" placeholder="Insira o Código"
                         className={style.inputClasse}
                         // ref={inputRef}   
                         value={codigo}

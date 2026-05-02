@@ -87,8 +87,9 @@ const ConteudoAlterarSenha = () => {
 
         <div className={`${style.corpo} ${tema}`}>
             <div className={style.container}>
-                <h1>Digite sua nova senha</h1>
+                <h1>Alterar Senha</h1>
 
+                <h2>Digite sua Nova Senha</h2>
                 <div className={style.senhaWrapper}>
                     <CampoTexto
                         type={mostrar ? "text" : "password"}
@@ -105,7 +106,7 @@ const ConteudoAlterarSenha = () => {
                         onClick={() => setMostrar(!mostrar)}
                     />
                 </div>
-
+                <p>Minino 8 caracteres</p>
                 <h2>Confirme sua nova senha</h2>
 
                 <div className={style.senhaWrapper}>

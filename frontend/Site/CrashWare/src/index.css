@@ -8,11 +8,15 @@
   --bg-terceiro: #FFFFFF80;
 
   --Cabecalho:#ffffffc9;
+
   --input-bg:#F8FAFC; 
+
   --Carrossel: #FFFFFF4d;
+  --Blocos: #ffffff4d;
   
   --texto-principal: #FFFFFF;
   --texto-secundario: #4b5563;
+  --texto-terceiro: #0F172A80;
 
   --cor-primaria: #22c55e;
   --cor-primaria-hover: #16a34a;
@@ -61,7 +65,10 @@
 .Escuro {
   --bg-principal: #040110;
   --bg-secundario: #1a1a1a;
-  --bg-terceiro: #ffffff4d;
+  --bg-terceiro: #FFFFFF80;
+
+  --borda: #d1d5db;
+
 
   --texto-principal: #f5f5f5;
   --texto-secundario: #94A3B8;
@@ -80,6 +87,7 @@
   --borda: #334155;
 
   --Carrossel: #FFFFFF4d;
+  --Blocos: #ffffff4d;
 
   --Cabecalho:#ffffffc9;
 
@@ -147,6 +155,6 @@
 } */
 
 body{
-    background-color: 
-    var(--bg-principal);
+    background: url(/FundoOriginal.svg),
+    var(--bg-principal)
 }

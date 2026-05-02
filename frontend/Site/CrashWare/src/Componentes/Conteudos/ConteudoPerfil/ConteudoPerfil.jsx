@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import FotoPadrao from '../../../fotos/FotoPerfilPadrao.jpeg'
 import BackFundo from "../../../fotos/Banner.jpeg"
-import iconRanking from '../../../fotos/ranking.svg'
-import iconOfensiva from '../../../fotos/ofensiva.svg'
-import iconXp from '../../../fotos/xp.svg'
+import iconConquistas from '../../../fotos/Conquistas.svg'
+import iconBolsa from '../../../fotos/Compras.svg'
+import iconGema from '../../../fotos/Gemas.svg'
 import style from './ConteudoPerfil.module.css'
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Funcão de Sair da Conta
 import { Api, SairDaConta } from '../../../../funcoes/functions'
@@ -34,7 +34,7 @@ const ConteudoPerfil = () => {
     const [token_state, setToken] = useState(() => localStorage.getItem("token"));
     const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
 
-    
+
     //Carrega a foto salva q pus
     // useEffect(() => {
     // const fotoSalva = localStorage.getItem("fotoPerfil")
@@ -49,6 +49,8 @@ const ConteudoPerfil = () => {
     return (
         <div className={style.corpo}>
             <div className={style.container}>
+
+
 
                 <div className={style.Logofundo}>
                     <img src={BackFundo} alt="Background" />
@@ -74,6 +76,7 @@ const ConteudoPerfil = () => {
                             }
                         }}
                     />
+
                     <div className={style.texto}>
 
                         {/* Nome */}
@@ -82,67 +85,83 @@ const ConteudoPerfil = () => {
                         {/* Status */}
                         <p className={style.status}>
                             <span className={style.bolinha}></span>
-                            Online </p>
+                            Membro desde .... </p>
                     </div> {/*Tetxos */}
                 </div> {/*info*/}
 
-
-                {/* Informações de Ofenciva e afins */}
-                <div className={style.blocos}>
-
-                    {/* Ranking */}
-                    <div className={style.Ranking}>
-                        <img src={iconRanking} alt="" />
-                        <div className={style.Ranking_Coluna}>
-                            <h6>Beta</h6>
-                            <   p>Ranking</p>
-                        </div>
-                    </div> {/*Ranking*/}
-
-                    {/* Ofensiva */}
-                    <div className={style.Ofensiva}>
-                        <img src={iconOfensiva} alt="" />
-                        <div className={style.Ofensiva_Coluna}>
-                            {ofensiva}
-                            <p>Ofensiva</p>
-                        </div>
-                    </div>{/*Ofensiva*/}
-
-                    {/* XP */}
-                    <div className={style.xp}>
-                        <img src={iconXp} alt="" />
-                        <div className={style.xp_Coluna}>
-                            {xp}
-                            <p>Total de XP</p>
-                        </div>
-
-                    </div> {/* XP */}
-
-
-                    {/* Sair da conta , depois vc troca isso gabriel ou davison */}
-                    <BotoesForm
-                        onClick={() => SairDaConta(setId,setToken,setRefresh)}
-                        texto="Sair da conta"
-                    />
-
+                {/* Nivel do Usuario */}
+                <div className={style.Nivel}>
+                    <p>nivel</p>
                 </div>
 
-                {/* Atividades */}
-                <div className={style.Atividades}>
-                    <h4>Atividade Recentes</h4>
-                    <h6>Bla Bla</h6>
-                    <h6>Bla Bla</h6>
-                    <h6>Bla Bla</h6>
-                </div> {/* Atividades */}
-                
-                {/* Conquistas */}
-                <div className={style.Conquistas}>
-                    <h4>Atividade Recentes</h4>
-                    <h6>...</h6>
-                    <h6>...</h6>
-                </div>
-            </div>
-        </div>
+                {/* Lados */}
+                <div className={style.Lados}>
+
+
+                    {/* Esquerda */}
+                    <div className={style.Esquerda}>
+                        {/* Informações de Ofenciva e afins */}
+                        <div className={style.blocos}>
+                            
+                            {/* Conquistas */}
+                            <div className={style.Conquistas}>
+                                <img src={iconConquistas} alt="" />
+                                <div className={style.Conquistas_Coluna}>
+                                    <p>Conquistas</p>
+                                </div>
+                            </div> {/*Conquistas*/}
+
+                            {/* Ofensiva */}
+                            <div className={style.Compras}>
+                                <img src={iconBolsa} alt="" />
+                                <div className={style.Compras_Coluna}>
+                                    {ofensiva}
+                                    <p>Compras</p>
+                                </div>
+                            </div> {/*Ofensiva*/}
+
+                            {/* XP */}
+                            <div className={style.Gemas}>
+                                <img src={iconGema} alt="" />
+                                <div className={style.Gemas_Coluna}>
+                                    {xp}
+                                    <p>Gemas</p>
+                                </div>
+                            </div> {/* XP */}
+
+
+                            {/* Sair da conta , depois vc troca isso gabriel ou davison */}
+                            <BotoesForm
+                                onClick={() => SairDaConta(setId, setToken, setRefresh)}
+                                texto="Sair da conta"
+                            />
+
+                            </div> {/* Blocos */}
+
+                            <div className={style.Historico_Compras}>
+                                <h1>Ultima Compra</h1>
+                                <div className={style.CompraRecente}>
+                                    <h5>Item</h5>
+                                    <img src="" alt="" />
+                                    <p>Descrição Item</p>
+                                </div>
+                            </div>
+
+                    </div> {/* Esquerda */}
+
+                    <div className={style.Direita}>
+
+
+                        {/* Conquistas */}
+                        {/* <div className={style.Conquistas}>
+                            <h4>Atividade Recentes</h4>
+                            <h6>...</h6>                COMENTARIO TEMPORARIO
+                            <h6>...</h6> 
+                        </div> */}
+                    </div> {/* Direita */}
+                </div> {/* Lados */}
+            </div>  {/* Conateiner */}
+        </div> //Corpo
     )
 }
 

@@ -16,13 +16,13 @@
 
 .container
 {
-    width: 70%;
+    width: 100%;
     /* height: auto; */
     border: solid var(--Branco);    
-    margin-bottom: 15px;
+    /* margin-bottom: 15px;
     margin-right: 300px;
     margin-left: 300px;
-    margin-top: 15px;
+    margin-top: 15px; */
     /* display: flex;
     flex-direction: row;
     align-items: center; */
@@ -35,7 +35,7 @@
 {
     width: 150px;
     border-radius: 50%;
-    margin-left: 20px;
+    margin-left: 50px;
 
     position: absolute;
     top: -60px;
@@ -56,6 +56,10 @@
     margin-top: 3px;
     /* display: flex;
     flex-direction: column; */
+}
+
+.Nivel{
+    text-align: center;
 }
 
 .info{
@@ -95,21 +99,31 @@
     border-radius: 50%;
 }
 
+.Lados{
+    display: flex;
+    flex-direction: column;
+}
+
+.Esquerda{
+    left: 0;
+}
+
 .blocos{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: start; temporarios */
     gap: 10px;
     color: var(--texto-principal);
-    width: 100%;
+    width: 50%;
     margin-top: 15px;
+    margin-left: 100px;
 }
 
-.Ranking{
+.Conquistas{
     display: flex;
-    width: 13vw;
-    flex-direction: row;
-    background: linear-gradient(to right, #C78813, #FFA600, #C88914);
+    width: 10vw;
+    flex-direction: column;
+    background-color: var(--Blocos);
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -120,85 +134,108 @@
     margin-right: 5px;
 }
 
-.Ranking img{
+.Conquistas img{
     width: 35px;
     height: 35px;
 }
 
-.Ranking h6{
+.Conquistas h6{
     font-size: 20px;
 }
 
-.Ranking_Coluna{
+.Conquistas_Coluna{
     display: flex;
     flex-direction: column;
     line-height: 1.2;
-    margin-left: 20px;
     align-items: center;
+    justify-content: center;
 }
 
-.Ofensiva{
+.Compras{
+    width: 10vw;
     align-items: center;
+    justify-self: center;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: solid var(--Branco) 2px;
     border-radius: 7px;
-    background-color: var(--bg-principal);
+    background-color: var(--Blocos);
 }
 
-.Ofensiva img{
+.Compras img{
     width: 35px;
-    height: 35px;   
+    height: 35px;
+    margin-left: 5px;
 }
 
-.Ofensiva h6{
-    font-size: 20px;
-}
-
-.Ofensiva_Coluna{
+.Compras_Coluna{
     display: flex;
     flex-direction: column;
     line-height: 1.2;
-    margin-left: 20px;
     align-items: center;
 }
 
-.xp{
+.Gemas{
+    width: 10vw;
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: solid var(--Branco) 2px;
     border-radius: 7px;
-    background-color: var(--bg-principal);
+    background-color: var(--Blocos);
     margin-left: 5px
 }
 
-.xp p{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    margin-left: 20px;
-    align-items: center;
-}
-
-.xp_Coluna{
+.Gemas p{
     display: flex;
     flex-direction: column;
     line-height: 1.2;
     align-items: center;
 }
 
-.xp img{
+.Gemas_Coluna{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    align-items: center;
+}
+
+.Gemas img{
     width: 35px;
     height: 35px;       
+}
+
+.Teste{
+    display: flex;
+    flex-direction: column;
+}
+
+.Historico_Compras{
+    background-color: var(--Blocos);
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-top: 30px;
+    padding: 8px;
+}
+
+.Historico_Compras h1{
+    text-align: center;
+    color: var(--texto-terceiro);
+}
+
+.Historico_Compras{
+    color: var(--texto-terceiro);
 }
 
 .Atividades{
@@ -231,7 +268,7 @@
     background: linear-gradient(to right, var(--gradiente1-atividades), var(--gradiente2-atividades), var(--gradiente3-atividades));
 }
 
-.Conquistas{
+/* .Conquistas{
     margin-top: 25px;
     border: solid var(--Branco) 2px;
     width: 70.1%;
@@ -245,4 +282,4 @@
 .Conquistas h6{
     background: linear-gradient(to right, var(--gradiente1-conquistas), var(--gradiente2-conquistas));
     color: #000000;
-}
+} */

@@ -12,7 +12,6 @@
   min-height: 88.9vh;
   width: 80%;
   margin: auto;
-  /* background: var(--bg-principal); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,27 +20,39 @@
 
 .container {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   text-align: center;
+  background-color: var(--bg-terceiro);
+  padding: 28px;
+  border-radius: 30px;
 }
 
 /* ===== TÍTULO ===== */
 
 .container h1 {
-  color: var(--cor-primaria);
+  color: var(--texto-principal);
   font-size: clamp(2rem, 5vw, 3rem);
   font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 20px var(--cor-primaria-hover);
 }
 
 .container h2{
-  color: var(--cor-primaria);
-  font-size: clamp(2rem, 5vw, 1rem);
+  color: var(--texto-principal);
+  font-size: 27px;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
   margin-top: 20px;
-  text-shadow: 1px 1px 20px var(--cor-primaria-hover);
+  text-align: start;
+}
+
+.container p{
+  text-align: start;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font: bold;
+  padding-top: 10px;
+  text-indent: 5px;
+  color: var(--texto-terceiro);
 }
 
 
@@ -59,15 +70,15 @@
 
   font-size: 16px;
   text-indent: 20px;
-  color: var(--texto-secundario);
 
   transition: 0.2s;
+    box-shadow: 0px 5px 6px -2px rgba(0, 0, 0, 0.5);
 }
 
 .inputClasse:focus {
   outline: none;
-  border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  border-color: var(--Borda-gradiente1);
+  box-shadow: 0 0 0 2px var(--Botao-gradiente3);
 }
 
 /* ===== SENHA ===== */
@@ -115,13 +126,13 @@
   width: 100%;
   height: 55px;
 
-  background: var(--cor-primaria);
+  background: linear-gradient(to right, var(--Botao-gradiente1), var(--Botao-gradiente2), var(--Botao-gradiente3));
   border: none;
   border-radius: 6px;
 
   font-size: 20px;
   font-weight: bold;
-  color: var(--Branco);
+  color: var(--texto-principal);
 
   transition: 0.3s;
 
@@ -129,7 +140,6 @@
 }
 
 .btnEnviar:hover {
-  background: var(--cor-primaria-hover);
   transform: scale(1.03);
   color: var(--texto-principal);
 }
