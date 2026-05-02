@@ -10,62 +10,22 @@ import qrcode from '../../../fotos/qrcode.jpeg';
 
 import Style from './ConteudoInicial.module.css';
 import { Carrossel } from './Carrossel/Carrossel';
-import { Api } from '../../../../funcoes/functions';
 
 
-//Pego o token:
-const token = localStorage.getItem("token")
-
-//Pego o refresh_token
-const refresh_token = localStorage.getItem("refresh_token")
 
 
 const ConteudoInicial = () => {
 
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
 
-    //Navegação --> Permite eu levar o usuario para outras telas
-    const Navegacao = useNavigate();
-
-    //Uso useState para o react renderizar as informações
-    const [id_state, setId] = useState(() => localStorage.getItem("id"));
-    const [token_state, setToken] = useState(() => localStorage.getItem("token"));
-    const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
-
-     //Lista que contém todos os usestate
-    const set = [setId,setToken,setRefresh];
-
 
     useEffect(() => {
-        //Quando a pag for carregada:
-
-        //alert(token)
+       
 
         //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta) isso muda o tema, ué
         const checarTema = (e) => setTema(e.detail);
         window.addEventListener('temaAtualizado', checarTema);
 
-
-        //Verifico se o usuario tem token
-        const VerificarToken = async () => 
-        {
-            //Pego os tokens dentro do escopo privado.
-            const token = localStorage.getItem("token")
-            const refresh_token = localStorage.getItem("refresh_token")
-
-
-            //Vaerifico o token
-            const usuario = new Api();
-            const token_vencido = await usuario.Verificar_Token(token,Navegacao)
-
-
-            //Verifico o Refresh Token
-            if (token_vencido == true)
-            {
-                usuario.Verificar_Token(refresh_token,Navegacao,refresh=true,set)
-            }
-        }
-        VerificarToken()
 
         //
         return () => window.removeEventListener('temaAtualizado', checarTema);

@@ -34,38 +34,7 @@ const ConteudoPerfil = () => {
     const [token_state, setToken] = useState(() => localStorage.getItem("token"));
     const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
 
-    //Lista que contém todos os usestate
-    const set = [setId,setToken,setRefresh];
-
-
     
-    useEffect(() => {
-        //Quando a pag for carregada:
-
-
-        //Verifico se o usuario tem token
-            const VerificarToken = async () => 
-            {
-                //Pego os tokens dentro do escopo privado.
-                const token = localStorage.getItem("token")
-                const refresh_token = localStorage.getItem("refresh_token")
-    
-    
-                //Vaerifico o token
-                const usuario = new Api();
-                const token_vencido = await usuario.Verificar_Token(token,Navegacao,null,setToken,setRefresh,true)
-    
-    
-                //Verifico o Refresh Token
-                if (token_vencido == true)
-                {
-                    usuario.Verificar_Token(refresh_token,Navegacao,null,setRefresh,true,refresh=true,set)
-                }
-            }
-            VerificarToken()
-          
-    })
-
     //Carrega a foto salva q pus
     // useEffect(() => {
     // const fotoSalva = localStorage.getItem("fotoPerfil")

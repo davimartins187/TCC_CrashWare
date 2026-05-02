@@ -28,7 +28,6 @@ export async function SairDaConta(setId,setToken,setRefresh){
 
 }
 
-
        
 
 

@@ -8,45 +8,54 @@ import { AuthProvider, RotaPrivada } from "./VerificacaoToken"
 
 const Router = () => {
     return (
-        <AuthProvider>
-            <Routes>
-                <Route path="/" element={<LayoutPadrao />}>
-                    <Route index element={
-                        
-                            <PgInicial />
-                        
-                    }
-                    />
-                    <Route path="sobre-nos" element={<SobreNos />} />
-                    <Route path="*" element={<PgErro />} />
-                    <Route path="perfil" element={
-                        <RotaPrivada>
-                            <PgPerfil />
-                        </RotaPrivada>
-                    }
-                    />
-                    <Route path="configuracoes" element={<RotaPrivada>
-                        <PgConfiguracoes />
-                    </RotaPrivada>
-                    }
-                    />
-                    <Route path="anotacoes" element={
-                        <RotaPrivada>
-                            <PgAnotacoes />
-                        </RotaPrivada>
-                    }
-                    />
-                </Route>
+    <Routes>
+        <Route path="/" element={<LayoutPadrao />}>
+            <Route index element={
+                <AuthProvider>
+                    <PgInicial />
+                </AuthProvider>
+            } />
 
-                <Route path="/" element={<LayoutCadLogin />}>
-                    <Route path="cadastro" element={<PgCadastro />} />
-                    <Route path="login" element={<PgLogin />} />
-                    <Route path="recuperar-senha" element={<PgRecuperarSenha />} />
-                    <Route path="verificacao-email" element={<PgVerificacaoEmail />} />
-                    <Route path="alterar-senha" element={<PgAlterarSenha />} />
-                </Route>
-            </Routes>
-        </AuthProvider>
+            <Route path="sobre-nos" element={<SobreNos />} />
+            <Route path="*" element={<PgErro />} />
+
+            <Route path="perfil" element={
+                <RotaPrivada>
+                    <PgPerfil />
+                </RotaPrivada>
+            } />
+
+            <Route path="configuracoes" element={
+                <RotaPrivada>
+                    <PgConfiguracoes />
+                </RotaPrivada>
+            } />
+
+            <Route path="anotacoes" element={
+                <RotaPrivada>
+                    <PgAnotacoes />
+                </RotaPrivada>
+            } />
+        </Route>
+
+        <Route path="/" element={<LayoutCadLogin />}>
+            <Route path="cadastro" element={
+                <AuthProvider>
+                    <PgCadastro />
+                </AuthProvider>
+            } />
+
+            <Route path="login" element={
+                <AuthProvider>
+                    <PgLogin />
+                </AuthProvider>
+            } />
+
+            <Route path="recuperar-senha" element={<PgRecuperarSenha />} />
+            <Route path="verificacao-email" element={<PgVerificacaoEmail />} />
+            <Route path="alterar-senha" element={<PgAlterarSenha />} />
+        </Route>
+    </Routes>
     )
 }
 
