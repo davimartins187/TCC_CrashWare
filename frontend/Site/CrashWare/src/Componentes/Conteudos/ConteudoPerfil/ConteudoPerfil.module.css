@@ -35,7 +35,7 @@
 {
     width: 150px;
     border-radius: 50%;
-    margin-left: 50px;
+    margin-left: none;
 
     position: absolute;
     top: -60px;
@@ -66,7 +66,14 @@
     display: flex;
     align-items: flex-end;
     position: relative;
-    padding: 20px
+    padding-right: 20px;
+    padding-left: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid var(--texto-principal);
+    width: 60%;
+    height: 20%;
+    margin-left: 95px;
 }
 
 .Logofundo
@@ -101,29 +108,34 @@
 
 .Lados{
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
 }
 
 .Esquerda{
     left: 0;
+    width: 75%;
 }
 
 .blocos{
     display: flex;
     flex-direction: row;
     /* justify-content: start; temporarios */
-    gap: 10px;
+    /* gap: 10px; */
+    background-color: var(--Blocos);    
     color: var(--texto-principal);
-    width: 50%;
+    width: 60%;
     margin-top: 15px;
     margin-left: 100px;
+    border: 2px solid var(--texto-principal);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .Conquistas{
     display: flex;
     width: 10vw;
     flex-direction: column;
-    background-color: var(--Blocos);
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -131,7 +143,7 @@
     padding-top: 5px;
     border-radius: 7px;
     border: solid var(--Branco) 2px;
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 
 .Conquistas img{
@@ -163,7 +175,6 @@
     flex-direction: column;
     border: solid var(--Branco) 2px;
     border-radius: 7px;
-    background-color: var(--Blocos);
 }
 
 .Compras img{
@@ -190,8 +201,7 @@
     flex-direction: column;
     border: solid var(--Branco) 2px;
     border-radius: 7px;
-    background-color: var(--Blocos);
-    margin-left: 5px
+    /* margin-left: 5px; */
 }
 
 .Gemas p{
@@ -213,20 +223,19 @@
     height: 35px;       
 }
 
-.Teste{
-    display: flex;
-    flex-direction: column;
-}
 
 .Historico_Compras{
     background-color: var(--Blocos);
-    width: 40%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     flex-direction: column;
     margin-left: 100px;
     margin-top: 30px;
-    padding: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid var(--texto-principal) 2px;
+
 }
 
 .Historico_Compras h1{
@@ -234,52 +243,76 @@
     color: var(--texto-terceiro);
 }
 
+.Historico_Compras img{
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+}
+
 .Historico_Compras{
     color: var(--texto-terceiro);
 }
 
-.Atividades{
+.CompraRecente{
+    display: flex;
+    flex-direction: row;
+    border: solid var(--texto-principal) 2px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.DescricaoCompra{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.DescricaoCompra h5{
+    text-indent: 10px;
+}
+
+.DescricaoCompra p{
+    margin-left: 30px;
+}
+
+.Direita{
+    background-color: red;
+    width: 25%;
+}
+
+.ConquistasBloco{
     margin-top: 25px;
-    border: solid var(--Branco) 2px;
+    padding: 10px;
+    border: solid var(--texto-principal) 2px;
     width: 70.1%;
     justify-self: center;
     border-radius: 7px;
     color: var(--texto-principal);
     padding-bottom: 7px;
     background-color: var(--atividade-titulo);
+    flex-direction: column;
+    display: flex;
 }
 
-.Atividades h4{
-    background-color: var(--atividade-titulo);
-    border: solid var(--Branco) 2px;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    padding: 5px;
+.ConquistasBloco h4{
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
 }
 
-.Atividades h6{
-    border: solid var(--Branco) 2px;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    padding: 5px;
-    text-indent: 20px;
-    background: linear-gradient(to right, var(--gradiente1-atividades), var(--gradiente2-atividades), var(--gradiente3-atividades));
+.ItemConquista{
+    display: flex;
+    flex-direction: row;
 }
 
-/* .Conquistas{
-    margin-top: 25px;
-    border: solid var(--Branco) 2px;
-    width: 70.1%;
-    justify-self: center;
-    border-radius: 7px;
-    color: var(--texto-principal);
-    padding-bottom: 7px;
-    background-color: var(--atividade-titulo);
+.ItemConquista img{
+    width: 35px;
+    height: 35px;
+    border-radius: 30px;
 }
 
-.Conquistas h6{
+.ItemConquista h6{
     background: linear-gradient(to right, var(--gradiente1-conquistas), var(--gradiente2-conquistas));
     color: #000000;
-} */
+}

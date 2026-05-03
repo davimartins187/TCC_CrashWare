@@ -4,6 +4,7 @@ import BackFundo from "../../../fotos/Banner.jpeg"
 import iconConquistas from '../../../fotos/Conquistas.svg'
 import iconBolsa from '../../../fotos/Compras.svg'
 import iconGema from '../../../fotos/Gemas.svg'
+import iconTema from '../../../fotos/item_tema.svg'
 import style from './ConteudoPerfil.module.css'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -50,59 +51,60 @@ const ConteudoPerfil = () => {
         <div className={style.corpo}>
             <div className={style.container}>
 
-
-
                 <div className={style.Logofundo}>
                     <img src={BackFundo} alt="Background" />
                 </div>
-
-                <div className={style.info}>
-                    {/* Foto */}
-                    <img className={style.foto}
-                        src={foto} alt="Foto"
-                        onClick={() => inputRef.current.click()}
-                    />
-
-                    {/* Input escondido pra trocar foto */}
-                    <input type="file" className={style.escondido}
-                        ref={inputRef}
-                        accept='image/*'
-                        onChange={(e) => {
-                            const arquivo = e.target.files[0];
-
-                            if (arquivo) {
-                                const url = URL.createObjectURL(arquivo)
-                                setFoto(url);
-                            }
-                        }}
-                    />
-
-                    <div className={style.texto}>
-
-                        {/* Nome */}
-                        <h3> Usuário </h3>
-
-                        {/* Status */}
-                        <p className={style.status}>
-                            <span className={style.bolinha}></span>
-                            Membro desde .... </p>
-                    </div> {/*Tetxos */}
-                </div> {/*info*/}
-
-                {/* Nivel do Usuario */}
-                <div className={style.Nivel}>
-                    <p>nivel</p>
-                </div>
-
                 {/* Lados */}
                 <div className={style.Lados}>
 
-
                     {/* Esquerda */}
                     <div className={style.Esquerda}>
+
+                        <div className={style.info}>
+
+                            {/* Foto */}
+                            <img className={style.foto}
+                                src={foto} alt="Foto"
+                                onClick={() => inputRef.current.click()}
+                            />
+
+                            {/* Input escondido pra trocar foto */}
+                            <input type="file" className={style.escondido}
+                                ref={inputRef}
+                                accept='image/*'
+                                onChange={(e) => {
+                                    const arquivo = e.target.files[0];
+
+                                    if (arquivo) {
+                                        const url = URL.createObjectURL(arquivo)
+                                        setFoto(url);
+                                    }
+                                }}
+                            />
+
+                            <div className={style.texto}>
+
+                                {/* Nome */}
+                                <h3> Usuário </h3>
+
+                                {/* Status */}
+                                <p className={style.status}>
+                                    <span className={style.bolinha}></span>
+                                    Membro desde .... </p>
+                            </div> {/*Tetxos */}
+
+                            {/* Nivel do Usuario */}
+                            <div className={style.Nivel}>
+                                <p>nivel</p>
+                            </div>
+                        </div> {/*info*/}
+
+
+
+
                         {/* Informações de Ofenciva e afins */}
                         <div className={style.blocos}>
-                            
+
                             {/* Conquistas */}
                             <div className={style.Conquistas}>
                                 <img src={iconConquistas} alt="" />
@@ -136,28 +138,32 @@ const ConteudoPerfil = () => {
                                 texto="Sair da conta"
                             />
 
-                            </div> {/* Blocos */}
+                        </div> {/* Blocos */}
 
-                            <div className={style.Historico_Compras}>
-                                <h1>Ultima Compra</h1>
-                                <div className={style.CompraRecente}>
+                        <div className={style.Historico_Compras}>
+                            <h1>Ultima Compra</h1>
+                            <div className={style.CompraRecente}>
+                                <img src={iconTema} alt="" />
+                                <div className={style.DescricaoCompra}>
                                     <h5>Item</h5>
-                                    <img src="" alt="" />
                                     <p>Descrição Item</p>
                                 </div>
                             </div>
+                        </div>
 
                     </div> {/* Esquerda */}
 
                     <div className={style.Direita}>
 
-
                         {/* Conquistas */}
-                        {/* <div className={style.Conquistas}>
-                            <h4>Atividade Recentes</h4>
-                            <h6>...</h6>                COMENTARIO TEMPORARIO
-                            <h6>...</h6> 
-                        </div> */}
+                        <div className={style.ConquistasBloco}>
+                            <h4>Conquistas</h4>
+                            <div className={style.ItemConquista}>
+                                <img src={FotoPadrao} alt="" />
+                                <h6>Bla</h6>
+                                <p>Lorem ipsum dolor sit amet</p>
+                            </div> {/* Conquistas item */}
+                        </div>
                     </div> {/* Direita */}
                 </div> {/* Lados */}
             </div>  {/* Conateiner */}
