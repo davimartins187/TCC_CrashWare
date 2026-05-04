@@ -651,7 +651,7 @@ export class Api
                             const setRefresh = set[1];
 
                             //Retiro o token do usuario
-                            await SairDaConta(setId,setToken,setRefresh);
+                            await SairDaConta(setToken,setRefresh);
 
 
                         }else
@@ -711,7 +711,7 @@ export class Api
 
                                     localStorage.setItem("token",token)
 
-                                    const setToken = set[1];
+                                    const setToken = set[0];
 
                                     setToken(token)
                                     
