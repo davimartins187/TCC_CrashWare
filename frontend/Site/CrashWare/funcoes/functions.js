@@ -496,6 +496,9 @@ export class Api
                 localStorage.setItem("token", token)
                 localStorage.setItem("refresh_token", refresh_token)
 
+                //Informações
+                localStorage.setItem("info",false);
+
                 //Caso eu queira pegar o token
                 //const token = localStorage.getItem("token")
                 //const refresh_token = localStorage.getItem("refresh_token")
@@ -730,3 +733,5 @@ export class Api
     }//Verifica Token
 
 }//classe
+
+

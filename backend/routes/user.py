@@ -24,7 +24,7 @@ from dotenv import load_dotenv
 
 #ROTAS:
 @user.get('/')
-async def  perfil(usuario = Depends(validar_token),session = Depends(pegar_sessao)):
+async def  perfil(usuario = Depends(validar_token)):
     if usuario is None:
         raise HTTPException(status_code=404,detail="Usuário não encontrado")
     else:

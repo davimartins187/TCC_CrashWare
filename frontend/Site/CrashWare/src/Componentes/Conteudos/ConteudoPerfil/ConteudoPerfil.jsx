@@ -12,11 +12,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { Api, SairDaConta } from '../../../../funcoes/functions'
 
 import { BotoesForm } from '../../Botoes/BotaoForm/BotaoForm'
+import { Usuario } from '../../../../funcoes/user'
 
 
 
 
 const ConteudoPerfil = () => {
+
+    const informacoes = localStorage.getItem("info")
+
+    if(informacoes == false)
+    {
+        //Faço a requisição no banco
+        const dados = Usuario();
+        dados.perfil();
+
+        //Pego as informações do usuario
+        const usuario = JSON.parse(localStorage.getItem("dados"));
+    }
+   
 
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -28,7 +42,7 @@ const ConteudoPerfil = () => {
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
-    const [xp, setXp] = useState(350);
+    const [xp, setXp] = useState(usuario.xp);
     const XpMax = 500; //xp para mudar de nivel
     const Nivel = Math.floor(xp/XpMax);
     const xpAtual = xp % XpMax;
