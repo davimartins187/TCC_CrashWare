@@ -38,11 +38,13 @@ const ConteudoPerfil = () => {
     // muda a foto
     const [foto, setFoto] = useState(FotoPadrao);
 
+    alert(usuario.nome)
+
     //referencia o input
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
-    const [xp, setXp] = useState(usuario.xp);
+    const [xp, setXp] = useState(0);
     const XpMax = 500; //xp para mudar de nivel
     const Nivel = Math.floor(xp/XpMax);
     const xpAtual = xp % XpMax;
