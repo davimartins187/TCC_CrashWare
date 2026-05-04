@@ -160,7 +160,14 @@
 
 body{
     background-image: url('/FundoOriginal.svg');
-       background-color: var(--bg-principal);
+    background-color: var(--bg-principal);
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+
+/*Transição/
+transition: background-color 0.5s ;
+
+/*Transição Suave/
+transition-timing-function: ease;*/
