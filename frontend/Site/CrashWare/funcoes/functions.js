@@ -692,7 +692,7 @@ export class Api
                             {
                                 const response_refresh = await fetch("https://api-crashware.onrender.com/auth/refresh_token",
                                 {
-                                    method: "POST",
+                                    method: "GET",
                                     headers:{
                                         "Authorization": `Bearer ${token}`
                                     }
