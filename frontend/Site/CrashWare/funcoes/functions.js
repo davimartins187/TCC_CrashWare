@@ -380,7 +380,7 @@ export class Api
         }
     }
 
-    async Logar(email,senha,setPopup,Navegacao)
+    async Logar(email,senha,setPopup,Navegacao,setDados)
     {
         const validarCampos = () => {
 

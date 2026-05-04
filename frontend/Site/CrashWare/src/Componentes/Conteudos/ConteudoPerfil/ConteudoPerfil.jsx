@@ -19,12 +19,19 @@ import { Usuario } from '../../../../funcoes/user'
 
 const ConteudoPerfil = () => {
 
+    
+   
+    //Usestate do dados do usuario
+    const [dados, setDados] = useState(() =>
+    JSON.parse(localStorage.getItem("dados")) || null );
+
+
     const informacoes = localStorage.getItem("info")
 
     if(informacoes == false)
     {
         //Faço a requisição no banco
-        const dados = Usuario();
+        const dados = Usuario(setDados = setDados);
         dados.perfil();
 
         

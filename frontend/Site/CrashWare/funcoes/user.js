@@ -2,10 +2,11 @@ export class Usuario
 {
 
     //Parâmetros do método construtor
-     constructor(setPopup = null, Navegacao = null)
+     constructor(setPopup = null, Navegacao = null,setDados = null)
     {
         this.setPopup = setPopup;
         this.Navegacao = Navegacao;
+        this.setDados = setDados;
     }
 
     async perfil()
@@ -36,6 +37,8 @@ export class Usuario
 
                 //Guardo as informações do usuario no localstorage
                 localStorage.setItem("dados", JSON.stringify(dados));
+
+                this.setDados(dados)
             }
             else
             {

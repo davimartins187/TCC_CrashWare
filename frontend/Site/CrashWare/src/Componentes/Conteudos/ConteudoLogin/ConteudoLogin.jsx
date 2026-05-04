@@ -22,6 +22,7 @@ const ConteudoLogin = () => {
     const [mostrar, setMostrar] = useState(false);
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
     const [popup, setPopup] = useState(null);
+   
 
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
@@ -47,11 +48,11 @@ const ConteudoLogin = () => {
 
 
     const handleLogin = async () => {
-        //Instâncio o objeto 
+        
         const usuario = new Api();
 
         //Chamo o método
-        usuario.Logar(email, senha, setPopup, Navegacao);
+        usuario.Logar(email, senha, setPopup, Navegacao,setDados);
 
     };
 
