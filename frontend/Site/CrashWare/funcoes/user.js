@@ -35,13 +35,13 @@ export class Usuario
                 localStorage.setItem("info",true);
 
                 //Guardo as informações do usuario no localstorage
-                return localStorage.setItem("dados", JSON.stringify(dados));
+                localStorage.setItem("dados", JSON.stringify(dados));
             }
             else
             {
                 const erro = await response.json()
 
-                return console.log(erro)
+                console.log(erro)
             }
             
         }catch (error) 
