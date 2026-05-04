@@ -28,7 +28,11 @@ const ConteudoPerfil = () => {
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
-    const [xp, setXp] = useState(0);
+    const [xp, setXp] = useState(350);
+    const XpMax = 500; //xp para mudar de nivel
+    const Nivel = Math.floor(xp/XpMax);
+    const xpAtual = xp % XpMax;
+    const porcentagem = (xpAtual / XpMax) * 100;
 
     //Uso useState para o react renderizar as informações
     //const [id, setId] = useState(() => localStorage.getItem("id"));
@@ -91,12 +95,23 @@ const ConteudoPerfil = () => {
                                 <p className={style.status}>
                                     <span className={style.bolinha}></span>
                                     Membro desde .... </p>
+
+                                {/* Nivel do Usuario */}
+                                <div className={style.Nivel}>
+                                    <div className={style.NivelTopo}>
+                                        <span>Nível {Nivel}</span>
+                                        <span>{xpAtual}/{XpMax} XP</span>
+                                    </div>
+
+                                    <div className={style.Barra}>
+                                        <div
+                                            className={style.Progresso}
+                                            style={{ width: `${porcentagem}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
                             </div> {/*Tetxos */}
 
-                            {/* Nivel do Usuario */}
-                            <div className={style.Nivel}>
-                                <p>nivel</p>
-                            </div>
                         </div> {/*info*/}
 
 
@@ -109,6 +124,7 @@ const ConteudoPerfil = () => {
                             <div className={style.Conquistas}>
                                 <img src={iconConquistas} alt="" />
                                 <div className={style.Conquistas_Coluna}>
+                                    0
                                     <p>Conquistas</p>
                                 </div>
                             </div> {/*Conquistas*/}
@@ -158,10 +174,13 @@ const ConteudoPerfil = () => {
                         {/* Conquistas */}
                         <div className={style.ConquistasBloco}>
                             <h4>Conquistas</h4>
+                            {/* VOU TER Q FAZER UM COMPONTENTE AQ, NAO MEXER */}
                             <div className={style.ItemConquista}>
                                 <img src={FotoPadrao} alt="" />
-                                <h6>Bla</h6>
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <div>
+                                    <h6>Conquista 1</h6>
+                                    <p>Conquista por ser o primeiro a Logar</p>
+                                </div>
                             </div> {/* Conquistas item */}
                         </div>
                     </div> {/* Direita */}
