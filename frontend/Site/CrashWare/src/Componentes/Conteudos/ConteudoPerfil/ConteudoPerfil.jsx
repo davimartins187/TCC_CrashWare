@@ -27,10 +27,10 @@ const ConteudoPerfil = () => {
         const dados = Usuario();
         dados.perfil();
 
-        //Pego as informações do usuario
-        const usuario = JSON.parse(localStorage.getItem("dados"));
+        
     }
-   
+    //Pego as informações do usuario
+    const usuario = JSON.parse(localStorage.getItem("dados"));
 
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
