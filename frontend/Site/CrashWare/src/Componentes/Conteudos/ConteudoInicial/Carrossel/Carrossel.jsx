@@ -32,6 +32,7 @@ const Carrossel = () => {
                 >
                     {CadsCarrossel.map((card) => (
                         <div key={card.id} className={style.card}>
+                            <img src={card.imagem} alt="" />
                             <h3>{card.Titulo}</h3>
                             <p>{card.Texto}</p>
                         </div>

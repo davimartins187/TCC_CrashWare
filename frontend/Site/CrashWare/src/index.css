@@ -4,7 +4,7 @@
 /* TEMA CLARO */
 .Claro {
   --bg-principal: #2E73C3;
-  --bg-secundario: #ffffff;
+  --bg-secundario: #3a8eee;
   --bg-terceiro: #FFFFFF80;
 
   --Cabecalho:#6C6A6A30;
@@ -18,7 +18,7 @@
 
   
   --texto-principal: #FFFFFF;
-  --texto-secundario: #4b5563;
+  --texto-secundario: #ccd5e0;
   --texto-terceiro: #0F172A80;
   --texto-quarto: ##787A81CC;
 
