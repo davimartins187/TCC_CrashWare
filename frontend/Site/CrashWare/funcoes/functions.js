@@ -13,6 +13,7 @@ export async function SairDaConta(setToken,setRefresh){
     await localStorage.removeItem("refresh_token");
 
 
+
     //Deleto o ID do LocalStorage
     // await localStorage.removeItem("id");
 

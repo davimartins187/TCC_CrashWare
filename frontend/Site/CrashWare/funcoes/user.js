@@ -9,7 +9,7 @@ export class Usuario
         this.setDados = setDados;
     }
 
-    async perfil()
+    async perfil(setDados)
     {
         //Pego o token
         const token = localStorage.getItem("token")
@@ -38,7 +38,7 @@ export class Usuario
                 //Guardo as informações do usuario no localstorage
                 localStorage.setItem("dados", JSON.stringify(dados));
 
-                //this.setDados(dados)
+                setDados(dados)
             }
             else
             {
