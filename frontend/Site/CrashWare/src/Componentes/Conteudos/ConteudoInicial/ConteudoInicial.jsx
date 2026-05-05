@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import FMenina_claro from '../../../fotos/claro/NovaMenina.svg';
 import FMenina_escuro from '../../../fotos/escuro/NovaMenina.svg';
 import apleModoClaro from '../../../fotos/claro/apple-logo-svgrepo-com.svg';
