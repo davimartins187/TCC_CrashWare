@@ -7,8 +7,8 @@
   --bg-secundario: #ffffff;
   --bg-terceiro: #FFFFFF80;
 
-  --Cabecalho:#ffffffc9;
-  --Rodape: #6C6A6A33;
+  --Cabecalho:#6C6A6A30;
+  --Rodape: #6c6a6a;
 
   --input-bg:#F8FAFC; 
 
@@ -98,8 +98,8 @@
   --Carrossel: #FFFFFF4d;
   --Blocos: #ffffff4d;
   
-  --Cabecalho:#ffffffc9;
-  --Rodape: #6C6A6A33;
+  --Cabecalho:#6C6A6A30;
+  --Rodape: #0000008e;
 
   --input-bg: #F8FAFC;
 
@@ -162,6 +162,11 @@
 body{
     background-color: var(--bg-principal);
     /* background-position: center center; */
+        background-image: url('/FundoOriginal.svg');
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
 }
 
 

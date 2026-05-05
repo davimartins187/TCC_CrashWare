@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 
 import Style from './Rodape.module.css';
 
-const Rodape = () => {
+const Rodape = ({ children }) => {
 
     const DataATual = new Date().getFullYear();
 
     return (
-        <>
+        < div className = { Style.corpo } >
             <footer className={Style.Rodape}>
                 <div className={Style.Container}>
                     <div className={Style.Marca}>
@@ -23,13 +23,14 @@ const Rodape = () => {
                     </div>
 
                     <div className={Style.Colunas}>
+        { children }
 
 
                         <div className={Style.RedesSociais}>
                             <h5>Redes Sociais</h5>
                             <div className={Style.Tamanho}>
                                 <a href="https://www.instagram.com/thesousac/" target='_blank'>
-                                <img src={Instagram} alt="" />
+                                    <img src={Instagram} alt="" />
                                 </a>
                                 <img src={Whatsapp} alt="" />
                                 <img src={GitHub} alt="" />
@@ -56,8 +57,8 @@ const Rodape = () => {
                 </div>
 
             </footer>
-        </>
-    );
+            </div >
+            );
 };
 
 export { Rodape };
