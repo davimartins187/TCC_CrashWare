@@ -77,15 +77,7 @@ const ConteudoPerfil = () => {
 
 
     return (
-        <>
-        {popup && (
-                <PopUp
-                    tipo={popup.tipo}
-                    titulo={popup.titulo}
-                    mensagem={popup.mensagem}
-                    onFechar={() => setPopup(null)}
-                />
-            )}
+        
         <div className={style.corpo}>
             <div className={style.container}>
 
@@ -221,7 +213,7 @@ const ConteudoPerfil = () => {
                 </div> {/* Lados */}
             </div>  {/* Conateiner */}
         </div> //Corpo
-    </>
+   
     )
 }
 
