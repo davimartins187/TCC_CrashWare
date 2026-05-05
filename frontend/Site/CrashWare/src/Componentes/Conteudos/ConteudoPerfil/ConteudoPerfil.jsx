@@ -19,8 +19,6 @@ import { PopUp } from "../../pop-up";
 
 
 const ConteudoPerfil = () => {
-
-    
     //Importo o Popup
     const [popup, setPopup] = useState(null);
 
@@ -35,7 +33,7 @@ const ConteudoPerfil = () => {
     if(informacoes == "false")
     {
         //Faço a requisição no banco
-        const dados = new Usuario(setPopup);
+        const dados = new Usuario();
         dados.perfil();
 
         

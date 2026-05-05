@@ -51,11 +51,11 @@ export class Usuario
         {
             console.log("Erro:", error);
             
-            this.setPopup({
-                tipo: 'erro',
-                titulo: 'Sem conexão',
-                mensagem: 'Não foi possível conectar ao servidor.'
-            });
+            // this.setPopup({
+            //     tipo: 'erro',
+            //     titulo: 'Sem conexão',
+            //     mensagem: 'Não foi possível conectar ao servidor.'
+            // });
 
         }   
     }//Perfil
