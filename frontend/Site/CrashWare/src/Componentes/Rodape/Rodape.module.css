@@ -3,7 +3,7 @@
 .Rodape
 {   
     padding-left: 10px;
-    left: 0;
+    /* left: 0; */
     width: 100%;
     box-sizing: border-box;
     align-items: flex-start;
@@ -21,13 +21,13 @@
 
     border-top: 1px solid rgba(0, 0, 0, 0.24);
 
-    /* border-top-left-radius: 60px;
-    border-top-right-radius: 60px; */
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
 }
 
 .Container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
@@ -39,20 +39,6 @@
 {
     width: 44px;
     height: 44px;
-}
-
-.links
-{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.links p
-{
-    margin:0;
-    padding: 3px;
-    /* color: var(--texto-secundario); */
 }
 
 .Marca
@@ -75,7 +61,12 @@
 
 .Colunas {
     display: flex;
-    gap: 80px;
+    gap: 100px;
+    width: 95%;
+    justify-content: space-between;
+    padding-right: 60px;
+    padding-left: 120px;
+
 }
 
 .Colunas div.informacoes {
@@ -84,8 +75,6 @@
     gap: 8px;
     /* column-count: 2; */
 }
-
-
 
 h5 {
     margin-bottom: 10px;
@@ -98,17 +87,22 @@ h5 {
     font-size: 15px;
 }
 
-.QR {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.RedesSociais{
+    width: 20vw;
     gap: 10px;
-    margin-right: 40px;
+    justify-content: space-between;
 }
 
-.QR img{
-    width: 100px;
-    height: 100px;
+.RedesSociais img{
+    margin: 10px;
+
+}
+
+.Tamanho{
+    display: flex;
+    width: 10px;
+    /* height: 40px; */
 }
 
 .Copy {
@@ -148,8 +142,7 @@ h5 {
 .informacoes{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    text-align:end ;
+    justify-content: end;
     margin-bottom: 10px;
 }
 

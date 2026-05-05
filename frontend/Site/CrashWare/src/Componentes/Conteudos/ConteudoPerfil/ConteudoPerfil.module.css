@@ -10,6 +10,11 @@
 
     font-family: "Montserrat", sans-serif;
     margin-bottom: 20px;
+
+    background-image: url('/FundoOriginal.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 .container
