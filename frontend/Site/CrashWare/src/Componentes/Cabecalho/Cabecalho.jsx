@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../../Logo/logo_sem_fundo.png';
+import Logo from '../../fotos/escuro/logo_sem_fundo.svg';
 import { Sidebar } from '../Cabecalho/barraLateral/sideBar';
 import Style from './Cabecalho.module.css';
 

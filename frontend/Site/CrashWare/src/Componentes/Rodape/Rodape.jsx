@@ -1,14 +1,17 @@
 import Logo from '../../Logo/logo_sem_fundo.png';
+import Instagram from "../../fotos/Instagram.svg"
+import Whatsapp from "../../fotos/Whatsapp.svg"
+import GitHub from "../../fotos/GitHub.svg"
 import { Link } from 'react-router-dom';
 
 import Style from './Rodape.module.css';
 
-const Rodape = () => {
+const Rodape = ({ children }) => {
 
     const DataATual = new Date().getFullYear();
 
     return (
-        <>
+        < div className = { Style.corpo } >
             <footer className={Style.Rodape}>
                 <div className={Style.Container}>
                     <div className={Style.Marca}>
@@ -20,10 +23,23 @@ const Rodape = () => {
                     </div>
 
                     <div className={Style.Colunas}>
-                                  
+        { children }
+
+
+                        <div className={Style.RedesSociais}>
+                            <h5>Redes Sociais</h5>
+                            <div className={Style.Tamanho}>
+                                <a href="https://www.instagram.com/thesousac/" target='_blank'>
+                                    <img src={Instagram} alt="" />
+                                </a>
+                                <img src={Whatsapp} alt="" />
+                                <img src={GitHub} alt="" />
+                            </div>
+                        </div> {/* RedesSociais */}
+
                         <div className={Style.informacoes}>
-        
-                        <h5>Informações</h5>
+
+                            <h5>Informações</h5>
                             <Link to='sobre-nos'>
                                 <p>Sobre Nós</p>
                             </Link>
@@ -31,17 +47,6 @@ const Rodape = () => {
                             <Link to="*">
                                 <p>Politica de Privacidade</p>
                             </Link>
-
-                    
-
-                            <Link to="*">
-                                <p>Compromisso com a IntegSridade</p>
-                            </Link>
-
-                            <Link to="*">
-                                <p>Termos de Uso</p>
-                            </Link>
-                            
                         </div>
                     </div>
 
@@ -52,8 +57,8 @@ const Rodape = () => {
                 </div>
 
             </footer>
-        </>
-    );
+            </div >
+            );
 };
 
 export { Rodape };

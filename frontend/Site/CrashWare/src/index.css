@@ -4,10 +4,11 @@
 /* TEMA CLARO */
 .Claro {
   --bg-principal: #2E73C3;
-  --bg-secundario: #ffffff;
+  --bg-secundario: #3a8eee;
   --bg-terceiro: #FFFFFF80;
 
-  --Cabecalho:#ffffffc9;
+  --Cabecalho:#6C6A6A30;
+  --Rodape: #6c6a6a;
 
   --input-bg:#F8FAFC; 
 
@@ -17,7 +18,7 @@
 
   
   --texto-principal: #FFFFFF;
-  --texto-secundario: #4b5563;
+  --texto-secundario: #ccd5e0;
   --texto-terceiro: #0F172A80;
   --texto-quarto: ##787A81CC;
 
@@ -75,7 +76,7 @@
 
 
   --texto-principal: #f5f5f5;
-  --texto-secundario: #94A3B8;
+  --texto-secundario: #edf2f8;
 
   --texto-quarto: ##787A81CC;
 
@@ -91,13 +92,14 @@
 
   --cor-secundaria: #22d3ee;
   --cor-secundaria-hover: #67e8f9;
-
+  
   --borda: #334155;
-
+  
   --Carrossel: #FFFFFF4d;
   --Blocos: #ffffff4d;
-
-  --Cabecalho:#ffffffc9;
+  
+  --Cabecalho:#6C6A6A30;
+  --Rodape: #0000008e;
 
   --input-bg: #F8FAFC;
 
@@ -155,15 +157,16 @@
   --Botao-gradiente2:#47138B;
   --Botao-gradiente3:#7A5AD8;
 
-  --Rodape: #020c20;
 }
 
 body{
-    background-image: url('/FundoOriginal.svg');
     background-color: var(--bg-principal);
+    /* background-position: center center; */
+        background-image: url('/FundoOriginal.svg');
+
     background-size: cover;
+
     background-repeat: no-repeat;
-    /*background-position: center center;*/
 }
 
 

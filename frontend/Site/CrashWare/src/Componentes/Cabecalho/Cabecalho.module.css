@@ -14,17 +14,16 @@
     width: 95%;
     height: 9vh;
     color: var(--Branco);
-    background-color: #6C6A6A30;
+    background-color: var(--Cabecalho);
     backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2); /* borda leve */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* sombra suave */
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
     position: fixed ;
     transition: all 0.3s ease;
-    z-index: 999 !important;
+    z-index: 999 !important; 
     font-family: "Exo 2", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
@@ -36,15 +35,11 @@
 
 .Cabecalho h5
 {
-    margin-top: 10px;
-    /* padding-left: 10px; */
+    margin-top: 6px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.863);
     font-size: 22px;
     display: inline-block;
-
-    color: transparent;
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: var(--texto-principal);
     margin-left: 10px;
 
 
@@ -71,13 +66,12 @@
     text-decoration: none;
     align-items: center;
     color: var(--texto-secundario);
-    /* background-color: var(--bg-principal);   */
 }
 
     .hamburger {
         background: none;
         border: none;
-        color: var(--texto-secundario);
+        color: var(--texto-principal);
         font-size: 26px;
         cursor: pointer;
 

@@ -25,7 +25,7 @@ const ConteudoInicial = () => {
 
 
     useEffect(() => {
-       
+
 
         //Tema claro e escuro (não faço ideia oq faz pq ninguem comenta) isso muda o tema, ué
         const checarTema = (e) => setTema(e.detail);
@@ -39,20 +39,20 @@ const ConteudoInicial = () => {
 
     const FMenina = tema === 'Claro' ? FMenina_claro : FMenina_escuro;
 
-    const ApleIcon = tema === 'Claro'? apleModoClaro : apleModoEscuro;
+    const ApleIcon = tema === 'Claro' ? apleModoClaro : apleModoEscuro;
 
-    const googleIcon = tema === 'Claro'? googlePlayModoClaro : googlePlayModoEscuro
+    const googleIcon = tema === 'Claro' ? googlePlayModoClaro : googlePlayModoEscuro
 
     return (
-        <>
+        <div className={Style.corpo}>
             <main className={Style.MainEstilo}>
 
-                {/* ===== HERO ===== */}
+                 {/* ===== HERO ===== */}
                 <section className={Style.Apresentacao}>
 
                     <div className={Style.Apresentacao_texto}>
 
-                        <Carrossel/> 
+                        <Carrossel />
 
                         <div className={Style.Apresentacao_btns}>
                             <Link to="login">
@@ -74,11 +74,11 @@ const ConteudoInicial = () => {
                 <section className={Style.Chamada}>
                     {/* Chamada para ação */}
 
-                        <h3>A tecnologia não é mágica, é lógica</h3>
+                    <h3>A tecnologia não é mágica, é lógica</h3>
 
-                        <hr />
+                    <hr />
 
-                        <h5>Nosso guia introdutório desmistifica o que acontece por trás da tela, ensinando você a enxergar hardware e software como ferramentas de criação, não apenas consumo.</h5>
+                    <h5>Nosso guia introdutório desmistifica o que acontece por trás da tela, ensinando você a enxergar hardware e software como ferramentas de criação, não apenas consumo.</h5>
 
                 </section>
 
@@ -104,7 +104,7 @@ const ConteudoInicial = () => {
 
                                 <h4>Manutenção e Diagnóstico</h4>
                                 <p>Identifique problemas, faça limpeza correta e resolva falhas comuns de hardware.</p>
-                            
+
                             </div>
 
                             <div className={Style.ConteudoHardware_img}>
@@ -127,7 +127,7 @@ const ConteudoInicial = () => {
                                 <hr />
                                 <h4>Lógica de Programação</h4>
                                 <p>Entenda como os programas funcionam e dê os primeiros passos na criação de software.</p>
-                                
+
                             </div>
 
                             <div className={Style.ConteudoSoftware_img}>
@@ -158,7 +158,7 @@ const ConteudoInicial = () => {
                 </div>
 
             </main>
-        </>
+        </div>
     );
 };
 
