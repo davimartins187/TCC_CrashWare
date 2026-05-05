@@ -48,28 +48,28 @@ const ConteudoConfiguracoes = () => {
             paragrafo: "Deseja sair da conta?",
             primeiroBotao: "Sair",
             segundoBotao: "Cancelar",
-            primeiroClick: () => { /* lógica de sair */ setPopupAtivo(null); },
+            primeiroClick: () => {setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
         desativar: {
             paragrafo: "Deseja desativar sua conta?",
             primeiroBotao: "Desativar",
             segundoBotao: "Cancelar",
-            primeiroClick: () => { /* lógica de desativar */ setPopupAtivo(null); },
+            primeiroClick: () => {setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
         excluir: {
             paragrafo: "Deseja excluir sua conta? Essa ação é irreversível.",
             primeiroBotao: "Excluir",
             segundoBotao: "Cancelar",
-            primeiroClick: () => { /* lógica de excluir */ setPopupAtivo(null); },
+            primeiroClick: () => {setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
     };
 
     const conteudosBarraLateral = [
-        { id: 1, descricao: "Alterar dados do perfil", img: isClaro ? perfilModoEscuro : perfilModoClaro, acao: null },
-        { id: 2, descricao: "Sair da Conta",           img: isClaro ? sairContaModoEscuro : sairContaModoClaro, acao: 'sair' },
+        { id: 1, descricao: "Alterar dados do perfil", img: perfilModoClaro , acao: null },
+        { id: 2, descricao: "Sair da Conta",           img: sairContaModoClaro , acao: 'sair' },
     ];
 
     const PopUp = ({ paragrafo, primeiroBotao, segundoBotao, primeiroClick, segundoClick }) => {
@@ -133,12 +133,12 @@ const ConteudoConfiguracoes = () => {
 
                     <ItemBarraLateral
                         descricao={"Sobre"}
-                        img={isClaro ? sobreModoEscuro : sobreModoClaro}
+                        img={sobreModoClaro}
                     />
                     <Link to="/termos">
                         <ItemBarraLateral
                             descricao={"Termos de Serviço"}
-                            img={isClaro ? termosModoEscuro : termosModoClaro}
+                            img={termosModoClaro}
                         />
                     </Link>
                 </div>
