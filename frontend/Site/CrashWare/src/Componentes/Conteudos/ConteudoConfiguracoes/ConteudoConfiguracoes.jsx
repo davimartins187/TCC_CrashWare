@@ -32,7 +32,7 @@ const ItemBarraLateral = ({ descricao, img, onClick }) => {
 
 const ConteudoConfiguracoes = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
-    const [telaSelecionada, setTelaSelecionada] = useState("ConteudoInicial");
+    const [popupAtivo, setPopupAtivo] = useState(null); // null | 'sair' | 'desativar' | 'excluir'
 
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
@@ -42,128 +42,160 @@ const ConteudoConfiguracoes = () => {
 
     const isClaro = tema === 'Claro';
 
+    // Configurações de cada popup
+    const configsPopup = {
+        sair: {
+            paragrafo: "Deseja sair da conta?",
+            primeiroBotao: "Sair",
+            segundoBotao: "Cancelar",
+            primeiroClick: () => { /* lógica de sair */ setPopupAtivo(null); },
+            segundoClick: () => setPopupAtivo(null),
+        },
+        desativar: {
+            paragrafo: "Deseja desativar sua conta?",
+            primeiroBotao: "Desativar",
+            segundoBotao: "Cancelar",
+            primeiroClick: () => { /* lógica de desativar */ setPopupAtivo(null); },
+            segundoClick: () => setPopupAtivo(null),
+        },
+        excluir: {
+            paragrafo: "Deseja excluir sua conta? Essa ação é irreversível.",
+            primeiroBotao: "Excluir",
+            segundoBotao: "Cancelar",
+            primeiroClick: () => { /* lógica de excluir */ setPopupAtivo(null); },
+            segundoClick: () => setPopupAtivo(null),
+        },
+    };
+
     const conteudosBarraLateral = [
-        { id: 1, descricao: "Alterar dados do perfil",         img: isClaro ? perfilModoEscuro : perfilModoClaro },
-        { id: 2, descricao: "Sair da Conta",    img: isClaro ? sairContaModoEscuro : sairContaModoClaro },
+        { id: 1, descricao: "Alterar dados do perfil", img: isClaro ? perfilModoEscuro : perfilModoClaro, acao: null },
+        { id: 2, descricao: "Sair da Conta",           img: isClaro ? sairContaModoEscuro : sairContaModoClaro, acao: 'sair' },
     ];
+
+    const PopUp = ({ paragrafo, primeiroBotao, segundoBotao, primeiroClick, segundoClick }) => {
+        return (
+            <div className={`${Style.popUp} ${popupAtivo ? Style.popUpVisivel : ''}`}>
+                <p>{paragrafo}</p>
+                <div className={Style.botoes}>
+                    <button onClick={primeiroClick} className={Style.primeiroBotao}>
+                        {primeiroBotao}
+                    </button>
+                    <button onClick={segundoClick} className={Style.segundoBotao}>
+                        {segundoBotao}
+                    </button>
+                </div>
+            </div>
+        );
+    };
+
+    const configAtual = popupAtivo ? configsPopup[popupAtivo] : null;
 
     return (
         <>
+            {popupAtivo && (
+                <div
+                    className={Style.fundoEscurecido}
+                    onClick={() => setPopupAtivo(null)}
+                />
+            )}
+
             <div className={Style.separarConteudos}>
-                    <div className={Style.barraLateral}>
+                <div className={Style.barraLateral}>
+                    <h1>Configurações de usuário</h1>
+                    <hr />
 
-                        <h1>Configurações de usuário</h1>
-                        <hr />
-
-                        <div className={Style.itensBarraLateral}>
-                            {conteudosBarraLateral.map((item) => (
-                                <ItemBarraLateral
-                                    key={item.id}
-                                    descricao={item.descricao}
-                                    img={item.img}
-                                />
-                            ))}
-
-                            <div className={Style.destaque}>
-                                <ItemBarraLateral
-                                    descricao="Desativar Conta"
-                                    img={desativarConta}
-                                />
-                                <ItemBarraLateral
-                                    descricao="Excluir Conta"
-                                    img={excluirConta}
-                                />
-                            </div>
-                        </div>
-
-                        <h1>Privacidade e Segurança</h1>
-                        <hr />
-
+                    <div className={Style.itensBarraLateral}>
+                        {conteudosBarraLateral.map((item) => (
                             <ItemBarraLateral
-                                descricao={"Sobre"}
-                                img={isClaro? sobreModoEscuro : sobreModoClaro}
+                                key={item.id}
+                                descricao={item.descricao}
+                                img={item.img}
+                                onClick={item.acao ? () => setPopupAtivo(item.acao) : undefined}
+                            />
+                        ))}
+
+                        <div className={Style.destaque}>
+                            <ItemBarraLateral
+                                descricao="Desativar Conta"
+                                img={desativarConta}
+                                onClick={() => setPopupAtivo('desativar')}
                             />
                             <ItemBarraLateral
-                                descricao={"Termos de Serciço"}
-                                img={isClaro? termosModoEscuro : termosModoClaro}
+                                descricao="Excluir Conta"
+                                img={excluirConta}
+                                onClick={() => setPopupAtivo('excluir')}
                             />
+                        </div>
                     </div>
 
-                    <div className={Style.Conteudos}>
-                        
-                        <h1>Dados do Perfil</h1>
+                    <h1>Privacidade e Segurança</h1>
+                    <hr />
 
-                        <div className={Style.parteEmail}>
-                            <div className={Style.campoForm}>
-                                <label htmlFor="idEmailVinculado">E-mail vinculado</label>
-                                <input
-                                    type="text"
-                                    placeholder='seugmail@gmail.com'
-                                    id='idEmailVinculado'
-                                />
-                            </div>
-                            <div className={Style.campoForm}>
-                                <label htmlFor="idNovoEmail">Novo e-mail</label>
-                                <input
-                                    type="text"
-                                    placeholder='seugmail@gmail.com'
-                                    id='idNovoEmail'
-                                />
-                            </div>
+                    <ItemBarraLateral
+                        descricao={"Sobre"}
+                        img={isClaro ? sobreModoEscuro : sobreModoClaro}
+                    />
+                    <Link to="/termos">
+                        <ItemBarraLateral
+                            descricao={"Termos de Serviço"}
+                            img={isClaro ? termosModoEscuro : termosModoClaro}
+                        />
+                    </Link>
+                </div>
 
-                            <button className={Style.botoes}>Alterar</button>
+                <div className={Style.Conteudos}>
+                    <h1>Dados do Perfil</h1>
+
+                    <div className={Style.parteEmail}>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idEmailVinculado">E-mail vinculado</label>
+                            <input type="text" placeholder='seugmail@gmail.com' id='idEmailVinculado' />
                         </div>
-
-                        <div className={Style.parteTelefone}>
-                            <div className={Style.campoForm}>
-                                <label htmlFor="idNumeroTel">Número de Telefone</label>
-                                <input 
-                                    type="text"
-                                    placeholder='xx-xxxxx-xxxx'
-                                    id='idNumeroTel' 
-                                />
-                            </div>
-                            <div className={Style.campoForm}>
-                                <label htmlFor="idConfirmeNumeroTel">Confirme o número de telefone</label>
-                                <input 
-                                    type="text" 
-                                    placeholder='xx-xxxxx-xxxx'
-                                    id='idConfirmeNumeroTel'
-                                />
-                            </div>
-
-                            <button className={Style.botoes}>Adicionar</button>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idNovoEmail">Novo e-mail</label>
+                            <input type="text" placeholder='seugmail@gmail.com' id='idNovoEmail' />
                         </div>
-
-                        <div className={Style.alterarSenha}>
-
-                            <p>Alterar senha atual</p>
-                            <Link
-                                to="/recuperar-senha"
-                            >
-                                <button>Alterar</button>
-                            </Link>
-
-                        </div>
-                        
-                        <div className={Style.conectarContas}>
-
-                            <h2>Conecte suas contas para login</h2>
-
-                            <div className={Style.imagens}>
-                                <img 
-                                    src={googleIcon} 
-                                    alt="google" 
-                                />
-                                <img 
-                                    src={githubIcon} 
-                                    alt="github" 
-                                />
-                            </div>
-                        </div>
-
+                        <button className={Style.botoes}>Alterar</button>
                     </div>
+
+                    <div className={Style.parteTelefone}>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idNumeroTel">Número de Telefone</label>
+                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idNumeroTel' />
+                        </div>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idConfirmeNumeroTel">Confirme o número de telefone</label>
+                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idConfirmeNumeroTel' />
+                        </div>
+                        <button className={Style.botoes}>Adicionar</button>
+                    </div>
+
+                    <div className={Style.alterarSenha}>
+                        <p>Alterar senha atual</p>
+                        <Link to="/recuperar-senha">
+                            <button>Alterar</button>
+                        </Link>
+                    </div>
+
+                    <div className={Style.conectarContas}>
+                        <h2>Conecte suas contas para login</h2>
+                        <div className={Style.imagens}>
+                            <img src={googleIcon} alt="google" />
+                            <img src={githubIcon} alt="github" />
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            {configAtual && (
+                <PopUp
+                    paragrafo={configAtual.paragrafo}
+                    primeiroBotao={configAtual.primeiroBotao}
+                    segundoBotao={configAtual.segundoBotao}
+                    primeiroClick={configAtual.primeiroClick}
+                    segundoClick={configAtual.segundoClick}
+                />
+            )}
         </>
     );
 };

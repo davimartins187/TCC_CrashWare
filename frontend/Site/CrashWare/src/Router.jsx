@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes, PgHome } from "./Paginas"
+import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes, PgHome, PgTermos } from "./Paginas"
 import { LayoutPadrao, LayoutCadLogin } from "./Layouts"
 import { PgAlterarSenha } from "./Paginas/AlterarSenha"
 import { AuthProvider, RotaPrivada } from "./VerificacaoToken"
@@ -42,6 +42,12 @@ const Router = () => {
                     <PgHome/>
                 </RotaPrivada>
             } />
+
+            <Route path="termos" element={
+                <RotaPrivada>
+                    <PgTermos />
+                </RotaPrivada>
+            }/>
         </Route>
 
         <Route path="/" element={<LayoutCadLogin />}>
