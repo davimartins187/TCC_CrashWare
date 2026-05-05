@@ -8,6 +8,7 @@
   --bg-terceiro: #FFFFFF80;
 
   --Cabecalho:#ffffffc9;
+  --Rodape: #6C6A6A33;
 
   --input-bg:#F8FAFC; 
 
@@ -91,13 +92,14 @@
 
   --cor-secundaria: #22d3ee;
   --cor-secundaria-hover: #67e8f9;
-
+  
   --borda: #334155;
-
+  
   --Carrossel: #FFFFFF4d;
   --Blocos: #ffffff4d;
-
+  
   --Cabecalho:#ffffffc9;
+  --Rodape: #6C6A6A33;
 
   --input-bg: #F8FAFC;
 
@@ -155,15 +157,11 @@
   --Botao-gradiente2:#47138B;
   --Botao-gradiente3:#7A5AD8;
 
-  --Rodape: #020c20;
 }
 
 body{
-    background-image: url('/FundoOriginal.svg');
     background-color: var(--bg-principal);
-    background-size: cover;
-    background-repeat: no-repeat;
-    /*background-position: center center;*/
+    /* background-position: center center; */
 }
 
 

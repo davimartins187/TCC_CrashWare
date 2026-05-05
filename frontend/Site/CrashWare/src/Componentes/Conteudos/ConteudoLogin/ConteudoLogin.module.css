@@ -18,11 +18,12 @@
   padding: 20px;
   font-family: "Montserrat", sans-serif;
   flex-direction: column;
-  /* background-image: url('/src/fotos/fundo_site.svg') !important;
-  background-color: var(--bg-principal);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
+    background-image: url('/FundoOriginal.svg');
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
 }
 
 .container {
