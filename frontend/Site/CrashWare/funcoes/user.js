@@ -38,7 +38,7 @@ export class Usuario
                 //Guardo as informações do usuario no localstorage
                 localStorage.setItem("dados", JSON.stringify(dados));
 
-                this.setDados(dados)
+                //this.setDados(dados)
             }
             else
             {
