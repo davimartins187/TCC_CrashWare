@@ -23,24 +23,27 @@ const ConteudoPerfil = () => {
     // const [popup, setPopup] = useState(null);
 
 
-    // //Usestate do dados do usuario
-    // const [dados, setDados] = useState(() =>
-    // JSON.parse(localStorage.getItem("dados")) || null );
+    //Usestate do dados do usuario
+    const [dados, setDados] = useState(() =>
+    JSON.parse(localStorage.getItem("dados")) || null );
 
 
-    // const informacoes = localStorage.getItem("info")
+    const informacoes = localStorage.getItem("info")
 
-    // if(informacoes == "false")
-    // {
-    //     //Faço a requisição no banco
-    //     const dados = new Usuario();
-    //     dados.perfil();
+    if(informacoes == "false")
+    {
+        //Faço a requisição no banco
+        const dados = new Usuario();
+        dados.perfil(setDados);
+        
 
         
-    // }
-    // //Pego as informações do usuario
-    // const usuario = JSON.parse(localStorage.getItem("dados"));
+    }
+    //Pego as informações do usuario
+    const usuario = JSON.parse(localStorage.getItem("dados"));
 
+
+  
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
 
@@ -55,9 +58,12 @@ const ConteudoPerfil = () => {
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
     const XpMax = 500; //xp para mudar de nivel
-    const Nivel = Math.floor(xp/XpMax);
+    const Nivel = usuario.patente ;
     const xpAtual = xp % XpMax;
     const porcentagem = (xpAtual / XpMax) * 100;
+
+    //Comentei aqui gabriel o ngcio de nivel, eu prefiro ter AS PATENTE
+    //Math.floor(xp/XpMax)
 
     //Uso useState para o react renderizar as informações
     //const [id, setId] = useState(() => localStorage.getItem("id"));
@@ -115,7 +121,7 @@ const ConteudoPerfil = () => {
                             <div className={style.texto}>
 
                                 {/* Nome */}
-                                <h3> Usuário </h3>
+                                <h3> {usuario.nome} </h3>
 
                                 {/* Status */}
                                 <p className={style.status}>

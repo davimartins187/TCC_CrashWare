@@ -12,8 +12,8 @@ import sairContaModoEscuro from "../../../fotos/escuro/sairConta.svg";
 import desativarConta from "../../../fotos/desativarConta.svg";
 import excluirConta from "../../../fotos/excluirConta.svg";
 
-import sobreModoClaro from "../../../fotos/claro/sobre.svg";
-import sobreModoEscuro from "../../../fotos/escuro/sobre.svg";
+import sobreModoClaro from "../../../fotos/claro/Sobre.svg";
+import sobreModoEscuro from "../../../fotos/escuro/Sobre.svg";
 
 import termosModoClaro from "../../../fotos/claro/termos.svg";
 import termosModoEscuro from "../../../fotos/escuro/termos.svg";
