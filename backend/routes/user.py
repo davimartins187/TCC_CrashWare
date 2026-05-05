@@ -29,6 +29,8 @@ async def  perfil(usuario = Depends(validar_token)):
         raise HTTPException(status_code=404,detail="Usuário não encontrado")
     else:
         nome_patente = usuario.patentes.nome_patente
+        criado_em = usuario.created_at
+        data_formatada = criado_em.strftime("%d/%m/%Y")
         return{
             "nome" : usuario.nome_usuario.title(),
             "email" : usuario.email.lower(),
@@ -37,7 +39,8 @@ async def  perfil(usuario = Depends(validar_token)):
             "moedas" : usuario.moedas,
             "xp" : usuario.xp,
             "ativo": usuario.ativo,
-            "patente" : nome_patente
+            "patente" : nome_patente,
+            "criado_em" :  data_formatada
         }
 
 
