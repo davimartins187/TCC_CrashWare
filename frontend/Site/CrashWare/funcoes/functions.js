@@ -497,7 +497,7 @@ export class Api
                 localStorage.setItem("refresh_token", refresh_token)
 
                 //Informações
-                localStorage.setItem("info",false);
+                localStorage.setItem("info","false");
 
                 //Caso eu queira pegar o token
                 //const token = localStorage.getItem("token")

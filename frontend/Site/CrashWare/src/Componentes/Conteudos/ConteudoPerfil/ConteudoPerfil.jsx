@@ -28,7 +28,7 @@ const ConteudoPerfil = () => {
 
     const informacoes = localStorage.getItem("info")
 
-    if(informacoes == false)
+    if(informacoes == "false")
     {
         //Faço a requisição no banco
         const dados = Usuario(setDados = setDados);
