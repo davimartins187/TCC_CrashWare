@@ -14,13 +14,17 @@ import { Api, SairDaConta } from '../../../../funcoes/functions'
 import { BotoesForm } from '../../Botoes/BotaoForm/BotaoForm'
 import { Usuario } from '../../../../funcoes/user'
 
-
+//popup
+import { PopUp } from "../../pop-up";
 
 
 const ConteudoPerfil = () => {
 
     
-   
+    //Importo o Popup
+    const [popup, setPopup] = useState(null);
+
+
     //Usestate do dados do usuario
     const [dados, setDados] = useState(() =>
     JSON.parse(localStorage.getItem("dados")) || null );
@@ -31,7 +35,7 @@ const ConteudoPerfil = () => {
     if(informacoes == "false")
     {
         //Faço a requisição no banco
-        const dados = new Usuario();
+        const dados = new Usuario(setPopup);
         dados.perfil();
 
         

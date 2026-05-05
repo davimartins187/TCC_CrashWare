@@ -51,7 +51,7 @@ export class Usuario
         {
             console.log("Erro:", error);
             
-            setPopup({
+            this.setPopup({
                 tipo: 'erro',
                 titulo: 'Sem conexão',
                 mensagem: 'Não foi possível conectar ao servidor.'
