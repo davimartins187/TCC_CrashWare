@@ -19,27 +19,27 @@ import { PopUp } from "../../pop-up";
 
 
 const ConteudoPerfil = () => {
-    //Importo o Popup
-    const [popup, setPopup] = useState(null);
+    // //Importo o Popup
+    // const [popup, setPopup] = useState(null);
 
 
-    //Usestate do dados do usuario
-    const [dados, setDados] = useState(() =>
-    JSON.parse(localStorage.getItem("dados")) || null );
+    // //Usestate do dados do usuario
+    // const [dados, setDados] = useState(() =>
+    // JSON.parse(localStorage.getItem("dados")) || null );
 
 
-    const informacoes = localStorage.getItem("info")
+    // const informacoes = localStorage.getItem("info")
 
-    if(informacoes == "false")
-    {
-        //Faço a requisição no banco
-        const dados = new Usuario();
-        dados.perfil();
+    // if(informacoes == "false")
+    // {
+    //     //Faço a requisição no banco
+    //     const dados = new Usuario();
+    //     dados.perfil();
 
         
-    }
-    //Pego as informações do usuario
-    const usuario = JSON.parse(localStorage.getItem("dados"));
+    // }
+    // //Pego as informações do usuario
+    // const usuario = JSON.parse(localStorage.getItem("dados"));
 
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -47,7 +47,7 @@ const ConteudoPerfil = () => {
     // muda a foto
     const [foto, setFoto] = useState(FotoPadrao);
 
-    alert(usuario.nome)
+
 
     //referencia o input
     const inputRef = useRef();
