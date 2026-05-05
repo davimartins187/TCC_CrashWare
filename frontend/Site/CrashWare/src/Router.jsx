@@ -59,9 +59,9 @@ const Router = () => {
                 } />
 
                 <Route path="home" element={
-                    // <RotaPrivada>
+                    <RotaPrivada>
                     <PgHome />
-                    /* </RotaPrivada> */
+                    </RotaPrivada>
                 } />
 
                 <Route path="termos" element={
