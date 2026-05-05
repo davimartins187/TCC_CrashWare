@@ -31,7 +31,7 @@ const ConteudoPerfil = () => {
     if(informacoes == "false")
     {
         //Faço a requisição no banco
-        const dados = new Usuario(setDados = setDados);
+        const dados = new Usuario(setDados);
         dados.perfil();
 
         

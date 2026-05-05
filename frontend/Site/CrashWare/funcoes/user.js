@@ -2,7 +2,7 @@ export class Usuario
 {
 
     //Parâmetros do método construtor
-     constructor(setPopup = null, Navegacao = null,setDados = null)
+     constructor(setDados = null,setPopup = null, Navegacao = null,)
     {
         this.setPopup = setPopup;
         this.Navegacao = Navegacao;
