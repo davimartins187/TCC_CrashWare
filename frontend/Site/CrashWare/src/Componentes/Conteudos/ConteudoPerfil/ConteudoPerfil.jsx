@@ -4,7 +4,7 @@ import BackFundo from "../../../fotos/Banner.jpeg"
 import iconConquistas from '../../../fotos/Conquistas.svg'
 import iconBolsa from '../../../fotos/Compras.svg'
 import iconGema from '../../../fotos/Gemas.svg'
-import iconTema from '../../../fotos/item_tema.svg'
+import iconTema from '../../../fotos/Item_tema.svg'
 import style from './ConteudoPerfil.module.css'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,11 +12,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { Api, SairDaConta } from '../../../../funcoes/functions'
 
 import { BotoesForm } from '../../Botoes/BotaoForm/BotaoForm'
+import { Usuario } from '../../../../funcoes/user'
 
-
+//popup
+import { PopUp } from "../../pop-up";
 
 
 const ConteudoPerfil = () => {
+    // //Importo o Popup
+    // const [popup, setPopup] = useState(null);
+
+
+    // //Usestate do dados do usuario
+    // const [dados, setDados] = useState(() =>
+    // JSON.parse(localStorage.getItem("dados")) || null );
+
+
+    // const informacoes = localStorage.getItem("info")
+
+    // if(informacoes == "false")
+    // {
+    //     //Faço a requisição no banco
+    //     const dados = new Usuario();
+    //     dados.perfil();
+
+        
+    // }
+    // //Pego as informações do usuario
+    // const usuario = JSON.parse(localStorage.getItem("dados"));
 
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -24,14 +47,20 @@ const ConteudoPerfil = () => {
     // muda a foto
     const [foto, setFoto] = useState(FotoPadrao);
 
+
+
     //referencia o input
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
+    const XpMax = 500; //xp para mudar de nivel
+    const Nivel = Math.floor(xp/XpMax);
+    const xpAtual = xp % XpMax;
+    const porcentagem = (xpAtual / XpMax) * 100;
 
     //Uso useState para o react renderizar as informações
-    const [id, setId] = useState(() => localStorage.getItem("id"));
+    //const [id, setId] = useState(() => localStorage.getItem("id"));
     const [token_state, setToken] = useState(() => localStorage.getItem("token"));
     const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
 
@@ -48,6 +77,7 @@ const ConteudoPerfil = () => {
 
 
     return (
+        
         <div className={style.corpo}>
             <div className={style.container}>
 
@@ -91,12 +121,23 @@ const ConteudoPerfil = () => {
                                 <p className={style.status}>
                                     <span className={style.bolinha}></span>
                                     Membro desde .... </p>
+
+                                {/* Nivel do Usuario */}
+                                <div className={style.Nivel}>
+                                    <div className={style.NivelTopo}>
+                                        <span>Nível {Nivel}</span>
+                                        <span>{xpAtual}/{XpMax} XP</span>
+                                    </div>
+
+                                    <div className={style.Barra}>
+                                        <div
+                                            className={style.Progresso}
+                                            style={{ width: `${porcentagem}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
                             </div> {/*Tetxos */}
 
-                            {/* Nivel do Usuario */}
-                            <div className={style.Nivel}>
-                                <p>nivel</p>
-                            </div>
                         </div> {/*info*/}
 
 
@@ -109,6 +150,7 @@ const ConteudoPerfil = () => {
                             <div className={style.Conquistas}>
                                 <img src={iconConquistas} alt="" />
                                 <div className={style.Conquistas_Coluna}>
+                                    0
                                     <p>Conquistas</p>
                                 </div>
                             </div> {/*Conquistas*/}
@@ -134,7 +176,7 @@ const ConteudoPerfil = () => {
 
                             {/* Sair da conta , depois vc troca isso gabriel ou davison */}
                             <BotoesForm
-                                onClick={() => SairDaConta(setId, setToken, setRefresh)}
+                                onClick={() => SairDaConta(setToken, setRefresh)}
                                 texto="Sair da conta"
                             />
 
@@ -158,16 +200,20 @@ const ConteudoPerfil = () => {
                         {/* Conquistas */}
                         <div className={style.ConquistasBloco}>
                             <h4>Conquistas</h4>
+                            {/* VOU TER Q FAZER UM COMPONTENTE AQ, NAO MEXER */}
                             <div className={style.ItemConquista}>
                                 <img src={FotoPadrao} alt="" />
-                                <h6>Bla</h6>
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <div>
+                                    <h6>Conquista 1</h6>
+                                    <p>Conquista por ser o primeiro a Logar</p>
+                                </div>
                             </div> {/* Conquistas item */}
                         </div>
                     </div> {/* Direita */}
                 </div> {/* Lados */}
             </div>  {/* Conateiner */}
         </div> //Corpo
+   
     )
 }
 

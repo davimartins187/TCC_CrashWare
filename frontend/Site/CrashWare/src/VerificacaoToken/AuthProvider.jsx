@@ -14,12 +14,12 @@ const AuthProvider = ({ children }) => {
     const Navegacao = useNavigate();
 
     //Uso useState para o react renderizar as informações
-    const [id_state, setId] = useState(() => localStorage.getItem("id"));
+    //const [id_state, setId] = useState(() => localStorage.getItem("id"));
     const [token_state, setToken] = useState(() => localStorage.getItem("token"));
     const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
 
     //Lista que contém todos os usestate
-    const set = [setId,setToken,setRefresh];
+    const set = [setToken,setRefresh];
 
     //Verifico se o usuario tem token
     const VerificarToken = async () => 
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
         const refresh_token = localStorage.getItem("refresh_token")
 
 
-        //Vaerifico o token
+        //Verifico o token
         const usuario = new Api();
         const token_vencido = await usuario.Verificar_Token(token,Navegacao)
 
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ id_state, token_state, refresh_token_state, setId, setToken, setRefresh }}>
+        <AuthContext.Provider value={{token_state, refresh_token_state, setToken, setRefresh }}>
             {children}
         </AuthContext.Provider>
     );
