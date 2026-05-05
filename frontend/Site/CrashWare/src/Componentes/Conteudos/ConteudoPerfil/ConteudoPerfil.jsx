@@ -58,7 +58,7 @@ const ConteudoPerfil = () => {
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
     const XpMax = 500; //xp para mudar de nivel
-    const Nivel = usuario.patente ;
+    const Nivel = usuario.patente;
     const xpAtual = xp % XpMax;
     const porcentagem = (xpAtual / XpMax) * 100;
 
