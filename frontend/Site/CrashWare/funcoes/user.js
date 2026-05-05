@@ -44,7 +44,7 @@ export class Usuario
             {
                 const erro = await response.json()
 
-                console.log(erro)
+                console.log(erro.detail)
             }
             
         }catch (error) 
