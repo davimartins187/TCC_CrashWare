@@ -50,7 +50,5 @@ async def validar_token (token = Depends(pegar_token), session = Depends(pegar_s
     usuario = session.query(Usuarios).filter(Usuarios.id_usuario == id_usuario).first()
     if not usuario:
         raise HTTPException(status_code=401, detail="Acesso inválido")
-    return {
-            "usuario" : usuario
-    }
+    return usuario
 
