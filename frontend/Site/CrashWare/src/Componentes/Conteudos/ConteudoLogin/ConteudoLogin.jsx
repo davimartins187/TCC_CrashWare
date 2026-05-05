@@ -52,7 +52,7 @@ const ConteudoLogin = () => {
         const usuario = new Api();
 
         //Chamo o método
-        usuario.Logar(email, senha, setPopup, Navegacao,setDados);
+        usuario.Logar(email, senha, setPopup, Navegacao);
 
     };
 
