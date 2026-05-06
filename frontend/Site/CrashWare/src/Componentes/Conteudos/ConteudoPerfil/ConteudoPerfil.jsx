@@ -59,12 +59,12 @@ const ConteudoPerfil = () => {
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
     const XpMax = 500; //xp para mudar de nivel
-    const Nivel = Math.floor(xp/XpMax);
+    const Nivel = usuario.patente;
     const xpAtual = xp % XpMax;
     const porcentagem = (xpAtual / XpMax) * 100;
 
-    //Comentei aqui gabriel o ngcio de nivel, eu prefiro ter AS PATENTE
-    //
+    //Comentei aqui gabriel o ngcio de nivel para testar a patente
+    //Math.floor(xp/XpMax)
 
     //Uso useState para o react renderizar as informações
     //const [id, setId] = useState(() => localStorage.getItem("id"));
