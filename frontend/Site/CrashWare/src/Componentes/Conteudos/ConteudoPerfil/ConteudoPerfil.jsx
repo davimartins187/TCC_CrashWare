@@ -79,7 +79,7 @@ const ConteudoPerfil =  () => {
 
     const XpMax = 500;
 
-    const Nivel = dados?.patente || 0;
+    const Nivel = dados?.nivel || 0;
     const nome  = dados?.nome    || "Usuário";
 
     const xpAtual    = xp % XpMax;
