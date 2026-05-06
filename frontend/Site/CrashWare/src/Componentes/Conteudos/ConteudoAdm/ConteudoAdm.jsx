@@ -18,7 +18,7 @@ import termosModoClaro from "../../../fotos/claro/termos.svg";
 import termosModoEscuro from "../../../fotos/escuro/termos.svg";
 import { CampoTexto } from '../../CampoTexto';
 import { BotoesForm } from '../../Botoes';
-import { conquista } from '../../../../funcoes/user';
+import { Adm } from '../../../../funcoes/adm';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -112,6 +112,15 @@ const ConteudoAdm = () => {
         xp &&
         condicao &&
         opcao;
+
+    const handleAdicionarConquista = () => {
+        //Instâncio o objeto
+        const conquista = new Adm;
+
+        //Chamo o método
+        conquista.adicionar_conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao);
+
+    }
 
 
     return (
@@ -234,7 +243,7 @@ const ConteudoAdm = () => {
                     <BotoesForm
                         texto="Adicionar"
                         disabled={!botaoliberado}
-                        onClick={conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao)}
+                        onClick={handleAdicionarConquista}
                     />
 
                 </div>

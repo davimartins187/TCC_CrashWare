@@ -9,3 +9,6 @@ class ConquistaSchema(BaseModel):
     moeda : int
     xp : float
     condicao_conquista : str
+
+
+    
