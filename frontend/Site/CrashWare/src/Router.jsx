@@ -8,7 +8,9 @@ import { AuthProvider, RotaPrivada } from "./VerificacaoToken"
 
 const Router = () => {
     return (
+        //Todas as rotas e Caminhos
         <Routes>
+            {/* Layout Padrao */}
             <Route path="/" element={<LayoutPadrao />}>
                 <Route index element={
                     <AuthProvider>
@@ -19,8 +21,9 @@ const Router = () => {
                 <Route path="sobre-nos" element={<SobreNos />} />
                 <Route path="*" element={<PgErro />} />
 
-            </Route>
+            </Route> {/* Layout Padrao */}
 
+            {/* Layout de Cadastro e Login sem footer */}
             <Route path="/" element={<LayoutCadLogin />}>
                 <Route path="cadastro" element={
                     <AuthProvider>
@@ -37,8 +40,9 @@ const Router = () => {
                 <Route path="recuperar-senha" element={<PgRecuperarSenha />} />
                 <Route path="verificacao-email" element={<PgVerificacaoEmail />} />
                 <Route path="alterar-senha" element={<PgAlterarSenha />} />
-            </Route>
+            </Route>  {/* Layout de Cadastro e Login sem footer */}
 
+            {/* Layout Logado */}
             <Route path="/" element={<LayoutLogado />}>
                 <Route path="perfil" element={
                     <RotaPrivada>
@@ -60,7 +64,7 @@ const Router = () => {
 
                 <Route path="home" element={
                     <RotaPrivada>
-                    <PgHome />
+                        <PgHome />
                     </RotaPrivada>
                 } />
 
@@ -69,7 +73,7 @@ const Router = () => {
                         <PgTermos />
                     </RotaPrivada>
                 } />
-            </Route>
+            </Route> {/* Layout Logado */}
         </Routes>
     )
 }
