@@ -4,7 +4,7 @@ export function sleep(ms) {
 }
 
 //Sair da conta
-export async function SairDaConta(setToken,setRefresh){
+export async function SairDaConta(setToken,setRefresh,setDados){
 
      //Deleto o token do LocalStorage
     await localStorage.removeItem("token");
@@ -12,7 +12,8 @@ export async function SairDaConta(setToken,setRefresh){
     //Deleto o refresh_token do LocalStorage
     await localStorage.removeItem("refresh_token");
 
-
+    //Deleto as informações do usuario do localStorage
+    await localStorage.removeItem("dados");
 
     //Deleto o ID do LocalStorage
     // await localStorage.removeItem("id");
@@ -20,6 +21,7 @@ export async function SairDaConta(setToken,setRefresh){
     //Faço com que o react renderize as informações
     setToken(null);
     setRefresh(null);
+    setDados(null);
     // setId(null);
 
 

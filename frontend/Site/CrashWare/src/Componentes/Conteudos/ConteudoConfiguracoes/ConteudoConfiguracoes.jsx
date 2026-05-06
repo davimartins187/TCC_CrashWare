@@ -20,6 +20,7 @@ import termosModoEscuro from "../../../fotos/escuro/termos.svg";
 
 import googleIcon from "../../../fotos/google.png";
 import githubIcon from "../../../fotos/github.png";
+import { SairDaConta } from '../../../../funcoes/functions';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -42,13 +43,28 @@ const ConteudoConfiguracoes = () => {
 
     const isClaro = tema === 'Claro';
 
+    const [token_state,setToken]   = useState(() => localStorage.getItem("token"));
+    const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
+    const [dados, setDados] = useState(() =>
+        JSON.parse(localStorage.getItem("dados")) || null
+    );
+
     // Configurações de cada popup
     const configsPopup = {
         sair: {
             paragrafo: "Deseja sair da conta?",
             primeiroBotao: "Sair",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {setPopupAtivo(null); },
+            primeiroClick: () => {
+
+                //Saio da Conta
+                SairDaConta(setToken,setRefresh,setDados)
+
+                setPopupAtivo(null);
+
+
+
+             },
             segundoClick: () => setPopupAtivo(null),
         },
         desativar: {

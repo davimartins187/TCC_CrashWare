@@ -88,8 +88,7 @@ const ConteudoPerfil = () => {
     const xpAtual    = xp % XpMax;
     const porcentagem = (220 / XpMax) * 100;
 
-    const [token_state,         setToken]   = useState(() => localStorage.getItem("token"));
-    const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
+    
 
     useEffect(() => {
         const informacoes = localStorage.getItem("info");
