@@ -44,7 +44,6 @@ const ConteudoPerfil = () => {
 
     
 
-
     //Precisa tratar a data GABRIEL
     //usuario.criado_em
 
