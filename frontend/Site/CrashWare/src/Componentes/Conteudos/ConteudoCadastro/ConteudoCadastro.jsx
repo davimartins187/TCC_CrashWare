@@ -9,7 +9,7 @@ import verSenha_claro from '../../../fotos/claro/pode_ver_senha.svg';
 import esconderSenha_escuro from '../../../fotos/escuro/nao_pode_ver_senha_claro.svg';
 import verSenha_escuro from '../../../fotos/escuro/pode_ver_senha_claro.svg';
 
-import gitIcon from "../../../fotos/github.svg";
+import gitIcon from "../../../fotos/GitHub.svg";
 
 import googloIcon from "../../../fotos/google.png";
 
