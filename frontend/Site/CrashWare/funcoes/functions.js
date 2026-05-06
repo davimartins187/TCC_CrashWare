@@ -24,8 +24,6 @@ export async function SairDaConta(setToken,setRefresh,setDados){
     setDados(null);
     // setId(null);
 
-
-
     //Levo para a tela inicial
     window.location.href = '/'
 

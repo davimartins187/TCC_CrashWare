@@ -55,10 +55,12 @@ const ConteudoConfiguracoes = () => {
             paragrafo: "Deseja sair da conta?",
             primeiroBotao: "Sair",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {
+            primeiroClick: async () => {
 
                 //Saio da Conta
-                SairDaConta(setToken,setRefresh,setDados)
+                await SairDaConta(setToken,setRefresh,setDados)
+
+                
 
                 setPopupAtivo(null);
 

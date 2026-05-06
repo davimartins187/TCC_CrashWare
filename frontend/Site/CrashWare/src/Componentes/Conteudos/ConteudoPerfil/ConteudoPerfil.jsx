@@ -29,7 +29,6 @@ const ConteudoPerfil = () => {
     );
 
 
-
     const informacoes = localStorage.getItem("info")
 
     if(informacoes == "false")
