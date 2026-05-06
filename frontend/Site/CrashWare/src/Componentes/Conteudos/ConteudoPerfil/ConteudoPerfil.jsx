@@ -46,7 +46,16 @@ const ConteudoPerfil = () => {
 
 
     //Precisa tratar a data GABRIEL
-    //usuario.criado_em
+    const DataCadastro = usuario.criado_em;
+
+    const formatarData = (DataCadastro) => {
+    const [dia, mes, ano] = DataCadastro.split('/');
+    const date = new Date(`${ano}-${mes}-${dia}`);
+
+    const mesNome = date.toLocaleString('pt-BR', { month: 'long' });
+
+    return `Membro desde ${mesNome} de ${ano}`;
+};
 
     //NAO MEXE AQUI GABRIEL
     //Retorna o valor do adm
@@ -139,8 +148,7 @@ const ConteudoPerfil = () => {
 
                                 {/* Status */}
                                 <p className={style.status}>
-                                    <span className={style.bolinha}></span>
-                                    Membro desde .... </p>
+                                    {formatarData(DataCadastro)}</p>
 
                                 {/* Nivel do Usuario */}
                                 <div className={style.Nivel}>
