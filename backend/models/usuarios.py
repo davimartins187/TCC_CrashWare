@@ -48,7 +48,9 @@ class Usuarios(Base):
 
     # Criando relação com objetos (relationship)
     oauths = relationship("UsuariosOauth",backref="usuarios")
-    niveis = relationship("Nivel",backref="usuarios")
+
+
+    #niveis = relationship("Nivel",backref="usuarios")
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)
     #nivel_id
