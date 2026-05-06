@@ -1,3 +1,4 @@
+export * from './ADM'
 export * from './AlterarSenha';
 export * from './Anotacoes';
 export * from './cadastro';
@@ -9,5 +10,5 @@ export * from './PgErro';
 export * from './Principal';
 export * from './RecuperarSenha';
 export * from './SobreNos';
-export * from './VerificacaoEmail';
 export * from './Termos';
+export * from './VerificacaoEmail';

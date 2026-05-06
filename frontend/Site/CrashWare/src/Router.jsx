@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes, PgHome, PgTermos } from "./Paginas"
+import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes, PgHome, PgTermos, PgAdm } from "./Paginas"
 import { LayoutPadrao, LayoutCadLogin, LayoutLogado } from "./Layouts"
 import { PgAlterarSenha } from "./Paginas/AlterarSenha"
 import { AuthProvider, RotaPrivada } from "./VerificacaoToken"
@@ -40,6 +40,7 @@ const Router = () => {
                 <Route path="recuperar-senha" element={<PgRecuperarSenha />} />
                 <Route path="verificacao-email" element={<PgVerificacaoEmail />} />
                 <Route path="alterar-senha" element={<PgAlterarSenha />} />
+
             </Route>  {/* Layout de Cadastro e Login sem footer */}
 
             {/* Layout Logado */}
@@ -71,6 +72,12 @@ const Router = () => {
                 <Route path="termos" element={
                     <RotaPrivada>
                         <PgTermos />
+                    </RotaPrivada>
+                } />
+
+                <Route path="adm" element={
+                    <RotaPrivada>
+                        <PgAdm />
                     </RotaPrivada>
                 } />
             </Route> {/* Layout Logado */}

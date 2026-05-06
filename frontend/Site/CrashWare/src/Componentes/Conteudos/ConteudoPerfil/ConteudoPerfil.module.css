@@ -20,15 +20,7 @@
 .container
 {
     width: 100%;
-    /* height: auto; */
-    border: solid var(--Branco);    
-    /* margin-bottom: 15px;
-    margin-right: 300px;
-    margin-left: 300px;
-    margin-top: 15px; */
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
+    /* height: auto; */    
     gap: 10px;
     overflow: hidden;
     position: relative;
@@ -319,6 +311,7 @@
 
 .Direita{
     width: 30%;
+    margin-right: 100px;
 }
 
 .ConquistasBloco{

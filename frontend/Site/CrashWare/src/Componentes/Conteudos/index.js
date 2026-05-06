@@ -1,3 +1,4 @@
+export * from './ConteudoAdm';
 export * from './ConteudoAnotacoes';
 export * from './ConteudoCadastro';
 export * from './ConteudoHome';
@@ -6,5 +7,5 @@ export * from './ConteudoLogin';
 export * from './ConteudoPerfil';
 export * from './ConteudoRecSenha';
 export * from './ConteudoRecSenha';
-export * from './CVerificacaoEmail';
 export * from './ConteudoTermos';
+export * from './CVerificacaoEmail';

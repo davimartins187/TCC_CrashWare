@@ -1,8 +1,7 @@
-    import { useState, useEffect } from 'react';
-    import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import Style from "./ConteudoConfiguracoes.module.css";
-
+import Style from './ConteudoAdm.module.css'
 import perfilModoClaro from "../../../fotos/claro/login_icon_claro.svg";
 import perfilModoEscuro from "../../../fotos/escuro/login_icon.svg";
 
@@ -17,9 +16,8 @@ import sobreModoEscuro from "../../../fotos/escuro/Sobre.svg";
 
 import termosModoClaro from "../../../fotos/claro/termos.svg";
 import termosModoEscuro from "../../../fotos/escuro/termos.svg";
-
-import googleIcon from "../../../fotos/google.png";
-import githubIcon from "../../../fotos/github.png";
+import { CampoTexto } from '../../CampoTexto';
+import { BotoesForm } from '../../Botoes';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -30,7 +28,7 @@ const ItemBarraLateral = ({ descricao, img, onClick }) => {
     );
 };
 
-const ConteudoConfiguracoes = () => {
+const ConteudoAdm = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
     const [popupAtivo, setPopupAtivo] = useState(null); // null | 'sair' | 'desativar' | 'excluir'
 
@@ -42,34 +40,38 @@ const ConteudoConfiguracoes = () => {
 
     const isClaro = tema === 'Claro';
 
-    // Configurações de cada popup
     const configsPopup = {
         sair: {
             paragrafo: "Deseja sair da conta?",
             primeiroBotao: "Sair",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {setPopupAtivo(null); },
+            primeiroClick: () => { setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
         desativar: {
             paragrafo: "Deseja desativar sua conta?",
             primeiroBotao: "Desativar",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {setPopupAtivo(null); },
+            primeiroClick: () => { setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
         excluir: {
             paragrafo: "Deseja excluir sua conta? Essa ação é irreversível.",
             primeiroBotao: "Excluir",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {setPopupAtivo(null); },
+            primeiroClick: () => { setPopupAtivo(null); },
             segundoClick: () => setPopupAtivo(null),
         },
     };
 
     const conteudosBarraLateral = [
-        { id: 1, descricao: "Alterar dados do perfil", img: perfilModoClaro , acao: null },
-        { id: 2, descricao: "Sair da Conta",           img: sairContaModoClaro , acao: 'sair' },
+        { id: 1, descricao: "Usuários", img: perfilModoClaro, acao: null },
+        // { id: 2, descricao: "Conteudos", img: sairContaModoClaro, acao: 'sair' },
+        { id: 3, descricao: "Conquistas", acao: 'conquistas' },
+        // { id: 4, descricao: "Relatórios", acao: 'relatorios' },
+        // { id: 5, descricao: "Notificações", acao: 'notificacoes' },
+        // { id: 6, descricao: "Cosmeticos", acao: 'cosmeticos' },
+        // { id: 7, descricao: "Sair", mg: sairContaModoClaro, acao: 'sair' }
     ];
 
     const PopUp = ({ paragrafo, primeiroBotao, segundoBotao, primeiroClick, segundoClick }) => {
@@ -90,6 +92,27 @@ const ConteudoConfiguracoes = () => {
 
     const configAtual = popupAtivo ? configsPopup[popupAtivo] : null;
 
+
+    //MEXE AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII PRA BAIXO
+
+    
+    //Variaveis
+    const [nomeConquista, setNomeConquista] = useState("");
+    const [descricaoConquista, setDescricaoConquista] = useState("");
+    const [moedas, setMoedas] = useState();
+    const [xp, setXP] = useState();
+    const [condicao, setCondicao] = useState("");
+    const [opcao, setOpcao] = useState("");
+
+    const botaoliberado =
+        nomeConquista &&
+        descricaoConquista &&
+        moedas &&
+        xp &&
+        condicao &&
+        opcao;
+
+
     return (
         <>
             {popupAtivo && (
@@ -101,7 +124,7 @@ const ConteudoConfiguracoes = () => {
 
             <div className={Style.separarConteudos}>
                 <div className={Style.barraLateral}>
-                    <h1>Configurações de usuário</h1>
+                    <h1>Indefinido</h1>
                     <hr />
 
                     <div className={Style.itensBarraLateral}>
@@ -114,7 +137,7 @@ const ConteudoConfiguracoes = () => {
                             />
                         ))}
 
-                        <div className={Style.destaque}>
+                        {/* <div className={Style.destaque}>
                             <ItemBarraLateral
                                 descricao="Desativar Conta"
                                 img={desativarConta}
@@ -125,16 +148,16 @@ const ConteudoConfiguracoes = () => {
                                 img={excluirConta}
                                 onClick={() => setPopupAtivo('excluir')}
                             />
-                        </div>
+                        </div> */}
                     </div>
 
                     <h1>Privacidade e Segurança</h1>
                     <hr />
 
-                    <ItemBarraLateral
+                    {/* <ItemBarraLateral
                         descricao={"Sobre"}
                         img={sobreModoClaro}
-                    />
+                    /> */}
                     <Link to="/termos">
                         <ItemBarraLateral
                             descricao={"Termos de Serviço"}
@@ -144,60 +167,87 @@ const ConteudoConfiguracoes = () => {
                 </div>
 
                 <div className={Style.Conteudos}>
-                    <h1>Dados do Perfil</h1>
-
                     <div className={Style.parteEmail}>
                         <div className={Style.campoForm}>
-                            <label htmlFor="idEmailVinculado">E-mail vinculado</label>
-                            <input type="text" placeholder='seugmail@gmail.com' id='idEmailVinculado' />
+
+                            <label htmlFor="NomeConsquista">Nome da Conquista</label>
+                            <CampoTexto
+                                placeholder="Nome da Conquista"
+                                maxlength={100}
+                                onChange={(e) => setNomeConquista(e.target.value)}
+                            />
                         </div>
                         <div className={Style.campoForm}>
-                            <label htmlFor="idNovoEmail">Novo e-mail</label>
-                            <input type="text" placeholder='seugmail@gmail.com' id='idNovoEmail' />
-                        </div>
-                        <button className={Style.botoes}>Alterar</button>
-                    </div>
+                            <label>
+                                <CampoTexto name="opcao" value="Software" type="radio" className={Style.radio}
+                                    onChange={(e) => setOpcao(e.target.value)}
+                                />
+                                Software
+                            </label>
 
+                            <label>
+                                <CampoTexto name="opcao" value="Hardware" type="radio" className={Style.radio}
+                                    onChange={(e) => setOpcao(e.target.value)}
+                                />
+                                Hardware
+                            </label>
+                            <label>
+                                <CampoTexto name="opcao" value="Outro" type="radio" className={Style.radio}
+                                    onChange={(e) => setOpcao(e.target.value)}
+                                />
+                                Outro
+                            </label>
+                        </div>
+                    </div>
                     <div className={Style.parteTelefone}>
-                        <div className={Style.campoForm}>
-                            <label htmlFor="idNumeroTel">Número de Telefone</label>
-                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idNumeroTel' />
-                        </div>
-                        <div className={Style.campoForm}>
-                            <label htmlFor="idConfirmeNumeroTel">Confirme o número de telefone</label>
-                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idConfirmeNumeroTel' />
-                        </div>
-                        <button className={Style.botoes}>Adicionar</button>
+                        <label htmlFor="Descricao">Descricao</label>
+                        <CampoTexto
+                            placeholder="Descreva a Conquista"
+                            maxlenght={200}
+                            onChange={(e) => setDescricaoConquista(e.target.value)}
+                        />
+                    </div>
+                    <div className={Style.parteTelefone}>
+                        <label htmlFor="Moedas">Quantas moedas vai ter?</label>
+                        <CampoTexto placeholder="00"
+                            type="number"
+                            maxlength={100}
+                            onChange={(e) => setMoedas(e.target.value)}
+                        />
+                        <label htmlFor="XP">vale quanto de XP</label>
+                        <CampoTexto placeholder="00"
+                            type="number"
+                            maxlength={100}
+                            onChange={(e) => setXP(e.target.value)}
+                        />
+                    </div>
+                    <div className={Style.parteTelefone}>
+                        <label htmlFor="Condicao">Condição da Conquista</label>
+                        <CampoTexto placeholder="Condição"
+                            type="text"
+                            maxlength={100}
+                            onChange={(e) => setCondicao(e.target.value)}
+                        />
                     </div>
 
-                    <div className={Style.alterarSenha}>
-                        <p>Alterar senha atual</p>
-                        <Link to="/recuperar-senha">
-                            <button>Alterar</button>
-                        </Link>
-                    </div>
+                    <BotoesForm
+                        texto="Adicionar"
+                        disabled={!botaoliberado}
+                    />
 
-                    <div className={Style.conectarContas}>
-                        <h2>Conecte suas contas para login</h2>
-                        <div className={Style.imagens}>
-                            <img src={googleIcon} alt="google" />
-                            <img src={githubIcon} alt="github" />
-                        </div>
-                    </div>
                 </div>
+                {configAtual && (
+                    <PopUp
+                        paragrafo={configAtual.paragrafo}
+                        primeiroBotao={configAtual.primeiroBotao}
+                        segundoBotao={configAtual.segundoBotao}
+                        primeiroClick={configAtual.primeiroClick}
+                        segundoClick={configAtual.segundoClick}
+                    />
+                )}
             </div>
-
-            {configAtual && (
-                <PopUp
-                    paragrafo={configAtual.paragrafo}
-                    primeiroBotao={configAtual.primeiroBotao}
-                    segundoBotao={configAtual.segundoBotao}
-                    primeiroClick={configAtual.primeiroClick}
-                    segundoClick={configAtual.segundoClick}
-                />
-            )}
         </>
-    );
-};
+    )
+}
 
-export { ConteudoConfiguracoes };
+export { ConteudoAdm }
