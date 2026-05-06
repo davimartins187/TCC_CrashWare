@@ -1,6 +1,5 @@
 #Importando comandos do sql para o código.
-
-from sqlalchemy import Column, Integer, Float
+from sqlalchemy import Column, Integer, Float, String
 
 
 #Importando a Base declarativa
@@ -14,17 +13,19 @@ from database.session import Session
 # Cria a sessão
 session = Session()
 
-class Nivel(Base):
+class Patente(Base):
     # Nome da tabela
-    __tablename__ = "nivel"
+    __tablename__ = "patente"
 
     # Campos da tabela
-    id_nivel = Column(Integer,primary_key=True,autoincrement=True)
+    id_patente = Column(Integer,primary_key=True,autoincrement=True)
+    nome_patente = Column(String(30), nullable=False)
     xp_minimo = Column(Float,nullable=False)
 
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)
-    def __init__(self,xp_minimo):
+    def __init__(self,nome_patente,xp_minimo):
+        self.nome_patente = nome_patente
         self.xp_minimo = xp_minimo
 
 
