@@ -9,6 +9,10 @@ import verSenha_claro from '../../../fotos/claro/pode_ver_senha.svg';
 import esconderSenha_escuro from '../../../fotos/escuro/nao_pode_ver_senha_claro.svg';
 import verSenha_escuro from '../../../fotos/escuro/pode_ver_senha_claro.svg';
 
+import gitIcon from "../../../fotos/github.svg";
+
+import googloIcon from "../../../fotos/google.png";
+
 import style from './ConteudoCadastro.module.css';
 
 //Importando sleep
@@ -150,9 +154,15 @@ const ConteudoCadstro = () => {
                         onClick={handleCadastro}
                     />
                 </div>
+
                 <p className={style.Logar}>
                     Já tem uma conta? <Link to="/login">Entre</Link>
                 </p>
+
+                <div className={style.outrasFormasCadastro}>
+                    <img src={gitIcon} alt="Icone Github" />
+                    <img src={googloIcon} alt="Icone google" />
+                </div>
             </div>
         </>
     );

@@ -8,11 +8,8 @@
 
 .corpo{
     margin: auto;
-    /* width: 80%; */
     min-height: 88.9vh; 
-  /* background: 
-    url('/public/fundo_site.jpeg') no-repeat center/cover,
-    var(--bg-principal) !important; */
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,6 +150,18 @@ button
   opacity: 1;
 }
 
+.outrasFormasCadastro{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  gap: 20px;
+}
+
+.outrasFormasCadastro img{
+  width: 45px;
+}
 
 @media (max-width: 480px) {
 

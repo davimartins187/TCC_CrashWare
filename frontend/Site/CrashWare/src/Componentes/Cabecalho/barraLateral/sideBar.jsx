@@ -37,6 +37,7 @@ const Sidebar = ({ aberto, onFechar }) => {
 
           <Tema />
         </nav>
+
       </aside>
     </>
   );

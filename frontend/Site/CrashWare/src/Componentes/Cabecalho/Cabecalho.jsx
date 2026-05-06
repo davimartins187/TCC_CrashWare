@@ -19,25 +19,30 @@ const Cabecalho = ({ children }) => {
 
   return (
     <>
-      <header className={Style.Cabecalho}>
+        <header className={Style.Cabecalho}>
 
-        <div className={Style.infoCabecalho}>
-          <Link to="#" onClick={(e) => {
-            e.preventDefault()
-            handleRedirect(Navegacao)
-          }}>
-            <img className={Style.logo_legal} src={Logo} alt="Logo do CrashWare" />
-            <h5>CRASHWARE</h5>
-          </Link>
-        </div>
+          <div className={Style.infoCabecalho}>
+            <Link to="#" onClick={(e) => {
+              e.preventDefault()
+              handleRedirect(Navegacao)
+            }}>
+              <img className={Style.logo_legal} src={Logo} alt="Logo do CrashWare" />
+              <h5>CRASHWARE</h5>
+            </Link>
+          </div>
 
-        {/* <Tema /> */}
-        <button className={Style.hamburger} onClick={() => setAberto(!aberto)}>
-          {aberto ? <p>✕</p> : <p>☰</p>}
-        </button>
-      </header>
+          {/* <Tema /> */}
+          <button className={Style.hamburger} onClick={() => setAberto(!aberto)}>
+            {aberto ? <p>✕</p> : <p>☰</p>}
+          </button>
+        </header>
 
-      <Sidebar aberto={aberto} onFechar={() => setAberto(false)} />
+        <Sidebar aberto={aberto} onFechar={() => setAberto(false)} />
+
+        <div style={{
+          height: aberto ? '160px' : '90px',
+          transition: 'height 0.3s ease'
+        }} />
     </>
   );
 };

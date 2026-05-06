@@ -16,13 +16,13 @@
     color: var(--Branco);
     background-color: var(--Cabecalho);
     backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2); /* borda leve */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* borda leve */
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
     position: fixed ;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
     z-index: 999 !important; 
     font-family: "Exo 2", sans-serif;
     font-optical-sizing: auto;
@@ -31,6 +31,7 @@
 
     justify-self: center;
     margin-top: 20px;
+    isolation: isolate;
 }
 
 .Cabecalho h5
