@@ -20,6 +20,9 @@ import { CampoTexto } from '../../CampoTexto';
 import { BotoesForm } from '../../Botoes';
 import { Adm } from '../../../../funcoes/adm';
 
+//Pego o POPUP
+import { PopUp } from "../../pop-up";
+
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
         <div className={Style.itemBarraLateral} onClick={onClick}>
@@ -104,6 +107,7 @@ const ConteudoAdm = () => {
     const [xp, setXP] = useState();
     const [condicao, setCondicao] = useState("");
     const [opcao, setOpcao] = useState("");
+    const [popup, setPopup] = useState(null);
 
     const botaoliberado =
         nomeConquista &&

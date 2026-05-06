@@ -6,7 +6,7 @@ export class Adm
         this.Navegacao = Navegacao;
     }
 
-    async adicionar_conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao)
+    async adicionar_conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao,setPopup)
     {
         try
         {
@@ -27,23 +27,34 @@ export class Adm
             if (response.ok)
             {
                 const resposta = await response.json()
-                console.log(resposta.mensagem)
+                
+                setPopup({
+                    tipo: 'sucesso',
+                    titulo: 'Conquista',
+                    mensagem: resposta.mensagem
+                });
+
             }else
             {
                 const erro = await response.json()
 
-                console.log(erro.detail)
+                  setPopup({
+                    tipo: 'erro',
+                    titulo: 'Erro',
+                    mensagem: erro.detail
+                });
             }   
         
         }catch(error) 
         {
+             setPopup({
+                    tipo: 'erro',
+                    titulo: 'Erro De Conexão',
+                    mensagem: 'Tente novamente mais tarde...'
+                });
+            //Erro de conexão
             console.log("Erro:", error);
             
-            // this.setPopup({
-            //     tipo: 'erro',
-            //     titulo: 'Sem conexão',
-            //     mensagem: 'Não foi possível conectar ao servidor.'
-            // });
 
         }//catch
 
