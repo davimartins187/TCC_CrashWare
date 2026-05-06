@@ -5,8 +5,6 @@ from fastapi import APIRouter, Depends,HTTPException
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth
 
-
-
 #Instânciando roteador
 auth = APIRouter(prefix="/auth",tags=["autenticação"])
 

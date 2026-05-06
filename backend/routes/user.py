@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends,HTTPException
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth
 from models.gamificacao import Patente
-
+from routes.auth import auth
 
 #Instânciando roteador
 user = APIRouter(prefix="/user",tags=["usuario"])
@@ -43,6 +43,7 @@ async def  perfil(usuario = Depends(validar_token)):
             "adm": usuario.admin,
             "criado_em" :  data_formatada
         }
+
 
 
 

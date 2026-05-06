@@ -18,6 +18,7 @@ import termosModoClaro from "../../../fotos/claro/termos.svg";
 import termosModoEscuro from "../../../fotos/escuro/termos.svg";
 import { CampoTexto } from '../../CampoTexto';
 import { BotoesForm } from '../../Botoes';
+import { conquista } from '../../../../funcoes/user';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -124,7 +125,7 @@ const ConteudoAdm = () => {
 
             <div className={Style.separarConteudos}>
                 <div className={Style.barraLateral}>
-                    <h1>Indefinido</h1>
+                    <h1>Gerenciamento</h1>
                     <hr />
 
                     <div className={Style.itensBarraLateral}>
@@ -233,6 +234,7 @@ const ConteudoAdm = () => {
                     <BotoesForm
                         texto="Adicionar"
                         disabled={!botaoliberado}
+                        onClick={conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao)}
                     />
 
                 </div>
