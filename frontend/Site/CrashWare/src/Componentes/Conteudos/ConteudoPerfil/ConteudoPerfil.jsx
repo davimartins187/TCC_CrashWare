@@ -28,6 +28,7 @@ const ConteudoPerfil = () => {
     JSON.parse(localStorage.getItem("dados")) || null );
 
 
+
     const informacoes = localStorage.getItem("info")
 
     if(informacoes == "false")
@@ -36,7 +37,6 @@ const ConteudoPerfil = () => {
         const dados = new Usuario();
         dados.perfil(setDados);
         
-
         
     }
     //Pego as informações do usuario
@@ -45,6 +45,9 @@ const ConteudoPerfil = () => {
 
     //Precisa tratar a data
     //usuario.criado_em
+
+    //Retorna o valor do adm
+    //usuario.admin
   
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -79,6 +82,7 @@ const ConteudoPerfil = () => {
     //     setFoto(fotoSalva)
     // }
     // }, [])
+
 
 
 

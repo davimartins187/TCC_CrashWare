@@ -1,4 +1,4 @@
-from models import Usuarios, UsuariosOauth, Nivel
+from models import Usuarios, UsuariosOauth, Patente
 
 #Importando A conexao com o Banco de dados
 from database.connection import engine
@@ -24,12 +24,15 @@ session = Session()
 
 
 try:
-    nivel = Nivel(xp_minimo=0)
-    session.add(nivel)
-    session.commit()
+    pass
 except Exception as exception:
     session.rollback()
     raise  exception
+
+
+
+
+
 
 #Fecho a sessão
 session.close()
