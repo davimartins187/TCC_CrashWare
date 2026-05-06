@@ -13,7 +13,7 @@
     align-items: flex-start;
 
     gap: 15px;
-    padding: 20px;
+    /* padding: 20px; */
 
     color: var(--texto-secundario);
     background-color: var(--Rodape);
