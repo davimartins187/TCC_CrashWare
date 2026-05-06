@@ -22,7 +22,7 @@ const CONQUISTAS_MOCK = [
     { id: 6, titulo: 'Conquista de Hardware', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'hardware' },
 ]
 
-const ConteudoPerfil = () => {
+const ConteudoPerfil = async () => {
 
     const [dados, setDados] = useState(() =>
         JSON.parse(localStorage.getItem("dados")) || null
@@ -37,15 +37,13 @@ const ConteudoPerfil = () => {
         const dados = new Usuario();
         dados.perfil(setDados);
         
-        
     }
     //Pego as informações do usuario
-    const usuario = JSON.parse(localStorage.getItem("dados"));
+    const usuario = await JSON.parse(localStorage.getItem("dados"));
 
-    
 
     //Precisa tratar a data GABRIEL
-    const DataCadastro = usuario.criado_em;
+    const DataCadastro = usuario?.criado_em;
 
     const formatarData = (DataCadastro) => {
     const [dia, mes, ano] = DataCadastro.split('/');
