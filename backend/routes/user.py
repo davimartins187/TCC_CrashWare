@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends,HTTPException
 #Importando tabelas:
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth
-from models.patente import Nivel
+from models.patente import Patente
 
 
 #Instânciando roteador
