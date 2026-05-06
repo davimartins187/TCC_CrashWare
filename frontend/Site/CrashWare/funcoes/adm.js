@@ -17,7 +17,7 @@ export class Adm
                 body: JSON.stringify({
                         nome_conquista: nomeConquista,
                         tipo_conquista: opcao,
-                        descricaoConquista : descricaoConquista,
+                        descricao : descricaoConquista,
                         moeda: moedas,
                         xp: xp,
                         condicao_conquista: condicao
