@@ -1,361 +1,463 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
-
-.corpo
-{
+.corpo {
     width: 100%;
-    height: 91vh; 
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    overflow-x: hidden;
-
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: 20px;
-
-    background-image: url('/FundoOriginal.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.container
-{
+.banner {
     width: 100%;
-    /* height: auto; */    
-    gap: 10px;
-    overflow: hidden;
+    height: 190px;
     position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--gradiente1), var(--gradiente2), var(--gradiente3));
 }
-
-.foto
-{
-    width: 150px;
-    border-radius: 50%;
-    margin-left: none;
-
+.banner::after {
+    content: '';
     position: absolute;
-    top: -60px;
-    /* left: 20px; */
-    cursor: pointer;
-
-    border: 4px solid var(--bg-principal);
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--bg-principal));
 }
 
-.escondido
-{
-    display: none;
-}
-
-.texto{
-    margin-left: 200px;
-    margin-top: 10px;
-    /* display: flex;
-    flex-direction: column; */
-}
-
-.texto h3{
-    text-shadow: 1px 1px 3px var(--shadow-texto);
-    font-size: 20px;
-    color: var(--texto-principal);
-}
-
-.Nivel {
-    width: 100%;
-}
-
-.NivelTopo {
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    margin-bottom: 5px;
-    color: white;
-}
-
-.Barra {
-    width: 20vw;
-    height: 10px;
-    background: #444;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.Progresso {
-    height: 100%;
-    background: linear-gradient(90deg, #4cff00, #a6ff00);
-    border-radius: 10px;
-    transition: width 0.3s ease;
-}
-
-.info{
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    padding-right: 20px;
-    padding-left: none;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1px solid var(--texto-principal);
-    width: 60%;
-    height: 24%;
-    margin-left: 95px;
-    gap: 10px;
-    box-shadow: 1px 1px 3px var(--shadow-texto);
-    border-radius: 10px;
-}
-
-.Logofundo
-{
-    width: 100%;
-    height: 150px;
-    border: solid var(--Branco);
-    border-bottom-width: 2px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
+.bannerFoto {
+    width: 100%; height: 100%;
     object-fit: cover;
+    opacity: 0.3;
 }
 
-.Logofundo img{
+.container {
     width: 100%;
-    height: 100%;
+    max-width: 1020px;
+    padding: 0 20px;
+    margin-top: -70px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 14px;
+}
+
+.apresentacao,
+.blocos > div,
+.Historico_Compras,
+.ConquistasBloco {
+    background: var(--bg-secundario);
+    backdrop-filter: blur(14px);
+    border-radius: 14px;
+    border: 1px solid var(--borda);
+}
+
+.apresentacao {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+}
+
+.foto {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: 3px solid var(--cor-primaria);
+    box-shadow: 0 0 16px rgba(119,114,214,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.foto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 26px rgba(119,114,214,0.5);
+}
+
+.escondido {
+     display: none; 
+}
+
+.texto h3 {
+    color: var(--texto-principal);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
 }
 
 .status {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin: 2px;
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 590;
-}
-
-.status p{
-    color: var(--texto-quarto);
+    color: var(--texto-principal);
+    font-size: 12px;
+    opacity: 0.65;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .bolinha {
-    width: 10px;
-    height: 10px;
-    background-color: #22c55e;
+    width: 7px; height: 7px;
     border-radius: 50%;
+    background: var(--cor-primaria);
+    box-shadow: 0 0 6px var(--cor-primaria);
+    animation: pisca 2s ease-in-out infinite;
 }
 
-.Lados{
-    display: flex;
+.Nivel {
     width: 100%;
-    flex-direction: row;
+    max-width: 280px; 
 }
 
-.Esquerda{
-    left: 0;
-    width: 70%;
-}
-
-.blocos{
+.NivelTopo {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: var(--Blocos);    
-    color: var(--texto-principal);
-    width: 60%;
-    margin-top: 15px;
-    margin-left: 100px;
-    border: 2px solid var(--texto-principal);
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 2px 2px 4px var(--shadow-texto);
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 5px;
 }
 
-.Conquistas{
+.NivelTopo p{
+    color: var(--cor-primaria);
+    font-weight: 700; 
+    text-transform: uppercase;
+}
+
+.NivelTopo span{ 
+    color: var(--texto-secundario); 
+    opacity: 0.55; 
+}
+
+.Barra {
+    width: 100%; height: 7px;
+    background: var(--texto-secundario);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.Progresso {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--Botao-gradiente1), var(--Botao-gradiente2), var(--Botao-gradiente3));
+    box-shadow: 0 0 10px rgba(122,90,216,0.45);
+    transition: width 0.9s cubic-bezier(0.22,1,0.36,1);
+    position: relative; overflow: hidden;
+}
+
+
+.blocos {
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    text-align: center;
+}
+
+.Conquistas, .Compras, .Gemas {
     display: flex;
-    width: 10vw;
     flex-direction: column;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    border-radius: 7px;
-    /* margin-right: 5px; */
-}
-
-.Conquistas img{
-    width: 35px;
-    height: 35px;
-}
-
-.Conquistas h6{
-    font-size: 20px;
-}
-
-.Conquistas_Coluna{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
     align-items: center;
     justify-content: center;
-}
-
-.Compras{
-    width: 10vw;
-    align-items: center;
-    justify-self: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 7px;
-}
-
-.Compras img{
-    width: 35px;
-    height: 35px;
-    margin-left: 5px;
-}
-
-.Compras_Coluna{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    align-items: center;
-}
-
-.Gemas{
-    width: 10vw;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 7px;
-    /* margin-left: 5px; */
-}
-
-.Gemas p{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    align-items: center;
-}
-
-.Gemas_Coluna{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    align-items: center;
-}
-
-.Gemas img{
-    width: 35px;
-    height: 35px;       
-}
-
-
-.Historico_Compras{
-    background-color: var(--Blocos);
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-    flex-direction: column;
-    margin-left: 100px;
-    margin-top: 30px;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid var(--texto-principal) 2px;
-    box-shadow: 2px 2px 5px var(--shadow-texto);
-
-}
-
-.Historico_Compras h1{
-    text-align: center;
+    gap: 7px;
+    padding: 20px 10px;
     color: var(--texto-principal);
-    text-shadow: 1px 1px 4px var(--shadow-texto);
-
+    font-size: 26px;
+    font-weight: 800;
+    cursor: default;
+    transition: transform 0.22s, border-color 0.22s;
 }
 
-.Historico_Compras img{
-    background-color: black;
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
+.Conquistas:hover{
+    border: 2px solid rgba(255,200,78,0.35);
+    transform: translateY(-2px); 
 }
 
-.Historico_Compras{
-    color: var(--texto-terceiro);
+.Compras:hover{ 
+    border: 2px solid rgba(114, 214, 119, 0.4);
+    transform: translateY(-2px); 
 }
 
-.CompraRecente{
-    display: flex;
-    flex-direction: row;
-    border: solid var(--texto-principal) 2px;
-    padding: 5px;
-    border-radius: 10px;
+.Gemas:hover{
+    border: 2px solid rgba(21,147,210,0.4);
+    transform: translateY(-2px); 
 }
 
-.DescricaoCompra{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.Conquistas img, .Compras img, .Gemas img 
+{
+    width: 30px; height: 30px;
+    object-fit: contain;
+    transition: 0.28s;
 }
 
-.DescricaoCompra h5{
-    text-indent: 10px;
+.Conquistas:hover img, .Compras:hover img, .Gemas:hover img{ 
+    transform: scale(1.2) rotate(-5deg); 
 }
 
-.DescricaoCompra p{
-    margin-left: 30px;
-}
-
-.Direita{
-    width: 30%;
-    margin-right: 100px;
-}
-
-.ConquistasBloco{
-    margin-top: 25px;
-    padding: 10px;
-    border: solid var(--texto-principal) 2px;
-    width: 90%;
-    justify-self: center;
-    border-radius: 7px;
+.Conquistas p, .Compras p, .Gemas p {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--texto-principal);
-    padding-bottom: 7px;
+    opacity: 0.6;
+}
+
+.Historico_Compras {
+    grid-column: 1;
+    padding: 18px 22px;
+    color: var(--texto-principal);
+    animation: up 0.4s 0.14s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.Historico_Compras h1 {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-secundario);
+    opacity: 0.55;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.CompraRecente {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 13px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s;
+}
+
+.CompraRecente:hover { 
+    border-color: rgba(119,114,214,0.3); 
+}
+
+.CompraRecente img { 
+    width: 38px; height: 38px; 
+    object-fit: contain; 
+    flex-shrink: 0; 
+}
+
+.DescricaoCompra h5 { 
+    font-size: 13px; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: var(--texto-principal); 
+}
+
+.DescricaoCompra p  { 
+    font-size: 11px; 
+    color: var(--texto-secundario); 
+    opacity: 0.55; 
+    margin-top: 2px; 
+}
+
+.Direita {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+}
+
+.ConquistasBloco {
+    height: 100%;
+    padding: 18px 16px;
+    color: var(--texto-principal);
+    display: flex;
     flex-direction: column;
-    display: flex;
-    box-shadow: 2px 2px 4px var(--shadow-texto);
 }
 
-.ConquistasBloco h4{
-    padding: 10px;
+.ConquistasBloco h4 {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     text-align: center;
-    font-size: 30px;
-    text-shadow: 1px 1px 4px var(--shadow-texto);
+    padding-bottom: 11px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
 }
 
-.ItemConquista{
+.ConquistasBloco h4::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 46px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cor-primaria), transparent);
+}
+
+.listaConquistas {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    background: linear-gradient(to right, var(--gradiente1-conquistas), var(--gradiente2-conquistas));
-    border-radius: 20px;
+    flex-direction: column;
+    gap: 7px;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
 }
 
-.ItemConquista img{
-    width: 35px;
-    height: 35px;
-    border-radius: 30px;
+.ItemConquista {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 11px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 9px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: default;
+}
+.ItemConquista:hover { 
+    /* transform: translateX(3px);  */
+    border-color: rgba(255,255,255,0.12); 
 }
 
-.ItemConquista h6{
-    color: black;
-    font-size: 15px;
+.ItemConquista.software::before { 
+    background: linear-gradient(180deg, var(--gradiente2-conquistas), #7b6bfa); 
 }
 
-.ItemConquista p{
-    font-size: 15px;
-    color:black
+.ItemConquista.hardware::before { 
+    background: linear-gradient(180deg, var(--gradiente1-conquistas), var(--cor-primaria)); 
+}
+
+.ItemConquista img {
+    width: 32px; height: 32px; 
+    border-radius: 7px; 
+    object-fit: cover;
+    flex-shrink: 0; 
+}
+
+.ItemConquista > div {
+    flex: 1;
+    min-width: 0; 
+}
+
+.ItemConquista h6 {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--texto-principal);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.ItemConquista p {
+    font-size: 10px;
+    color: var(--texto-secundario);
+    opacity: 0.55;
+    line-height: 1.3;
+    overflow: hidden;
+}
+
+.verTodas {
+    margin-top: 10px;
+    width: 100%; padding: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+    color: var(--texto-secundario);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; opacity: 0.65;
+    transition: opacity 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.verTodas:hover { 
+    opacity: 1; 
+    border-color: var(--cor-primaria); 
+    color: var(--cor-primaria); 
+}
+
+/* RESPONSIVO */
+@media (max-width: 860px) {
+
+    .container { 
+        grid-template-columns: 1fr; 
+        margin-top: -55px;
+    }
+
+    .apresentacao, .Direita { 
+        grid-column: 1; 
+        grid-row: auto; 
+    }
+
+    .ConquistasBloco { 
+        height: auto; 
+    }
+
+    .listaConquistas { 
+        max-height: 300px; 
+    }
+
+    .banner { 
+        height: 150px; 
+    }
+
+}
+
+@media (max-width: 560px) {
+    .container { 
+        padding: 0 12px; 
+        gap: 10px; 
+        margin-top: -45px; 
+    }
+
+    .banner { 
+        height: 110px; 
+    }
+
+    .apresentacao { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        padding: 16px; 
+        gap: 10px; 
+    }
+
+    .foto { 
+        width: 80px; 
+        height: 80px; 
+    }
+
+    .texto h3 { 
+        font-size: 18px; 
+    }
+
+    .status { 
+        justify-content: center; 
+    }
+
+    .Nivel { 
+        max-width: 100%; 
+    }
+
+    .Conquistas, .Compras, .Gemas { 
+        padding: 14px 8px; 
+        font-size: 22px; 
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .blocos { 
+        grid-template-columns: 1fr; 
+    }
+
+    .Conquistas, .Compras, .Gemas { 
+        flex-direction: row;
+        justify-content: flex-start; 
+        gap: 12px; 
+        padding: 12px 14px; 
+    }
+
+    .Conquistas p, .Compras p, .Gemas p {
+         margin-top: 0; 
+    }
+
 }

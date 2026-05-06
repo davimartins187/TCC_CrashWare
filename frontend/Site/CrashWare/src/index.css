@@ -3,8 +3,8 @@
 
 /* TEMA CLARO */
 .Claro {
-  --bg-principal: #2E73C3;
-  --bg-secundario: #3a8eee;
+  --bg-principal: #FAFAFC;
+  --bg-secundario: #ffffff30;
   --bg-terceiro: #FFFFFF80;
   --texto-quarto: ##787A81CC;
 
@@ -19,7 +19,7 @@
   --shadow-texto: #FFFFFF;
 
   
-  --texto-principal: #FFFFFF;
+  --texto-principal: #272727;
   --texto-secundario: #ccd5e0;
   --texto-terceiro: #0F172A80;
   --texto-quarto: ##787A81CC;
@@ -30,7 +30,7 @@
   --cor-secundaria: #4a7ce9;
   --cor-secundaria-hover: #1d4ed8;
 
-  --borda: #d1d5db;
+  --borda: #BABABA;
 
   /* Pop-Up claro */
   --popup-erro-bg: #fff0f0;
