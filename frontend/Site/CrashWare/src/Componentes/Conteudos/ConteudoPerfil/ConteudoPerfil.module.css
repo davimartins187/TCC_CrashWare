@@ -124,12 +124,13 @@
     align-items: center;
     gap: 6px;
     margin: 2px;
-    font-size: 17px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 590;
 }
 
 .status p{
     color: var(--texto-quarto);
-
 }
 
 .bolinha {
