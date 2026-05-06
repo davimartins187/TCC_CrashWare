@@ -1,3 +1,5 @@
+import { sleep } from "./functions";
+
 export class Adm
 {
     constructor(setPopup = null , Navegacao = null)
@@ -8,6 +10,13 @@ export class Adm
 
     async adicionar_conquista(nomeConquista,opcao,descricaoConquista,moedas,xp,condicao,setPopup)
     {
+        setPopup({
+                    tipo: 'aviso',
+                    titulo: 'Conquista',
+                    mensagem: 'Enviando Informações...'
+                });
+
+        await sleep(1)
         try
         {
             const response = await fetch("https://api-crashware.onrender.com/adm/adicionar_conquista",
