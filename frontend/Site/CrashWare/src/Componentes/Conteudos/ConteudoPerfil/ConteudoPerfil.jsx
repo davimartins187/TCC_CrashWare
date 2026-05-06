@@ -42,12 +42,21 @@ const ConteudoPerfil = () => {
     //Pego as informações do usuario
     const usuario = JSON.parse(localStorage.getItem("dados"));
 
+    
 
-    //Precisa tratar a data
+
+    //Precisa tratar a data GABRIEL
     //usuario.criado_em
 
+    //NAO MEXE AQUI GABRIEL
     //Retorna o valor do adm
     //usuario.admin
+    // let admin = null
+    // if(usuario.adm == true)
+    // {
+    //   admin = "ADMIN"
+    // }
+
   
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -126,7 +135,7 @@ const ConteudoPerfil = () => {
                             <div className={style.texto}>
 
                                 {/* Nome */}
-                                <h3> {usuario.nome} </h3>
+                                <h3>{usuario.nome}</h3>
 
                                 {/* Status */}
                                 <p className={style.status}>

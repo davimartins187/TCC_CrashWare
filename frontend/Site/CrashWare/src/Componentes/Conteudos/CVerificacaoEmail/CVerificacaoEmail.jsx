@@ -194,7 +194,7 @@ const CVerificacaoEmail = () => {
                     />
 
                     <BotoesForm
-                        texto="Verficicar"
+                        texto="Verfificar"
                         className={style.btnEnviar}
                         onClick={handleVericarEmail}
                         disabled={!enviarcodigo || loading}

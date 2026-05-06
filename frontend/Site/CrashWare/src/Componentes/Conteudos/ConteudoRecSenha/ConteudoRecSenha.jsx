@@ -24,7 +24,7 @@ const ConteudoRecSenha = () => {
     const [popup, setPopup] = useState(null);
 
     //Opção de recuperação
-    const [opcao, setOpcao] = useState("");
+    const [opcao, setOpcao] = useState("Email");
 
 
     //Proteção de URL
@@ -65,7 +65,7 @@ const ConteudoRecSenha = () => {
 
                     <div className={style.opcoes}>
                         <label>
-                            <CampoTexto name="opcao" value="Email" type="radio" className={style.radio}
+                            <CampoTexto name="opcao" value="Email" type="radio" checked className={style.radio}
                                 checked={opcao === "Email"}
                                 onChange={(e) => setOpcao(e.target.value)}
                             />
