@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends,HTTPException
 #Importando tabelas:
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth
-from models.patentes import Patente
+from models.nivel import Nivel
 
 
 #Instânciando roteador
@@ -28,7 +28,7 @@ async def  perfil(usuario = Depends(validar_token)):
     if usuario is None:
         raise HTTPException(status_code=404,detail="Usuário não encontrado")
     else:
-        nome_patente = usuario.patentes.nome_patente
+        # nome_patente = usuario.patentes.nome_patente
         criado_em = usuario.created_at
         data_formatada = criado_em.strftime("%d/%m/%Y")
         return{
@@ -39,7 +39,6 @@ async def  perfil(usuario = Depends(validar_token)):
             "moedas" : usuario.moedas,
             "xp" : usuario.xp,
             "ativo": usuario.ativo,
-            "patente" : nome_patente,
             "criado_em" :  data_formatada
         }
 

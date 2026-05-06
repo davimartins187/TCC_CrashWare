@@ -1,4 +1,4 @@
-from models import Usuarios, UsuariosOauth, Patente
+from models import Usuarios, UsuariosOauth, Nivel
 
 #Importando A conexao com o Banco de dados
 from database.connection import engine
@@ -24,8 +24,8 @@ session = Session()
 
 
 try:
-    patente = Patente(nome_patente="Iniciante",xp_minimo=0)
-    session.add(patente)
+    nivel = Nivel(xp_minimo=0)
+    session.add(nivel)
     session.commit()
 except Exception as exception:
     session.rollback()

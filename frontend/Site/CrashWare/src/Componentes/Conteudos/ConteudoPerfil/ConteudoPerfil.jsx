@@ -43,6 +43,8 @@ const ConteudoPerfil = () => {
     const usuario = JSON.parse(localStorage.getItem("dados"));
 
 
+    //Precisa tratar a data
+    //usuario.criado_em
   
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
@@ -51,19 +53,18 @@ const ConteudoPerfil = () => {
     const [foto, setFoto] = useState(FotoPadrao);
 
 
-
     //referencia o input
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
     const XpMax = 500; //xp para mudar de nivel
-    const Nivel = usuario.patente;
+    const Nivel = Math.floor(xp/XpMax);
     const xpAtual = xp % XpMax;
     const porcentagem = (xpAtual / XpMax) * 100;
 
     //Comentei aqui gabriel o ngcio de nivel, eu prefiro ter AS PATENTE
-    //Math.floor(xp/XpMax)
+    //
 
     //Uso useState para o react renderizar as informações
     //const [id, setId] = useState(() => localStorage.getItem("id"));
