@@ -1,4 +1,6 @@
+##Importando tabelas
 from models import Usuarios, UsuariosOauth, Patente
+from models.gamificacao import Nivel
 
 #Importando A conexao com o Banco de dados
 from database.connection import engine
@@ -12,6 +14,8 @@ from database.session import Session
 #Importando comandos do sql para o código.
 from sqlalchemy import Column, String , Integer
 
+
+
 # Cria a sessão
 session = Session()
 
@@ -24,8 +28,7 @@ session = Session()
 
 
 try:
-    session.query(Usuarios).filter(Usuarios.email == 'lfernando.rr.souzal@gmail.com').update({"admin" : True})
-    session.commit()
+
 except Exception as exception:
     session.rollback()
     raise  exception
