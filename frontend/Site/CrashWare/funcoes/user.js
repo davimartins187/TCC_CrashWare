@@ -84,10 +84,16 @@ export class Usuario
 
                 alert(resposta.mensagem)
 
+                
+
             }else{
                 const erro = await response.json();
 
-                alert("Erro na API ",erro.detail)
+                console.log(erro.detail)
+
+                alert("Erro na API ")
+
+                
             }
         }catch (error) 
         {

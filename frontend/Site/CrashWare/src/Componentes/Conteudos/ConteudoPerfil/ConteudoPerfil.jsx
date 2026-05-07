@@ -105,9 +105,9 @@ const ConteudoPerfil =  () => {
         );
     }
 
-    if(foto == null)
+    if(foto === null)
     {
-        foto = 'default.png'
+        foto = "default.png"
     }
 
 
