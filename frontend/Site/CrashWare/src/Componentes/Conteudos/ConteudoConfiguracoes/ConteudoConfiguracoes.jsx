@@ -21,6 +21,7 @@ import termosModoEscuro from "../../../fotos/escuro/termos.svg";
 import googleIcon from "../../../fotos/google.png";
 import githubIcon from "../../../fotos/github.png";
 import { SairDaConta } from '../../../../funcoes/functions';
+import { Usuario } from '../../../../funcoes/user';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -83,7 +84,8 @@ const ConteudoConfiguracoes = () => {
             primeiroClick: async () => {
                 
                 //Deleto a conta
-                await deletar_conta(setToken,setRefresh,setDados)
+                const usuario = new Usuario
+                await usuario.deletar_conta(setToken,setRefresh,setDados)
 
                 setPopupAtivo(null); 
             },
