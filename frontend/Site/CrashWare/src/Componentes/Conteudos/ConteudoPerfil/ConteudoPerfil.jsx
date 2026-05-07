@@ -149,6 +149,7 @@ const ConteudoPerfil =  () => {
                                 if(foto == 'default.png')
                                 {
                                     //Adiciono a foto
+                                    //Precisa mandar como parâmetro o setFoto(GABRIEL)
                                     const foto_usuario = new Usuario();
                                     foto_usuario.adicionar_foto(conteudo);
                                 }else
