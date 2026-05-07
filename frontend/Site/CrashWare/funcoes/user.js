@@ -63,6 +63,8 @@ export class Usuario
 
     async deletar_conta(setToken,setRefresh,setDados)
     {
+        //Pego o token
+        const token = localStorage.getItem("token")
         try
         {
             const response = await fetch("https://api-crashware.onrender.com/user/deletar_conta",
