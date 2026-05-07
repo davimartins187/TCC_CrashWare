@@ -61,7 +61,7 @@ async def  perfil(usuario = Depends(validar_token)):
             "criado_em" :  data_formatada
         }
 
-
+######################
 @user.delete('/deletar_conta')
 async def deletar_conta(usuario = Depends(validar_token),session = Depends(pegar_sessao)):
     if usuario is None:
