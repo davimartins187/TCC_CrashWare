@@ -15,6 +15,9 @@ export async function SairDaConta(setToken,setRefresh,setDados){
     //Deleto as informações do usuario do localStorage
     await localStorage.removeItem("dados");
 
+    //Faço com que o site entenda que precisara buscar as informações denovo
+    localStorage.setItem("info",false)
+
     //Deleto o ID do LocalStorage
     // await localStorage.removeItem("id");
 
@@ -706,7 +709,7 @@ export class Api
                                 {
                                     const erro = await response_refresh.json();
 
-                                    console.log(erro.detail)
+                                    console.log("Erro da API", erro.detail)
                                 }else
                                 {
                                     const dados = await response_refresh.json();
@@ -722,7 +725,7 @@ export class Api
                                 }
 
                             }catch (error) {
-                                console.log(error)
+                                console.log("Erro da requisição ",error)
                             }        
                         }
                 }
