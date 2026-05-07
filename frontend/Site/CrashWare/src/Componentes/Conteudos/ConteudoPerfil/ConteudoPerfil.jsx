@@ -201,13 +201,6 @@ const ConteudoPerfil =  () => {
                             <p>Para quando o modo escuro não for suficiente</p>
                         </div>
                     </div>
-
-                    {/* <div>
-                        <BotoesForm
-                            onClick={() => SairDaConta(setToken, setRefresh)}
-                            texto="Sair da conta"
-                        />
-                    </div> */}
                 </div>
 
                 {/* ── Painel Direito: Conquistas ─────────────── */}
@@ -232,7 +225,7 @@ const ConteudoPerfil =  () => {
                         </div>
 
                         <button className={style.verTodas}>
-                            Ver todas as conquistas
+                            <p>Ver todas as conquistas</p>
                         </button>
                     </div>
                 </div>
