@@ -72,18 +72,17 @@ const ConteudoPerfil =  () => {
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
-    const [xp, setXp] = useState(0);
+    const [xp, setXp] = useState(usuario?.xp || 0);
     const [conquistas, setConquistas] = useState(CONQUISTAS_MOCK);
     const [totalCompras, setTotalCompras] = useState(0);
     const [totalGemas, setTotalGemas] = useState(0);
 
     const XpMax = 500;
-
-    const Nivel = dados?.nivel || 0;
-    const nome  = dados?.nome    || "Usuário";
+    const Nivel = usuario?.nivel || 0;
+    const nome  = usuario?.nome    || "Usuário";
 
     const xpAtual    = xp % XpMax;
-    const porcentagem = (220 / XpMax) * 100;
+    const porcentagem = (xp / XpMax) * 100;
 
     
 
@@ -142,7 +141,7 @@ const ConteudoPerfil =  () => {
 
                         <p className={style.status}>
                             <span className={style.bolinha}></span>
-                            Membro desde maio de 2026
+                            {formatarData(DataCadastro)} {/* Exibe a data formatada */}
                         </p>
 
                         <div className={style.Nivel}>
