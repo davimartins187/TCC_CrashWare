@@ -136,6 +136,8 @@ const ConteudoAdm = () => {
             )}
 
             <div className={Style.separarConteudos}>
+
+
                 {/* <div className={Style.barraLateral}>
                     <h1>Gerenciamento</h1>
                     <hr />
@@ -180,7 +182,9 @@ const ConteudoAdm = () => {
                 </div>
 
                 <div className={Style.Conteudos}>
-                    <div className={Style.parteEmail}>
+                    <p>RELATORIOOOOOOOOOOSSSSSSSS</p>
+                    
+                    {/* <div className={Style.parteEmail}>
                         <div className={Style.campoForm}>
 
                             <label htmlFor="NomeConsquista">Nome da Conquista</label>
@@ -241,7 +245,7 @@ const ConteudoAdm = () => {
                             maxlenght={100}
                             onChange={(e) => setCondicao(e.target.value)}
                         />
-                    </div>
+                    </div> */}
 
                     <BotoesForm
                         texto="Adicionar"

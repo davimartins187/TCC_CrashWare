@@ -34,19 +34,21 @@ const LalyoutADM = () => {
     ];
 
     const conteudosBarraLateral = [
-        { id: 1, descricao: "Usuários", acao: null, to: "/usuario" },
+        { id: 1, descricao: "Relatórios", acao: null, to: "/relatorio" },
         { id: 2, descricao: "Conteudos", acao: 'sair' },
-        { id: 3, descricao: "Conquistas", acao: 'conquistas' },
-        { id: 4, descricao: "Relatórios", acao: 'relatorios' },
+        { id: 3, descricao: "Conquistas", acao: 'conquistas', to: "/conquistas" },
+        { id: 4, descricao: "Usuarios", acao: '/usuario' },
         { id: 5, descricao: "Notificações", acao: 'notificacoes' },
         { id: 6, descricao: "Matérias", acao: 'cosmeticos' },
     ];
 
-    const ItemBarraLateral = ({ descricao, img, onClick }) => {
+    const ItemBarraLateral = ({ descricao, img, onClick, to }) => {
         return (
-            <div className={Style.itemBarraLateral} onClick={onClick}>
-                <span>{descricao}</span>
-            </div>
+            <Link to={to}>
+                <div className={Style.itemBarraLateral} onClick={onClick}>
+                    <span>{descricao}</span>
+                </div>
+            </Link>
         );
     };
 
@@ -65,16 +67,18 @@ const LalyoutADM = () => {
                     <div className={Style.itensBarraLateral}>
                         {conteudosBarraLateral.map((item) => (
                             <div key={item.id}>
-                                <ItemBarraLateral
-                                    descricao={item.descricao}
-                                    onClick={() => {
-                                        if (item.descricao === "Conquistas") {
-                                            setAbrirConquistas(!abrirConquistas);
-                                        } else if (item.acao) {
-                                            setPopupAtivo(item.acao);
-                                        }
-                                    }}
-                                />
+                                    <ItemBarraLateral
+                                        descricao={item.descricao}
+                                        to={item.to}
+                                        onClick={() => {
+                                            if (item.descricao === "Conquistas") {
+                                                setAbrirConquistas(!abrirConquistas);
+                                            } else if (item.acao) {
+                                                setPopupAtivo(item.acao);
+                                            }
+                                        }}
+                                    />
+
 
                                 {item.descricao === "Conquistas" && abrirConquistas && (<div className={Style.sanfona}>
 
