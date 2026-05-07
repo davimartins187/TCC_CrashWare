@@ -59,4 +59,39 @@ export class Usuario
 
         }   
     }//Perfil
+
+
+
+    async adicionar_foto(conteudo)
+    {
+        //Pego o token
+        const token = localStorage.getItem("token")
+
+        try{
+            const response = await fetch("https://api-crashware.onrender.com/user/adicionar_foto",
+                {
+                    method: "POST",
+                    headers:
+                    {
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: conteudo
+                });
+            
+            if(response.ok)
+            {
+                const resposta = await response.json();
+
+                alert(resposta.mensagem)
+
+            }else{
+                const erro = await response.json();
+
+                alert("Erro na API ",erro.detail)
+            }
+        }catch (error) 
+        {
+            console.log("Erro na requisição:", error);
+        }
+    }//Adicionar_Foto
 }//classe
