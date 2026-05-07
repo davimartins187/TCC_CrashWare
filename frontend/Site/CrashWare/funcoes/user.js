@@ -61,6 +61,63 @@ export class Usuario
     }//Perfil
 
 
+    async deletar_conta(setToken,setRefresh,setDados)
+    {
+        try
+        {
+            const response = await fetch("https://api-crashware.onrender.com/user/deletar_conta",
+                {
+                    method: "GET",
+                    headers:
+                    {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+            if(response.ok)
+            {
+
+                //Chamo um poput de sucesso
+
+
+
+                //Deleto o token do LocalStorage
+                await localStorage.removeItem("token");
+
+                //Deleto o refresh_token do LocalStorage
+                await localStorage.removeItem("refresh_token");
+
+                //Deleto as informações do usuario do localStorage
+                await localStorage.removeItem("dados");
+
+                //Faço com que o site entenda que precisara buscar as informações denovo
+                localStorage.setItem("info",false)
+
+
+                //Faço com que o react renderize as informações
+                setToken(null);
+                setRefresh(null);
+                setDados(null);
+                
+
+                //Levo para a tela inicial
+                window.location.href = '/'
+            }else
+            {
+                const erro = await response.json();
+                
+
+                console.log("Erro na API: ", erro.detail)
+            }
+       
+        }catch (error) 
+        {
+            console.log("Erro na requisição:", error);
+        }
+
+    }//deletar_conta
+
+
 
     async adicionar_foto(conteudo)
     {

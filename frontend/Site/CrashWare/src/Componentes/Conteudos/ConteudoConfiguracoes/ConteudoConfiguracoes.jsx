@@ -80,7 +80,13 @@ const ConteudoConfiguracoes = () => {
             paragrafo: "Deseja excluir sua conta? Essa ação é irreversível.",
             primeiroBotao: "Excluir",
             segundoBotao: "Cancelar",
-            primeiroClick: () => {setPopupAtivo(null); },
+            primeiroClick: async () => {
+                
+                //Deleto a conta
+                await deletar_conta(setToken,setRefresh,setDados)
+
+                setPopupAtivo(null); 
+            },
             segundoClick: () => setPopupAtivo(null),
         },
     };

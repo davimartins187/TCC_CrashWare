@@ -87,13 +87,13 @@ const ConteudoPerfil =  () => {
 
     
     //  QUERO SABER QUEM FOI
-    // useEffect(() => {
-    //     const informacoes = localStorage.getItem("info");
-    //     if (informacoes === "false") {
-    //         const user = new Usuario();
-    //         user.perfil(setDados);
-    //     }
-    // }, []);
+    useEffect(() => {
+        const informacoes = localStorage.getItem("info");
+        if (informacoes === "false") {
+            const user = new Usuario();
+            user.perfil(setDados);
+        }
+    }, []);
 
     if (!usuario) {
         return (

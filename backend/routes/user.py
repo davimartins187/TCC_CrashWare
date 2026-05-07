@@ -1,9 +1,11 @@
-from dbm import error
-
 from fastapi import APIRouter, Depends,HTTPException,UploadFile, File
+
+#Importando comandos do sql para o código.
+from sqlalchemy import  delete
 
 #Biblioteca de requesição
 import requests
+
 
 #Importando tabelas:
 from models.usuarios import Usuarios
@@ -36,6 +38,7 @@ SUPABASE_BUCKET = os.getenv("SUPABASE_BUCKET")
 
 
 #ROTAS:
+##Rota de coletar informações do usuario
 @user.get('/')
 async def  perfil(usuario = Depends(validar_token)):
     if usuario is None:
@@ -58,6 +61,48 @@ async def  perfil(usuario = Depends(validar_token)):
             "criado_em" :  data_formatada
         }
 
+
+@user.delete('/deletar_conta')
+async def deletar_conta(usuario = Depends(validar_token),session = Depends(pegar_sessao)):
+    if usuario is None:
+        raise HTTPException(status_code=404,detail="Usuário não encontrado")
+    #Verifico se ele tem foto no bucket
+    try:
+        if usuario.foto != "default.png":
+            ##Deleto a pasta que contem o id dele no bucket
+
+            url_delete = f"{SUPABASE_URL}/storage/v1/object/{SUPABASE_BUCKET}"
+
+            resposta = requests.delete(
+                url_delete,
+                headers={
+                    "Authorization": f"Bearer {SUPABASE_KEY}",
+                    "apikey": SUPABASE_KEY,
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "prefixes": [usuario.foto]
+                }
+            )
+            if (resposta.status_code > 199 and resposta.status_code < 300):
+                pass
+            else:
+                raise HTTPException(status_code=400,detail=resposta.text)
+
+
+        session.query(Usuarios).filter(Usuarios.id_usuario == usuario.id_usuario).delete()
+        session.commit()
+        return {"mensagem": "Conta Deletada!"}
+
+    except Exception as exception:
+        ##Se não der certo eu retorno o erro, e dou rollback no banco.
+        session.rollback()
+        raise HTTPException(status_code=400, detail=str(exception))
+
+
+
+##############
+#Rota de adicionar foto
 @user.post('/adicionar_foto')
 async def adicionar_foto(foto : UploadFile = File(...),usuario = Depends(validar_token),session = Depends(pegar_sessao)):
     if usuario is None:
