@@ -1,4 +1,5 @@
 ##Importando tabelas
+
 from models import Usuarios, UsuariosOauth, Patente
 from models.gamificacao import Nivel
 
@@ -12,9 +13,7 @@ from database.base import Base
 from database.session import Session
 
 #Importando comandos do sql para o código.
-from sqlalchemy import Column, String , Integer
-
-
+from sqlalchemy import Column, String, Integer, update
 
 # Cria a sessão
 session = Session()
@@ -28,7 +27,7 @@ session = Session()
 
 
 try:
-
+    pass
 except Exception as exception:
     session.rollback()
     raise  exception
