@@ -69,7 +69,7 @@ export class Usuario
         {
             const response = await fetch("https://api-crashware.onrender.com/user/deletar_conta",
                 {
-                    method: "GET",
+                    method: "DELETE",
                     headers:
                     {
                         "Authorization": `Bearer ${token}`
@@ -109,7 +109,7 @@ export class Usuario
                 const erro = await response.json();
                 
 
-                console.log("Erro na API: ", erro.detail)
+                console.log(erro.detail)
             }
        
         }catch (error) 
