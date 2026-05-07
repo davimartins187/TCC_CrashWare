@@ -7,7 +7,6 @@
 .corpo{
     width: 100%;
     height: 84vh; 
-    background-color: var(--bg-secundario);
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -17,11 +16,14 @@
 }
 
 .container{
-    max-width: 700px;
+    max-width: 600px;
     width: 100%;
     height: auto;
     text-align: center;
     /* margin-top: 10px; duvidoso */
+    background-color: var(--bg-terceiro);
+    border-radius: 30px;
+    padding: 30px;
 }
 
 .container h1{
@@ -41,17 +43,44 @@
     margin-bottom: 15px;
 }
 
+.container p{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--texto-principal);
+    margin-top: 30px;
+    text-align: start;
+}
+
+.opcoes label{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    padding: 5px;
+    font-family: "Montserrat", sans-serif;
+    font: bolder;
+    font-size: 30px;
+    gap: 2px;
+    color: var(--texto-principal);
+}
+
+
+.radio{
+    transform: scale(1.5);
+    flex-direction: column;
+    margin-right: 8px;
+    cursor: pointer;
+}
 
 .inputClasse{
-    width: 65%;
+    width: 100%;
     background-color: var(--input-bg);
     border: 1px solid var(--borda);
     height: 50px;
     border-radius: 6px;
     margin-top: 20px;
     margin-bottom: 10px;
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.685);
-    color: var(--texto-secundario);
+    box-shadow: 0px 5px 6px -2px rgba(0, 0, 0, 0.5);
     font-size: 18px;
     opacity: 0.9;
     padding: 20px;
@@ -61,13 +90,12 @@
 .inputClasse:focus {
   outline: none;
   border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 .btnEnviar{
 
     /* botão em sí */
-    background-color: var(--cor-primaria);
+      background: linear-gradient(to right, var(--Botao-gradiente1), var(--Botao-gradiente2), var(--Botao-gradiente3)) !important;
     border: 1px solid var(--borda);
     width: 60%;
     height: 55px;
@@ -84,7 +112,6 @@
 
 .btnEnviar:hover{
     transition: 0.3s;
-    background-color: var(--cor-primaria-hover);
     color: var(--texto-principal);
     transform: scale(1.05);
 }

@@ -6,12 +6,12 @@ const Sidebar = ({ aberto, onFechar }) => {
   const location = useLocation();
 
   const links = [
-    { label: 'Home', to: '/' },
+    { label: 'ADM', to: '/adm' },
     { label: 'Sobre', to: '/sobre' },
     { label: 'Contato', to: '/contato' },
     { label: 'Sobre o TCC', to: '/tcc' },
     { label: 'Termos de serviço', to: '/termos' },
-    { label: 'Configurações', to: '/configuracoes'},
+    { label: 'Configurações', to: '/configuracoes' },
   ];
 
   return (
@@ -37,6 +37,7 @@ const Sidebar = ({ aberto, onFechar }) => {
 
           <Tema />
         </nav>
+
       </aside>
     </>
   );

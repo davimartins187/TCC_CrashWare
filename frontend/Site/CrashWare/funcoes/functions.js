@@ -4,7 +4,7 @@ export function sleep(ms) {
 }
 
 //Sair da conta
-export async function SairDaConta(setId,setToken,setRefresh){
+export async function SairDaConta(setToken,setRefresh,setDados){
 
      //Deleto o token do LocalStorage
     await localStorage.removeItem("token");
@@ -12,22 +12,22 @@ export async function SairDaConta(setId,setToken,setRefresh){
     //Deleto o refresh_token do LocalStorage
     await localStorage.removeItem("refresh_token");
 
+    //Deleto as informações do usuario do localStorage
+    await localStorage.removeItem("dados");
 
     //Deleto o ID do LocalStorage
-    await localStorage.removeItem("id");
+    // await localStorage.removeItem("id");
 
     //Faço com que o react renderize as informações
     setToken(null);
     setRefresh(null);
-    setId(null);
-
-
+    setDados(null);
+    // setId(null);
 
     //Levo para a tela inicial
     window.location.href = '/'
 
 }
-
 
        
 
@@ -35,10 +35,10 @@ export async function SairDaConta(setId,setToken,setRefresh){
 //Verifico qual tela a pessoa vai ir, ao clicar no "CRASHWARE" do HEADER
 export function handleRedirect(Navegacao)
 {
-    //Pego os tokens dentro do escopo privado.
-    const id = localStorage.getItem("id")
+    //Pego os token dentro do escopo privado.
+    const token = localStorage.getItem("token")
 
-    if(!id)
+    if(!token)
     {
         Navegacao("/")
     }else
@@ -329,11 +329,11 @@ export class Api
 
 
 
-    async Enviar_Codigo(email,setPopup,loading,timer,setLoading,setTimer)
+    async Enviar_Codigo(email,setPopup,loading,timer,setLoading,setTimer,setEnviarCodigo)
     {
         if (loading || timer > 0) return;
         setLoading(true);
-
+        setEnviarCodigo(true);
         try {
             const response = await fetch(
                 "https://api-crashware.onrender.com/auth/reenviar_codigo",
@@ -497,6 +497,9 @@ export class Api
                 localStorage.setItem("token", token)
                 localStorage.setItem("refresh_token", refresh_token)
 
+                //Informações
+                localStorage.setItem("info","false");
+
                 //Caso eu queira pegar o token
                 //const token = localStorage.getItem("token")
                 //const refresh_token = localStorage.getItem("refresh_token")
@@ -609,16 +612,16 @@ export class Api
         }
     }//Alterar_Senha
 
-    async Verificar_Token(token,Navegacao,setId = null,home = null,refresh = null,set = null)
+    async Verificar_Token(token,Navegacao,privado = null,refresh = null,set = null)
     {
 
         if (!token) 
         {
             //Verifica em qual tela esta
-            if (home != null)
+            if (privado != null)
             {
                 Navegacao('/');
-                home = null
+                privado = null
             }else
             {
                 //Ignora
@@ -647,49 +650,89 @@ export class Api
                         {
                            
                             //Coleto as variáveis do useState
-                            const setId = set[0];
-                            const setToken = set[1];
-                            const setRefresh = set[2];
+                            // const setId = set[0];
+                            const setToken = set[0];
+                            const setRefresh = set[1];
 
                             //Retiro o token do usuario
-                            await SairDaConta(setId,setToken,setRefresh);
+                            await SairDaConta(setToken,setRefresh);
 
 
                         }else
                         {
                             //Verifico o refresh_token
                             return true
-                        }
-
-                        
-                        
+                        }  
                     }
                     else {
-
-                        const dados = await response.json();
-
-                        const id = dados.id
-
-                        //Guardo o ID do user
-                         localStorage.setItem("id", id)
-
-                        // setId(id); // atualiza React na hora
-
-
-                        if (home == null)
+                        if(refresh == null)
                         {
-                            //Leva para a tela HOME automaticamente
-                            Navegacao('/perfil');
+                            // const dados = await response.json();
+
+                            // const id = dados.id
+
+                            // //Guardo o ID do user
+                            // localStorage.setItem("id", id)
+
+                            // setId(id); // atualiza React na hora
+
+                            //Fica automaticamente logado
+
+                            if (privado == null)
+                            {
+                                //Leva para a tela HOME automaticamente
+                                Navegacao('/perfil');
+                            }
+
+                        }else
+                        {
+                            //Verifico o refresh_token
+
+                            //Pego o id
+                            // const id = localStorage.getItem("id");
+
+                            //Gero um novo token
+                            try
+                            {
+                                const response_refresh = await fetch("https://api-crashware.onrender.com/auth/refresh_token",
+                                {
+                                    method: "GET",
+                                    headers:{
+                                        "Authorization": `Bearer ${token}`
+                                    }
+                                })//
+
+                                if (!response_refresh.ok)
+                                {
+                                    const erro = await response_refresh.json();
+
+                                    console.log(erro.detail)
+                                }else
+                                {
+                                    const dados = await response_refresh.json();
+
+                                    const token = dados.token;
+
+                                    localStorage.setItem("token",token)
+
+                                    const setToken = set[0];
+
+                                    setToken(token)
+                                    
+                                }
+
+                            }catch (error) {
+                                console.log(error)
+                            }        
                         }
-                     
-                    }
+                }
 
                 } catch (error) {
                     console.log(error)
                 }
-
-
             }
     }//Verifica Token
 
 }//classe
+
+

@@ -1,67 +1,66 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .overlay {
-  display: none;
-  position: fixed; 
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 0;
+  transition: opacity 0.3s ease;
 }
 
 .overlayOpen {
-  display: flex;
+  opacity: 1;
 }
 
 .sidebar {
-  position: sticky; 
-  top: 20px;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  background-color: var(--bg-principal);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transform: translateY(-120%);
-  transition: transform 0.3s ease;
-  z-index: 1;
-  padding: 12px 16px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 0;
+  overflow: hidden;
   display: flex;
   justify-content: center;
+  transition: height 0.3s ease;
+  z-index: 998; 
+  margin-top: 40px;
+}
+
+.sidebarOpen {
+  height: 80px;
 }
 
 .sidebar nav {
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-}
-
-.sidebarOpen {
-  transform: translateY(120px);
-}
-
-.closeBtn {
-  display: none;
+  gap: 4px;background-color: var(--Cabecalho);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  align-self: flex-end;
+  padding: 10px;
 }
 
 .link {
   padding: 8px 12px;
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
   text-decoration: none;
   border-radius: 6px;
   font-family: "Exo 2", sans-serif;
   font-weight: 800;
   white-space: nowrap;
   font-size: clamp(11px, 1.5vw, 15px);
+  display: inline-block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  position: relative;
+  z-index: 9999999999999;         
 }
 
-.link:hover {
-  background: rgba(255, 255, 255, 0.08);
+.link:hover{
+  background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 
@@ -69,21 +68,27 @@
   color: var(--cor-primaria);
 }
 
-@media (max-width: 600px) {
-  .sidebar {
-    padding: 10px 8px;
-  }
-
+@media (max-width: 1200px) {
   .sidebar nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
+    width: 90%;
   }
 
   .link {
     font-size: clamp(10px, 3vw, 13px);
     padding: 6px 8px;
-    white-space: nowrap;
+  }
+}
+
+@media (max-width: 550px) {
+  .sidebarOpen {
+    height: 100px;
+  }
+
+  .sidebar{
+    margin-top: 60px;
+  }
+
+  .sidebar nav {
+    height: 80px;
   }
 }

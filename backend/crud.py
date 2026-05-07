@@ -1,4 +1,6 @@
+##Importando tabelas
 from models import Usuarios, UsuariosOauth, Patente
+from models.gamificacao import Nivel
 
 #Importando A conexao com o Banco de dados
 from database.connection import engine
@@ -12,6 +14,8 @@ from database.session import Session
 #Importando comandos do sql para o código.
 from sqlalchemy import Column, String , Integer
 
+
+
 # Cria a sessão
 session = Session()
 
@@ -24,12 +28,15 @@ session = Session()
 
 
 try:
-    patente = Patente(nome_patente="Iniciante",xp_minimo=0)
-    session.add(patente)
-    session.commit()
+
 except Exception as exception:
     session.rollback()
     raise  exception
+
+
+
+
+
 
 #Fecho a sessão
 session.close()

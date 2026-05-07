@@ -1,23 +1,21 @@
-
 from fastapi import APIRouter, Depends,HTTPException
+
 
 #Importando tabelas:
 from models.usuarios import Usuarios
 from models.usuarios_oauth import UsuariosOauth
-from models.patentes import Patente
-
 
 #Instânciando roteador
 auth = APIRouter(prefix="/auth",tags=["autenticação"])
 
 #Importando dependencias
-from dependences import pegar_sessao , pegar_token
+from dependences import pegar_sessao,  validar_token
 
 #Importando a CRIPTOGRAFIA
 from security import criptografia
 
 #Importando SHCEMAS:
-from schemas.UsuarioSchema import UsuarioSchema, VerificarEmailSchema , EmailSchema , UsuarioLoginSchema
+from schemas.UsuarioSchema import CadastroSchema, VerificarEmailSchema , EmailSchema , UsuarioLoginSchema
 
 
 
@@ -95,7 +93,7 @@ def gerar_token(id_usuario, validade = timedelta(minutes = 30)):
 
 #ROTAS:
 @auth.post("/cadastro")
-async def cadastro(dados : UsuarioSchema,session = Depends(pegar_sessao)):
+async def cadastro(dados : CadastroSchema,session = Depends(pegar_sessao)):
     email_usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
     if email_usuario is not None:
         raise HTTPException(status_code=400,detail="Esse email já foi autenticado")
@@ -175,7 +173,7 @@ async def login(dados : UsuarioLoginSchema , session = Depends(pegar_sessao)):
                 "token_type": "bearer"
             }
 
-
+########################
 @auth.post("/verificar_email")
 async def verificar_email(dados: EmailSchema , session = Depends(pegar_sessao)):
     usuario = session.query(Usuarios).filter(Usuarios.email == dados.email).first()
@@ -183,6 +181,8 @@ async def verificar_email(dados: EmailSchema , session = Depends(pegar_sessao)):
         raise  HTTPException(status_code=404,detail="Email não autenticado")
     else:
         return {"mensagem": "Email verificado com sucesso!"}
+
+###################
 
 @auth.post("/alterar_senha")
 async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessao)):
@@ -197,25 +197,50 @@ async def alterar_senha(dados: UsuarioLoginSchema, session = Depends(pegar_sessa
         session.commit()
         return {"mensagem": "Senha alterada com sucesso!"}
 
+##################
 
-##Rota de verificaçãod e token
+##Rota de verificação de token
 @auth.post("/verificar_token")
-async def verificar_token (token = Depends(pegar_token), session = Depends(pegar_sessao)):
-    try:
-        info = jwt.decode(token , SECRET_KEY,algorithms = ALGORITIMO)
-        id_usuario = int(info["sub"])
-    except JWTError as ERRO:
-        print(ERRO)
-        raise HTTPException(status_code=401, detail="Acesso Negado, Token expirado!")
-    ####
-    usuario = session.query(Usuarios).filter(Usuarios.id_usuario == id_usuario).first()
-    if not usuario:
-        raise HTTPException(status_code=401, detail="Acesso inválido")
-    id_user = int(usuario.id_usuario)
-    return {"id": id_user}
+async def verificar_token (usuario = Depends(validar_token)):
+    return usuario
 
+
+############################
+
+##Rota do Refresh_Token
+@auth.get("refresh_token")
+async def refresh_token(usuario = Depends(validar_token) ,session = Depends(pegar_sessao)):
+    usuario = session.query(Usuarios).filter(Usuarios.id_usuario == usuario.id_usuario)
+    if usuario is None:
+        raise HTTPException(status_code=404,detail="Usuário não encontrado")
+    token = gerar_token(usuario.id_usuario)
+    return {
+        "token" : token,
+        "token_type" : "bearer"
+    }
 
 ##################
+
+##Rota de Adicionar Telefone
+
+
+############################
+
+##Rota De alterar Telefone
+
+############################
+
+
+##Rota de alterar Nome
+
+
+############################
+
+
+##Rota de alterar e-mail
+
+############################
+
 
 
 

@@ -1,29 +1,26 @@
-import { useState, useEffect } from 'react';
+    import { useState, useEffect } from 'react';
+    import { Link } from 'react-router-dom';
+
 import Style from "./ConteudoConfiguracoes.module.css";
 
-import casinhaModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/casinha.svg";
-import casinhaModoClaro from "../../../fotos/img_configuracoes/modoClaro/casinha.svg";
-import escudoModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/escudo.svg";
-import escudoModoClaro from "../../../fotos/img_configuracoes/modoClaro/escudo.svg";
-import pessoaModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/pessoa.svg";
-import pessoaModoClaro from "../../../fotos/img_configuracoes/modoClaro/pessoa.svg";
-import idiomaModoEscuro from "../../../fotos/img_configuracoes/modoEscuro/linguas.svg";
-import idiomaModoClaro from "../../../fotos/img_configuracoes/modoClaro/linguas.svg";
+import perfilModoClaro from "../../../fotos/claro/login_icon_claro.svg";
+import perfilModoEscuro from "../../../fotos/escuro/login_icon.svg";
 
-import { ConteudoInicio } from "./Conteudos/ConteudoInicio/ConteudoInicio";
-import { ConteudoPrivacidade } from "./Conteudos/ConteudoPrivacidade/ConteudoPrivacidade";
-import { ConteudoAcessibilidade } from "./Conteudos/ConteudoAcessibilidade/ConteudoAcessibilidade";
-import { ConteudoIdioma } from "./Conteudos/ConteudoIdioma/ConteudoIdioma";
+import sairContaModoClaro from "../../../fotos/claro/sairConta.svg";
+import sairContaModoEscuro from "../../../fotos/escuro/sairConta.svg";
 
-const renderizarConteudo = (tela) => {
-    switch (tela) {
-        case "ConteudoInicial":        return <ConteudoInicio />;
-        case "ConteudoPrivacidade":    return <ConteudoPrivacidade />;
-        case "ConteudoAcessibilidade": return <ConteudoAcessibilidade />;
-        case "ConteudoIdioma":         return <ConteudoIdioma />;
-        default:                       return <ConteudoInicio />;
-    }
-};
+import desativarConta from "../../../fotos/desativarConta.svg";
+import excluirConta from "../../../fotos/excluirConta.svg";
+
+import sobreModoClaro from "../../../fotos/claro/Sobre.svg";
+import sobreModoEscuro from "../../../fotos/escuro/Sobre.svg";
+
+import termosModoClaro from "../../../fotos/claro/termos.svg";
+import termosModoEscuro from "../../../fotos/escuro/termos.svg";
+
+import googleIcon from "../../../fotos/google.png";
+import githubIcon from "../../../fotos/github.png";
+import { SairDaConta } from '../../../../funcoes/functions';
 
 const ItemBarraLateral = ({ descricao, img, onClick }) => {
     return (
@@ -36,7 +33,7 @@ const ItemBarraLateral = ({ descricao, img, onClick }) => {
 
 const ConteudoConfiguracoes = () => {
     const [tema, setTema] = useState(localStorage.getItem('TemaSelecionado') || 'Claro');
-    const [telaSelecionada, setTelaSelecionada] = useState("ConteudoInicial");
+    const [popupAtivo, setPopupAtivo] = useState(null); // null | 'sair' | 'desativar' | 'excluir'
 
     useEffect(() => {
         const checarTema = (e) => setTema(e.detail);
@@ -46,35 +43,177 @@ const ConteudoConfiguracoes = () => {
 
     const isClaro = tema === 'Claro';
 
+    const [token_state,setToken]   = useState(() => localStorage.getItem("token"));
+    const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
+    const [dados, setDados] = useState(() =>
+        JSON.parse(localStorage.getItem("dados")) || null
+    );
+
+    // Configurações de cada popup
+    const configsPopup = {
+        sair: {
+            paragrafo: "Deseja sair da conta?",
+            primeiroBotao: "Sair",
+            segundoBotao: "Cancelar",
+            primeiroClick: async () => {
+
+                //Saio da Conta
+                await SairDaConta(setToken,setRefresh,setDados)
+
+                
+
+                setPopupAtivo(null);
+
+
+
+             },
+            segundoClick: () => setPopupAtivo(null),
+        },
+        desativar: {
+            paragrafo: "Deseja desativar sua conta?",
+            primeiroBotao: "Desativar",
+            segundoBotao: "Cancelar",
+            primeiroClick: () => {setPopupAtivo(null); },
+            segundoClick: () => setPopupAtivo(null),
+        },
+        excluir: {
+            paragrafo: "Deseja excluir sua conta? Essa ação é irreversível.",
+            primeiroBotao: "Excluir",
+            segundoBotao: "Cancelar",
+            primeiroClick: () => {setPopupAtivo(null); },
+            segundoClick: () => setPopupAtivo(null),
+        },
+    };
+
     const conteudosBarraLateral = [
-        { id: 1, descricao: "Inicio",         img: isClaro ? casinhaModoClaro : casinhaModoEscuro,  carregar: "ConteudoInicial"        },
-        { id: 2, descricao: "Privacidade",    img: isClaro ? escudoModoClaro  : escudoModoEscuro,   carregar: "ConteudoPrivacidade"    },
-        { id: 3, descricao: "Acessibilidade", img: isClaro ? pessoaModoClaro  : pessoaModoEscuro,   carregar: "ConteudoAcessibilidade" },
-        { id: 4, descricao: "Idioma",         img: isClaro ? idiomaModoClaro  : idiomaModoEscuro,   carregar: "ConteudoIdioma"         },
+        { id: 1, descricao: "Alterar dados do perfil", img: perfilModoClaro , acao: null },
+        { id: 2, descricao: "Sair da Conta",           img: sairContaModoClaro , acao: 'sair' },
     ];
+
+    const PopUp = ({ paragrafo, primeiroBotao, segundoBotao, primeiroClick, segundoClick }) => {
+        return (
+            <div className={`${Style.popUp} ${popupAtivo ? Style.popUpVisivel : ''}`}>
+                <p>{paragrafo}</p>
+                <div className={Style.botoes}>
+                    <button onClick={primeiroClick} className={Style.primeiroBotao}>
+                        {primeiroBotao}
+                    </button>
+                    <button onClick={segundoClick} className={Style.segundoBotao}>
+                        {segundoBotao}
+                    </button>
+                </div>
+            </div>
+        );
+    };
+
+    const configAtual = popupAtivo ? configsPopup[popupAtivo] : null;
 
     return (
         <>
+            {popupAtivo && (
+                <div
+                    className={Style.fundoEscurecido}
+                    onClick={() => setPopupAtivo(null)}
+                />
+            )}
+
             <div className={Style.separarConteudos}>
-                <main className={Style.main}>
-                    <div className={Style.barraLateral}>
-                        <div className={Style.itensBarraLateral}>
-                            {conteudosBarraLateral.map((item) => (
-                                <ItemBarraLateral
-                                    key={item.id}
-                                    descricao={item.descricao}
-                                    img={item.img}
-                                    onClick={() => setTelaSelecionada(item.carregar)}
-                                />
-                            ))}
+                <div className={Style.barraLateral}>
+                    <h1>Configurações de usuário</h1>
+                    <hr />
+
+                    <div className={Style.itensBarraLateral}>
+                        {conteudosBarraLateral.map((item) => (
+                            <ItemBarraLateral
+                                key={item.id}
+                                descricao={item.descricao}
+                                img={item.img}
+                                onClick={item.acao ? () => setPopupAtivo(item.acao) : undefined}
+                            />
+                        ))}
+
+                        <div className={Style.destaque}>
+                            <ItemBarraLateral
+                                descricao="Desativar Conta"
+                                img={desativarConta}
+                                onClick={() => setPopupAtivo('desativar')}
+                            />
+                            <ItemBarraLateral
+                                descricao="Excluir Conta"
+                                img={excluirConta}
+                                onClick={() => setPopupAtivo('excluir')}
+                            />
                         </div>
                     </div>
-                </main>
-                    <div className={Style.Conteudos}>
-                        {renderizarConteudo(telaSelecionada)}
+
+                    <h1>Privacidade e Segurança</h1>
+                    <hr />
+
+                    <ItemBarraLateral
+                        descricao={"Sobre"}
+                        img={sobreModoClaro}
+                    />
+                    <Link to="/termos">
+                        <ItemBarraLateral
+                            descricao={"Termos de Serviço"}
+                            img={termosModoClaro}
+                        />
+                    </Link>
+                </div>
+
+                <div className={Style.Conteudos}>
+                    <h1>Dados do Perfil</h1>
+
+                    <div className={Style.parteEmail}>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idEmailVinculado">E-mail vinculado</label>
+                            <input type="text" placeholder='seugmail@gmail.com' id='idEmailVinculado' />
+                        </div>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idNovoEmail">Novo e-mail</label>
+                            <input type="text" placeholder='seugmail@gmail.com' id='idNovoEmail' />
+                        </div>
+                        <button className={Style.botoes}>Alterar</button>
                     </div>
+
+                    <div className={Style.parteTelefone}>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idNumeroTel">Número de Telefone</label>
+                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idNumeroTel' />
+                        </div>
+                        <div className={Style.campoForm}>
+                            <label htmlFor="idConfirmeNumeroTel">Confirme o número de telefone</label>
+                            <input type="text" placeholder='xx-xxxxx-xxxx' id='idConfirmeNumeroTel' />
+                        </div>
+                        <button className={Style.botoes}>Adicionar</button>
+                    </div>
+
+                    <div className={Style.alterarSenha}>
+                        <p>Alterar senha atual</p>
+                        <Link to="/recuperar-senha">
+                            <button>Alterar</button>
+                        </Link>
+                    </div>
+
+                    <div className={Style.conectarContas}>
+                        <h2>Conecte suas contas para login</h2>
+                        <div className={Style.imagens}>
+                            <img src={googleIcon} alt="google" />
+                            <img src={githubIcon} alt="github" />
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            {configAtual && (
+                <PopUp
+                    paragrafo={configAtual.paragrafo}
+                    primeiroBotao={configAtual.primeiroBotao}
+                    segundoBotao={configAtual.segundoBotao}
+                    primeiroClick={configAtual.primeiroClick}
+                    segundoClick={configAtual.segundoClick}
+                />
+            )}
         </>
     );
 };

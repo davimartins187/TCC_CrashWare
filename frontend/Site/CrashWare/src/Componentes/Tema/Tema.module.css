@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 6px 8px;
   width: auto;
   height: auto;
   color: var(--texto-secundario);
@@ -15,16 +14,16 @@
   font-weight: 800;
   cursor: pointer;
   transition: all 0.2s ease;
+  z-index: 999999999;
 }
 
 .tema:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--texto-secundario);
+  transform: scale(1.06);
 }
 
 .tema img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 }
 
@@ -32,4 +31,11 @@
   margin: 0;
   padding: 0;
   font-size: inherit;
+}
+
+@media (max-width: 550px) {
+  
+  .tema img{
+    width: 30px;
+  }
 }

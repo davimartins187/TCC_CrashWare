@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from routes.auth import auth
+from routes.user import user
+from routes.adm import adm
 import os #Acessa outros arquivos
 from dotenv import load_dotenv # Le import arquivo .env
 #CORS:
 from fastapi.middleware.cors import CORSMiddleware
-
 
 
 
@@ -25,7 +26,9 @@ origins = [
     "https://crashware.onrender.com",
     "http://localhost:5173",
     "http://localhost:5174",
-    "http://127.0.0.1:5173"
+    "http://127.0.0.1:5173",
+    "http://localhost:5175",
+    "http://localhost:5176"
 ]
 
 crashware.add_middleware(
@@ -40,6 +43,20 @@ crashware.add_middleware(
 #Colocando as rotas dentro da API:
 crashware.include_router(auth)
 
+crashware.include_router(user)
+
+crashware.include_router(adm)
+
+
+#Alembic
+#Crio uma migração
+#alembic revision --autogenerate -m "nome da migração"
+
+##Faço a migração acontecer no banco de dados
+# alembic upgrade head
+
+#Retorna para a primeira versão do Banco De Dados
+#alembic downgrade base
 
 
 

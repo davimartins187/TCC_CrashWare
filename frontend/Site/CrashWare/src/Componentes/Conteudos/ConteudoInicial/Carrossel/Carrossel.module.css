@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.viewport {
+    width: 260px;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.lista {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card {
+    min-width: 260px;
+    background: #ffffff30;
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 32px 24px 28px;
+    color: var(--texto-principal);
+    gap: 10px;
+}
+
+.icone {
+    font-size: 28px;
+    opacity: 0.85;
+}
+
+.card h3 {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #272727;
+    font-family: "Montserrat";
+    margin: 0;
+}
+
+.card p {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--texto-principal);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0;
+    font-family: "Montserrat";
+    font-weight: 500;
+}
+
+.rodape {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn {
+    background: none;
+    border: none;
+    color: var(--texto-principal);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.btn:hover {
+    color: var(--texto-secundario);
+}
+
+.dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dot {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--texto-principal);
+    cursor: pointer;
+    transition: background 0.3s, width 0.3s;
+    display: block;
+}
+
+.dotAtivo {
+    background: var(--texto-secundario);
+    width: 36px;
+}

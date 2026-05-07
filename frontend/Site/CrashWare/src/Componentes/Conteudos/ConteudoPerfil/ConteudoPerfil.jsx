@@ -1,180 +1,246 @@
 import { useEffect, useRef, useState } from 'react'
 import FotoPadrao from '../../../fotos/FotoPerfilPadrao.jpeg'
-import BackFundo from "../../../fotos/Banner.jpeg"
-import iconRanking from '../../../fotos/ranking.svg'
-import iconOfensiva from '../../../fotos/ofensiva.svg'
-import iconXp from '../../../fotos/xp.svg'
+import iconConquistas from '../../../fotos/Conquistas.svg'
+import iconBolsa from '../../../fotos/Compras.svg'
+import iconGema from '../../../fotos/Gemas.svg'
+import iconTema from '../../../fotos/Item_tema.svg'
+
 import style from './ConteudoPerfil.module.css'
-import { Link , useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
-//Funcão de Sair da Conta
-import { Api, SairDaConta } from '../../../../funcoes/functions'
-
+import { SairDaConta } from '../../../../funcoes/functions'
 import { BotoesForm } from '../../Botoes/BotaoForm/BotaoForm'
+import { Usuario } from '../../../../funcoes/user'
+
+// Dados de exemplo para as conquistas — substitua pelos dados reais da API
+const CONQUISTAS_MOCK = [
+    { id: 1, titulo: 'Conquista de Software', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'software' },
+    { id: 2, titulo: 'Conquista de Hardware', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'hardware' },
+    { id: 3, titulo: 'Conquista de Hardware', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'hardware' },
+    { id: 4, titulo: 'Conquista de Software', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'software' },
+    { id: 5, titulo: 'Conquista de Hardware', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'hardware' },
+    { id: 6, titulo: 'Conquista de Hardware', descricao: 'Descrição super divertida sobre a aula concluída para adquirir a conquista.', tipo: 'hardware' },
+]
+
+const ConteudoPerfil =  () => {
+
+    const [dados, setDados] = useState(() =>
+        JSON.parse(localStorage.getItem("dados")) || null
+    );
 
 
+    const informacoes = localStorage.getItem("info")
+
+    if(informacoes == "false")
+    {
+        //Faço a requisição no banco
+        const dados = new Usuario();
+        dados.perfil(setDados);
+        
+    }
+    //Pego as informações do usuario
+    const usuario =  JSON.parse(localStorage.getItem("dados"));
 
 
-const ConteudoPerfil = () => {
+    //Precisa tratar a data GABRIEL
+    const DataCadastro = usuario?.criado_em;
 
+    const formatarData = (DataCadastro) => {
+    const [dia, mes, ano] = DataCadastro.split('/');
+    const date = new Date(`${ano}-${mes}-${dia}`);
+
+    const mesNome = date.toLocaleString('pt-BR', { month: 'long' });
+
+    return `Membro desde ${mesNome} de ${ano}`;
+};
+
+    //NAO MEXE AQUI GABRIEL
+    //Retorna o valor do adm
+    //usuario.admin
+    // let admin = null
+    // if(usuario.adm == true)
+    // {
+    //   admin = "ADMIN"
+    // }
+
+  
     //Navegação --> Permite eu levar o usuario para outras telas
     const Navegacao = useNavigate();
 
     // muda a foto
     const [foto, setFoto] = useState(FotoPadrao);
-
-    //referencia o input
     const inputRef = useRef();
 
     const [ofensiva, setOfensiva] = useState(0);
     const [xp, setXp] = useState(0);
+    const [conquistas, setConquistas] = useState(CONQUISTAS_MOCK);
+    const [totalCompras, setTotalCompras] = useState(0);
+    const [totalGemas, setTotalGemas] = useState(0);
 
-    //Uso useState para o react renderizar as informações
-    const [id, setId] = useState(() => localStorage.getItem("id"));
-    const [token_state, setToken] = useState(() => localStorage.getItem("token"));
-    const [refresh_token_state, setRefresh] = useState(() => localStorage.getItem("refresh_token"));
+    const XpMax = 500;
 
-    //Lista que contém todos os usestate
-    const set = [setId,setToken,setRefresh];
+    const Nivel = dados?.nivel || 0;
+    const nome  = dados?.nome    || "Usuário";
 
+    const xpAtual    = xp % XpMax;
+    const porcentagem = (220 / XpMax) * 100;
 
     
+
     useEffect(() => {
-        //Quando a pag for carregada:
+        const informacoes = localStorage.getItem("info");
+        if (informacoes === "false") {
+            const user = new Usuario();
+            user.perfil(setDados);
+        }
+    }, []);
 
-
-        //Verifico se o usuario tem token
-            const VerificarToken = async () => 
-            {
-                //Pego os tokens dentro do escopo privado.
-                const token = localStorage.getItem("token")
-                const refresh_token = localStorage.getItem("refresh_token")
-    
-    
-                //Vaerifico o token
-                const usuario = new Api();
-                const token_vencido = await usuario.Verificar_Token(token,Navegacao,null,setToken,setRefresh,true)
-    
-    
-                //Verifico o Refresh Token
-                if (token_vencido == true)
-                {
-                    usuario.Verificar_Token(refresh_token,Navegacao,null,setRefresh,true,refresh=true,set)
-                }
-            }
-            VerificarToken()
-          
-    })
-
-    //Carrega a foto salva q pus
-    // useEffect(() => {
-    // const fotoSalva = localStorage.getItem("fotoPerfil")
-    // if (fotoSalva) {
-    //     setFoto(fotoSalva)
-    // }
-    // }, [])
-
-
-
+    if (!dados) {
+        return (
+            <div className={style.corpo} style={{ justifyContent: 'center' }}>
+                <span style={{ color: '#8b90a0', letterSpacing: '0.1em', fontSize: '13px' }}>
+                    CARREGANDO...
+                </span>
+            </div>
+        );
+    }
 
     return (
         <div className={style.corpo}>
+
+            {/* ── Banner ─────────────────────────────────────── */}
+            <div className={style.banner}>
+            </div>
+
             <div className={style.container}>
 
-                <div className={style.Logofundo}>
-                    <img src={BackFundo} alt="Background" />
-                </div>
 
-                <div className={style.info}>
-                    {/* Foto */}
-                    <img className={style.foto}
-                        src={foto} alt="Foto"
+                <div className={style.apresentacao}>
+                    <img
+                        className={style.foto}
+                        src={foto}
+                        alt="Foto de perfil"
                         onClick={() => inputRef.current.click()}
                     />
 
-                    {/* Input escondido pra trocar foto */}
-                    <input type="file" className={style.escondido}
+                    <input
+                        type="file"
+                        className={style.escondido}
                         ref={inputRef}
                         accept='image/*'
                         onChange={(e) => {
                             const arquivo = e.target.files[0];
-
                             if (arquivo) {
-                                const url = URL.createObjectURL(arquivo)
+                                const url = URL.createObjectURL(arquivo);
                                 setFoto(url);
                             }
                         }}
                     />
+
                     <div className={style.texto}>
+                        <h3>{nome}</h3>
 
-                        {/* Nome */}
-                        <h3> Usuário </h3>
-
-                        {/* Status */}
                         <p className={style.status}>
                             <span className={style.bolinha}></span>
-                            Online </p>
-                    </div> {/*Tetxos */}
-                </div> {/*info*/}
+                            Membro desde maio de 2026
+                        </p>
 
+                        <div className={style.Nivel}>
+                            <div className={style.NivelTopo}>
+                                <p>Nível {Nivel}</p>
+                                <span>{xpAtual}/{XpMax} XP</span>
+                            </div>
 
-                {/* Informações de Ofenciva e afins */}
+                            <div className={style.Barra}>
+                                <div
+                                    className={style.Progresso}
+                                    style={{ width: `${porcentagem}%` }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Cards de Stats ─────────────────────────── */}
                 <div className={style.blocos}>
 
-                    {/* Ranking */}
-                    <div className={style.Ranking}>
-                        <img src={iconRanking} alt="" />
-                        <div className={style.Ranking_Coluna}>
-                            <h6>Beta</h6>
-                            <   p>Ranking</p>
+                    <div className={style.Conquistas}>
+                        <img src={iconConquistas} alt="Conquistas" />
+                        <div>
+                            {conquistas.length}
+                            <p>Conquistas</p>
                         </div>
-                    </div> {/*Ranking*/}
+                    </div>
 
-                    {/* Ofensiva */}
-                    <div className={style.Ofensiva}>
-                        <img src={iconOfensiva} alt="" />
-                        <div className={style.Ofensiva_Coluna}>
-                            {ofensiva}
-                            <p>Ofensiva</p>
+                    <div className={style.Compras}>
+                        <img src={iconBolsa} alt="Compras" />
+                        <div>
+                            {totalCompras}
+                            <p>Compras</p>
                         </div>
-                    </div>{/*Ofensiva*/}
+                    </div>
 
-                    {/* XP */}
-                    <div className={style.xp}>
-                        <img src={iconXp} alt="" />
-                        <div className={style.xp_Coluna}>
-                            {xp}
-                            <p>Total de XP</p>
+                    <div className={style.Gemas}>
+                        <img src={iconGema} alt="Gemas" />
+                        <div>
+                            {totalGemas}
+                            <p>Gemas</p>
                         </div>
-
-                    </div> {/* XP */}
-
-
-                    {/* Sair da conta , depois vc troca isso gabriel ou davison */}
-                    <BotoesForm
-                        onClick={() => SairDaConta(setId,setToken,setRefresh)}
-                        texto="Sair da conta"
-                    />
+                    </div>
 
                 </div>
 
-                {/* Atividades */}
-                <div className={style.Atividades}>
-                    <h4>Atividade Recentes</h4>
-                    <h6>Bla Bla</h6>
-                    <h6>Bla Bla</h6>
-                    <h6>Bla Bla</h6>
-                </div> {/* Atividades */}
-                
-                {/* Conquistas */}
-                <div className={style.Conquistas}>
-                    <h4>Atividade Recentes</h4>
-                    <h6>...</h6>
-                    <h6>...</h6>
+                {/* ── Última Compra ──────────────────────────── */}
+                <div className={style.Historico_Compras}>
+                    <h1>Última Compra</h1>
+
+                    <div className={style.CompraRecente}>
+                        <img src={iconTema} alt="Item" />
+
+                        <div className={style.DescricaoCompra}>
+                            <h5>Meia-Noite</h5>
+                            <p>Para quando o modo escuro não for suficiente</p>
+                        </div>
+                    </div>
+
+                    {/* <div>
+                        <BotoesForm
+                            onClick={() => SairDaConta(setToken, setRefresh)}
+                            texto="Sair da conta"
+                        />
+                    </div> */}
                 </div>
+
+                {/* ── Painel Direito: Conquistas ─────────────── */}
+                <div className={style.Direita}>
+                    <div className={style.ConquistasBloco}>
+                        <h4>Conquistas</h4>
+
+                        <div className={style.listaConquistas}>
+                            {conquistas.map((c) => (
+                                <div
+                                    key={c.id}
+                                    className={`${style.ItemConquista} ${style[c.tipo]}`}
+                                >
+                                    <img src={FotoPadrao} alt={c.titulo} />
+
+                                    <div>
+                                        <h6>{c.titulo}</h6>
+                                        <p>{c.descricao}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <button className={style.verTodas}>
+                            Ver todas as conquistas
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
-    )
-}
+    );
+};
 
 export { ConteudoPerfil }

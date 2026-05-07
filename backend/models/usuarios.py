@@ -1,6 +1,7 @@
 #Importando comandos do sql para o código.
+from typing import Self
 
-from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime,text,ForeignKey
+from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime,text,ForeignKey, Float
 from datetime import datetime
 
 from sqlalchemy.orm import relationship
@@ -29,12 +30,14 @@ class Usuarios(Base):
     telefone = Column(String(13),unique=True,nullable=True)
     senha_hash = Column(Text,nullable=True)
     foto = Column(String(255),default="default.png",server_default=text("'default.png'"))
+    banner = Column(String(255),default="default.png",server_default=text("'default.png'"))
     email_verificado = Column(Boolean,default=False,server_default=text("false"))
     ativo = Column(Boolean,default=True,server_default=text("true"))
     admin = Column(Boolean,default=False,server_default=text("false"))
     moedas = Column(Integer,default=0,server_default=text("0"))
-    xp = Column(Integer,default=0,server_default=text("0"))
-    patente_id = Column(Integer,ForeignKey("patente.id_patente"),nullable=False,default=1,server_default=text("1"))
+    xp = Column(Float,default=0,server_default=text("0.0"))
+    patente_id = Column(Integer, ForeignKey("patente.id_patente"), nullable=False, default=1, server_default=text("1"))
+    nivel_id = Column(Integer,ForeignKey("nivel.id_nivel"),default=1,server_default=text('1'))
     codigo = Column(String(6),nullable=True)
     codigo_expirado_em = Column(DateTime(timezone=True),nullable=True)
 
@@ -46,24 +49,27 @@ class Usuarios(Base):
 
     # Criando relação com objetos (relationship)
     oauths = relationship("UsuariosOauth",backref="usuarios")
-    patentes = relationship("Patente",backref="usuarios")
+    patentes = relationship("Patente", backref="usuarios")
+    niveis = relationship("Nivel",backref="usuarios")
 
     # Criando atributos PARA O PYTHON (Naõ altera nada no banco de dados)
-    def __init__(self,nome_usuario,email,senha_hash,telefone = None,foto = 'default.png',email_verificado=False,ativo=True,admin=False,coin=0,xp = 0, patente_id = 1,codigo = codigo, codigo_expirado_em = codigo_expirado_em):
+    #nivel_id
+    def __init__(self,nome_usuario,email,senha_hash,patente_id = 1,nivel_id=1,telefone = None,foto = 'default.png',banner="default.png",email_verificado=False,ativo=True,admin=False,coin=0,xp = 0,codigo = codigo, codigo_expirado_em = codigo_expirado_em):
         self.nome_usuario = nome_usuario
         self.email = email
         self.telefone = telefone
         self.senha_hash = senha_hash
         self.foto = foto
+        self.banner = banner
         self.email_verificado = email_verificado
         self.ativo = ativo
         self.admin = admin
         self.coin = coin
         self.xp = xp
         self.patente_id = patente_id
+        self.nivel_id = nivel_id
         self.codigo = codigo
         self.codigo_expirado_em = codigo_expirado_em
-
 
 
 #Fecho a sessão

@@ -1,28 +1,86 @@
 import { Routes, Route } from "react-router-dom"
-import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes } from "./Paginas"
-import { LayoutPadrao, LayoutCadLogin } from "./Layouts"
+import { PgInicial, PgCadastro, SobreNos, PgLogin, PgErro, PgRecuperarSenha, PgVerificacaoEmail, PgPerfil, PgAnotacoes, PgConfiguracoes, PgHome, PgTermos, PgAdm } from "./Paginas"
+import { LayoutPadrao, LayoutCadLogin, LayoutLogado } from "./Layouts"
 import { PgAlterarSenha } from "./Paginas/AlterarSenha"
+import { AuthProvider, RotaPrivada } from "./VerificacaoToken"
 
-const Router = () =>
-{
+
+
+const Router = () => {
     return (
+        //Todas as rotas e Caminhos
         <Routes>
+            {/* Layout Padrao */}
             <Route path="/" element={<LayoutPadrao />}>
-                <Route index element={<PgInicial />}/>
-                <Route path="sobre-nos" element={<SobreNos />}/>
-                <Route path="*" element={<PgErro />} />
-                <Route path="perfil" element={<PgPerfil/>} />
-                <Route path="configuracoes" element={<PgConfiguracoes/>} />
-                <Route path="anotacoes" element={<PgAnotacoes />} />
-            </Route>
+                <Route index element={
+                    <AuthProvider>
+                        <PgInicial />
+                    </AuthProvider>
+                } />
 
+                <Route path="sobre-nos" element={<SobreNos />} />
+                <Route path="*" element={<PgErro />} />
+
+            </Route> {/* Layout Padrao */}
+
+            {/* Layout de Cadastro e Login sem footer */}
             <Route path="/" element={<LayoutCadLogin />}>
-                <Route path="cadastro" element={<PgCadastro />}/>
-                <Route path="login" element={<PgLogin/>} />
+                <Route path="cadastro" element={
+                    <AuthProvider>
+                        <PgCadastro />
+                    </AuthProvider>
+                } />
+
+                <Route path="login" element={
+                    <AuthProvider>
+                        <PgLogin />
+                    </AuthProvider>
+                } />
+
                 <Route path="recuperar-senha" element={<PgRecuperarSenha />} />
                 <Route path="verificacao-email" element={<PgVerificacaoEmail />} />
-                <Route path="alterar-senha" element={<PgAlterarSenha/>} />
-            </Route>
+                <Route path="alterar-senha" element={<PgAlterarSenha />} />
+
+            </Route>  {/* Layout de Cadastro e Login sem footer */}
+
+            {/* Layout Logado */}
+            <Route path="/" element={<LayoutLogado />}>
+                <Route path="perfil" element={
+                    <RotaPrivada>
+                        <PgPerfil />
+                    </RotaPrivada>
+                } />
+
+                <Route path="configuracoes" element={
+                    <RotaPrivada>
+                        <PgConfiguracoes />
+                    </RotaPrivada>
+                } />
+
+                <Route path="anotacoes" element={
+                    <RotaPrivada>
+                        <PgAnotacoes />
+                    </RotaPrivada>
+                } />
+
+                <Route path="home" element={
+                    <RotaPrivada>
+                        <PgHome />
+                    </RotaPrivada>
+                } />
+
+                <Route path="termos" element={
+                    <RotaPrivada>
+                        <PgTermos />
+                    </RotaPrivada>
+                } />
+
+                <Route path="adm" element={
+                    <RotaPrivada>
+                        <PgAdm />
+                    </RotaPrivada>
+                } />
+            </Route> {/* Layout Logado */}
         </Routes>
     )
 }
