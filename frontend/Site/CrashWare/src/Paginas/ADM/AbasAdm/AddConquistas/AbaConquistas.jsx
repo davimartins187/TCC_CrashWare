@@ -1,15 +1,17 @@
 import { useState } from "react"
 import { CampoTexto } from '../../../../Componentes';
 import { BotoesForm } from '../../../../Componentes';
+import ImgSoftware from "../../../../fotos/imgSoftware.png"
+import ImgHardware from "../../../../fotos/imgHardware.png"
 import Style from "./AbaConquistas.module.css"
 
 const AbaConquistas = () => {
 
     const [nomeConquista, setNomeConquista] = useState("");
     const [descricaoConquista, setDescricaoConquista] = useState("");
+    const [condicao, setCondicao] = useState("");
     const [moedas, setMoedas] = useState();
     const [xp, setXP] = useState();
-    const [condicao, setCondicao] = useState("");
     const [opcao, setOpcao] = useState("");
     const [popup, setPopup] = useState(null);
 
@@ -36,7 +38,7 @@ const AbaConquistas = () => {
             <div className={Style.ConquistaInputs}>
                 <div className={Style.campoForm}>
 
-                    <label htmlFor="NomeConsquista">Nome da Conquista</label>
+                    <label htmlFor="NomeConsquista" className={Style.Margincima}>Nome da Conquista</label>
                     <CampoTexto
                         placeholder="Nome da Conquista"
                         maxlenght={100}
@@ -63,7 +65,7 @@ const AbaConquistas = () => {
                         name="" id="" className={Style.Descricao}
                         placeholder="Coloque aqui as condições para desbloquear a conquista"
                         maxLength={300}
-                        onChange={(e) => setDescricaoConquista(e.target.value)}
+                        onChange={(e) => setCondicao(e.target.value)}
                     ></textarea>
                     <p>Máx 300 caracteres</p>
                 </div>
@@ -77,14 +79,14 @@ const AbaConquistas = () => {
                     <CampoTexto name="opcao" value="Software" type="radio"
                         onChange={(e) => setOpcao(e.target.value)}
                     />
-                    Software
+                    <img src={ImgSoftware} alt="Software" /> Software
                 </label>
 
                 <label className={Style.RadioTipo}>
                     <CampoTexto name="opcao" value="Hardware" type="radio"
                         onChange={(e) => setOpcao(e.target.value)}
                     />
-                    Hardware
+                    <img src={ImgHardware} alt="Hardware" /> Hardware
                 </label>
                 <label className={Style.RadioTipo}>
                     <CampoTexto name="opcao" value="Outro" type="radio"
@@ -97,6 +99,7 @@ const AbaConquistas = () => {
 
                     <label htmlFor="moedas">Qntd de Moedas</label>
                     <CampoTexto
+                        className={Style.Atributos}
                         placeholder="Quantidade de Moedas"
                         type="number"
                         onChange={(e) => setMoedas(e.target.value)}
@@ -104,18 +107,21 @@ const AbaConquistas = () => {
 
                     <label htmlFor="xp">Quantidade de XP</label>
                     <CampoTexto
+                        className={Style.Atributos}
                         placeholder="Quantidade de XP"
                         type="number"
                         onChange={(e) => setXP(e.target.value)}
                     />
                 </div>
+                <BotoesForm
+                    className={Style.botaoAdicionar}
+                    texto="Adicionar"
+                    disabled={!botaoliberado}
+                    onClick={handleAdicionarConquista}
+                />
             </div>
             {/* </div> */}
-            {/* <BotoesForm
-                texto="Adicionar"
-                disabled={!botaoliberado}
-                onClick={handleAdicionarConquista}
-            /> */}
+
         </div>
     )
 }

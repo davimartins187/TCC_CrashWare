@@ -86,7 +86,7 @@ const Router = () => {
                     </RotaPrivada>
                 } />
 
-                <Route path="conquistas" element={
+                <Route path="criar-conquista" element={
                     <RotaPrivada>
                         <AbaConquistas />
                     </RotaPrivada>

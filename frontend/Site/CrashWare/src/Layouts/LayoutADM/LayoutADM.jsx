@@ -36,7 +36,7 @@ const LalyoutADM = () => {
     const conteudosBarraLateral = [
         { id: 1, descricao: "Relatórios", acao: null, to: "/relatorio" },
         { id: 2, descricao: "Conteudos", acao: 'sair' },
-        { id: 3, descricao: "Conquistas", acao: 'conquistas', to: "/conquistas" },
+        { id: 3, descricao: "Conquistas", acao: 'conquistas' },
         { id: 4, descricao: "Usuarios", acao: '/usuario' },
         { id: 5, descricao: "Notificações", acao: 'notificacoes' },
         { id: 6, descricao: "Matérias", acao: 'cosmeticos' },
@@ -67,33 +67,27 @@ const LalyoutADM = () => {
                     <div className={Style.itensBarraLateral}>
                         {conteudosBarraLateral.map((item) => (
                             <div key={item.id}>
-                                    <ItemBarraLateral
-                                        descricao={item.descricao}
-                                        to={item.to}
-                                        onClick={() => {
-                                            if (item.descricao === "Conquistas") {
-                                                setAbrirConquistas(!abrirConquistas);
-                                            } else if (item.acao) {
-                                                setPopupAtivo(item.acao);
-                                            }
-                                        }}
-                                    />
+                                <ItemBarraLateral
+                                    descricao={item.descricao}
+                                    to={item.to}
+                                    onClick={() => {
+                                        if (item.descricao === "Conquistas") {
+                                            setAbrirConquistas(!abrirConquistas);
+                                        } else if (item.acao) {
+                                            setPopupAtivo(item.acao);
+                                        }
+                                    }}
+                                />
 
 
                                 {item.descricao === "Conquistas" && abrirConquistas && (<div className={Style.sanfona}>
-
-                                    <Link to="ppppp">
+                                    <Link to="/criar-conquista">
                                         Criar Conquista
                                     </Link>
 
                                     <Link to="asdasdadada">
                                         Lista de Conquistas
                                     </Link>
-
-                                    <Link to="asdadasdasd">
-                                        Recompensas
-                                    </Link>
-
                                 </div>
 
                                 )}

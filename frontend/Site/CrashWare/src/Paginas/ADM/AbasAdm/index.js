@@ -1,1 +1,1 @@
-export * from './Conquistas'
+export * from './AddConquistas'

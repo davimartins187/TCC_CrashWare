@@ -187,6 +187,13 @@
     width: 50%;
 }
 
+.campoForm p{
+    color: var(--texto-principal);
+    font-family: "Montserrat";
+    font-weight: 500;
+    margin-right: 50px;
+}
+
 .alterarSenha{
     display: flex;
     flex-direction: column;
